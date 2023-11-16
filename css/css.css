@@ -14,7 +14,7 @@ body a {
 }
 .container {
   max-width: 100%;
-  /* align-items: center; */
+  margin: 0 auto;
 }
 .mt {
   margin-top: 20px;
@@ -155,22 +155,37 @@ main .block {
   grid-template-columns: auto auto auto auto;
 }
 main .block .item {
-  padding: 10px;
-  background: white;
-  width: 320px;
+  padding: 0 30px;
+  background: rgb(255, 255, 255);
+  width: 300px;
   margin-left: 50%;
   transform: translateX(-50%);
   margin-bottom: 40px;
+  border-radius: 10px;
+}
+main .block .item .img p{
+  border-radius: 4px;
+  background: rgb(236, 236, 236);
+}
+main .block .item:hover{
+  box-shadow: 5px 5px 20px rgba(128, 128, 128, 0.5);
+  cursor: pointer;
+}
+main .block .item .img img:hover{
+  transform: scale(1.5);
+  transition: .5s;
 }
 main .block .item .img img {
   width: 100%;
+  height: 250px;
+  transition: .5s;
 }
 main .block .item .name {
-  margin-top: 5px;
+  padding: 20px 0;
   font-size: 1.3vw;
 }
 main .block .item .price {
-  margin-top: 5px;
+padding: 20px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
