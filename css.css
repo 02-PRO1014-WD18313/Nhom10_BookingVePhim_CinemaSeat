@@ -1,0 +1,248 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz@1,6..12&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  padding-top: 100px;
+  font-family: "Nunito Sans", sans-serif;
+  background: rgba(203, 203, 203, 0.2);
+}
+body a {
+  text-decoration: none;
+}
+.container {
+  max-width: 100%;
+  /* align-items: center; */
+}
+.mt {
+  margin-top: 20px;
+}
+.mb {
+  margin-bottom: 20px;
+}
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 0;
+  align-items: center;
+  width: 100%;
+  z-index: 10;
+  background: white;
+  /* box-shadow: 5px 5px 20px rgba(128, 128, 128, 0.5); */
+}
+header .logo {
+  font-weight: bold;
+  font-size: 35px;
+}
+header nav ul li {
+  list-style: none;
+  display: inline-block;
+  padding: 0 15px;
+  font-size: 1.2vw;
+}
+header a:hover {
+  color: red;
+  transition: 0.3s;
+}
+header nav ul li a {
+  color: black;
+}
+header .login {
+  position: relative;
+  width: 300px;
+  height: 25px;
+}
+header .login .search {
+  border-bottom: 1px solid gray;
+  height: 100%;
+  width: 200px;
+}
+header .search i {
+  left: 0;
+  position: absolute;
+  border-right: 1px solid black;
+  padding-right: 10px;
+  z-index: 1;
+}
+header .search a {
+  position: absolute;
+  right: 0;
+}
+header .search input {
+  left: 35px;
+  position: absolute;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #000000;
+  font-size: 1.1vw;
+}
+header .search input::placeholder {
+  color: black;
+}
+section {
+  width: 100%;
+  min-height: 95vh;
+  border-bottom: 3px solid #ffffff;
+}
+section h2 {
+  text-align: center;
+  color: #d2421a;
+}
+section .banner {
+  min-height: 100%;
+}
+section .banner img {
+  width: 100%;
+  height: 450px;
+}
+section .trademark {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+section .trademark p {
+  background: white;
+  margin: 10px;
+  font-size: 2.5vw;
+  border: 2px solid gray;
+  width: 200px;
+  padding: 20px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section .trademark p .firm {
+  width: 100%;
+  transition: 0.3s;
+}
+section .trademark p:hover .firm {
+  transform: scale(1.08);
+  transition: 0.3s;
+}
+section .trademark p {
+  cursor: pointer;
+}
+main {
+  max-width: 100%;
+  padding: 10px 100px;
+}
+main .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 350px;
+}
+main .title h5 {
+  font-size: 1.8vw;
+  font-weight: 700;
+  border-left: 4px solid rgb(9, 9, 118);
+  padding-left: 8px;
+}
+main .title p {
+  margin-left: 15px;
+  font-size: 1.2vw;
+}
+main .block {
+  width: 100%;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+main .block .item {
+  padding: 10px;
+  background: white;
+  width: 320px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 40px;
+}
+main .block .item .img img {
+  width: 100%;
+}
+main .block .item .name {
+  margin-top: 5px;
+  font-size: 1.3vw;
+}
+main .block .item .price {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.3vw;
+  color: rgb(210, 1, 1);
+}
+main .block .item .price span:nth-child(1) {
+  font-size: 0.9vw;
+  color: rgb(174, 174, 174);
+  text-decoration: line-through;
+}
+main .box-product button {
+  margin-left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 50px;
+  border-radius: 5px;
+  border: 2px solid orange;
+  font-size: 1.1vw;
+  transition: 0.3s;
+  margin-bottom: 20px;
+  background: white;
+}
+main .box-product button:hover {
+  background: orange;
+  color: white;
+  transition: 0.3s;
+}
+footer {
+  background: rgb(50, 50, 50);
+  padding: 20px 20px;
+}
+.footer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  color: white;
+}
+footer .box-footer h6 {
+  font-size: 1.4em;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+footer h5 {
+  margin-top: 8px;
+  text-align: center;
+  color: rgb(175, 175, 175);
+  font-size: 1vw;
+}
+footer .box-footer {
+  padding-left: 100px;
+}
+footer .box-footer p {
+  color: rgb(195, 195, 195);
+  line-height: 40px;
+}
+footer .box-footer p i {
+  margin-right: 5px;
+  text-align: center;
+  padding-top: 5px;
+  width: 35px;
+  height: 35px;
+  font-size: 1.5vw;
+  color: rgb(50, 50, 50);
+  background-color: rgb(195, 195, 195);
+  border-radius: 5px;
+}
+footer .box-footer p:hover {
+  color: var(--primary);
+  cursor: pointer;
+  transition: 0.3s;
+}
+.hr-footer {
+  border: 1px solid rgba(215, 215, 215, 0.5);
+  margin-top: 20px;
+}
