@@ -23,11 +23,11 @@
                             <td><?= $key + 1?></td>
                             <td><?= $value['name']?></td>
                             <td>
-                                <img width="100px" height="50px" src="../uploads/image_dm/<?= $value['img']?>" alt="123">
+                                <img width="100px" height="50px" src="../uploads/img_dm/<?= $value['img']?>" alt="123">
                             </td>
                             <td>
                                 <a type="button" class="btn btn-warning" href="?act=update_dm">Sửa</a>
-                                <a type="button" class="btn btn-danger">Xóa</a>
+                                <a type="button" class="btn btn-danger" href="?act=delete_dm?id_dm=<?= $value['id']?>">Xóa</a>
                             </td>
                         </tr>
                         <?php }?>

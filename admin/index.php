@@ -30,6 +30,9 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 include "./danhmuc/list_dm.php";
                 break;
             }
+        case "delete_dm": {
+                break;
+            }
         case "update_dm": {
                 include "./danhmuc/update_dm.php";
                 break;
