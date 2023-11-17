@@ -28,7 +28,6 @@ header {
   top: 0;
   display: flex;
   justify-content: space-around;
-  padding: 15px 0;
   align-items: center;
   width: 100%;
   z-index: 10;
@@ -42,7 +41,7 @@ header .logo {
 header nav ul li {
   list-style: none;
   display: inline-block;
-  padding: 0 15px;
+  padding: 30px 15px 22px;
   font-size: 1.2vw;
 }
 header a:hover {
@@ -51,6 +50,41 @@ header a:hover {
 }
 header nav ul li a {
   color: black;
+}
+ul .sub-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff; /* Background color for the submenu */
+  border: 1px solid #ccc; 
+  top:77.5px;
+  width: 150px;
+}
+
+
+ul li:hover > .sub-menu {
+  display: block;
+}
+
+
+ul .sub-menu li {
+  display: block;
+  width: 100%; 
+  text-align: left;
+  padding: 0 ;
+  font-size: 1vw;
+}
+
+
+ul .sub-menu li a {
+  display: block;
+  padding: 10px; 
+  text-decoration: none; 
+  color: #333; 
+}
+
+
+ul .sub-menu li a:hover {
+  background-color: #f2f2f2;
 }
 header .login {
   position: relative;
@@ -130,7 +164,7 @@ section .trademark p {
 }
 main {
   max-width: 100%;
-  padding: 10px 100px;
+  padding: 50px 100px;
 }
 main .title {
   display: flex;
@@ -163,29 +197,29 @@ main .block .item {
   margin-bottom: 40px;
   border-radius: 10px;
 }
-main .block .item .img p{
+main .block .item .img p {
   border-radius: 4px;
   background: rgb(236, 236, 236);
+  margin: 20px 0;
 }
-main .block .item:hover{
+main .block .item:hover {
   box-shadow: 5px 5px 20px rgba(128, 128, 128, 0.5);
   cursor: pointer;
 }
-main .block .item .img img:hover{
+main .block .item .img img:hover {
   transform: scale(1.5);
-  transition: .5s;
+  transition: 0.5s;
 }
 main .block .item .img img {
   width: 100%;
   height: 250px;
-  transition: .5s;
+  transition: 0.5s;
 }
 main .block .item .name {
-  padding: 20px 0;
+  padding-top: 20px;
   font-size: 1.3vw;
 }
 main .block .item .price {
-padding: 20px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -193,12 +227,77 @@ padding: 20px 0;
   font-size: 1.3vw;
   color: rgb(210, 1, 1);
 }
+main .block .item .Evaluate {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+main .block .item .Evaluate .fa-star {
+  color: orange;
+}
+main .block .item .Evaluate p i {
+  font-size: 1.5vw;
+}
+main .block .item .Evaluate p span {
+  color: gray;
+  font-size: 0.9vw;
+}
+aside {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 60px;
+}
+aside .right-now {
+  position: relative;
+}
+aside .right-now button {
+  position: absolute;
+  top: 60%;
+  right: 13%;
+  width: 120px;
+  height: 40px;
+  background: none;
+  border: 1px solid rgb(224, 99, 26);
+  color: white;
+  font-size: 1.1vw;
+  border-radius: 2px;
+  transition: 0.3s ease-out;
+}
+aside .right-now button:hover {
+  background: rgb(224, 99, 26);
+  border: 1px solid rgb(255, 255, 255);
+  cursor: pointer;
+  transition: 0.3s ease-in;
+}
+main .block .item .Evaluate p:nth-child(2) {
+  color: white;
+  padding: 10px 11px 0 9px;
+  background: rgb(145, 7, 7);
+  border-radius: 5px;
+}
+main .block .item .Evaluate p .fa-cart-plus {
+  margin-top: 3px;
+}
+main .block .item .Evaluate p .fa-cart-plus:hover {
+  animation: search 0.5s linear infinite;
+}
+@keyframes search {
+  0% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(-15deg);
+  }
+}
 main .block .item .price span:nth-child(1) {
   font-size: 0.9vw;
   color: rgb(174, 174, 174);
   text-decoration: line-through;
 }
-main .box-product button {
+main .box-product .more {
   margin-left: 50%;
   transform: translateX(-50%);
   padding: 10px 50px;
@@ -209,7 +308,7 @@ main .box-product button {
   margin-bottom: 20px;
   background: white;
 }
-main .box-product button:hover {
+main .box-product .more:hover {
   background: orange;
   color: white;
   transition: 0.3s;
