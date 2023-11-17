@@ -35,37 +35,7 @@
                             <td>2011/07/25</td>
                             <td>$170,750</td>
                             <td>
-                                <a type="button" class="btn btn-warning">Sửa</a>
-                                <a type="button" class="btn btn-danger">Xóa</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>Tokyo</td>
-                            <td>443</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                            <td>2011/07/25</td>
-                            <td>$170,750</td>
-                            <td>
-                                <a type="button" class="btn btn-warning">Sửa</a>
-                                <a type="button" class="btn btn-danger">Xóa</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Ashton Cox</td>
-                            <td>Junior Technical Author</td>
-                            <td>San Francisco</td>
-                            <td>Tokyo</td>
-                            <td>33</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                            <td>2011/07/25</td>
-                            <td>$170,750</td>
-                            <td>
-                                <a type="button" class="btn btn-warning">Sửa</a>
+                                <a type="button" class="btn btn-warning" href="?act=update_sp">Sửa</a>
                                 <a type="button" class="btn btn-danger">Xóa</a>
                             </td>
                         </tr>

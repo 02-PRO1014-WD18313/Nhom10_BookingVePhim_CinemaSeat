@@ -19,29 +19,11 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>
-                                <a type="button" class="btn btn-warning">Sửa</a>
-                                <a type="button" class="btn btn-danger " data-toggle="modal" >Xóa</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>
-                                <a type="button" class="btn btn-warning">Sửa</a>
-                                <a type="button" class="btn btn-danger ">Xóa</a>
-                            </td>
-                        </tr>
-                        <tr>
                             <td>Ashton Cox</td>
                             <td>Junior Technical Author</td>
                             <td>San Francisco</td>
                             <td>
-                                <a type="button" class="btn btn-warning">Sửa</a>
+                                <a type="button" class="btn btn-warning" href="?act=update_dm">Sửa</a>
                                 <a type="button" class="btn btn-danger">Xóa</a>
                             </td>
                         </tr>

@@ -9,7 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>ADMIN IWATCH</title>
+    <link rel="icon" href="./img/admin-logo.png">
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -44,7 +45,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="?act=thongke">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Trang quản trị</span></a>
             </li>
@@ -67,7 +68,6 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="?act=add_dm">Thêm danh mục</a>
                         <a class="collapse-item" href="?act=list_dm">Danh sách danh mục</a>
-                        <a class="collapse-item" href="?act=update_dm">Cập nhật danh mục</a>
                     </div>
                 </div>
             </li>
@@ -83,7 +83,6 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="?act=add_sp">Thêm sản phẩm</a>
                         <a class="collapse-item" href="?act=list_sp">Danh sách sản phẩm</a>
-                        <a class="collapse-item" href="?act=update_sp">Cập nhật sản phẩm</a>
                     </div>
                 </div>
             </li>

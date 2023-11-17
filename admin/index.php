@@ -27,6 +27,12 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 include "./sanpham/update_sp.php";
                 break;
             }
+
+
+        case "thongke": {
+                include "./thongke/thongke.php";
+                break;
+            }
     }
 } else {
     include "home.php";
