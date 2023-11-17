@@ -18,15 +18,19 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach($list_dm as $key=>$value){?>
                         <tr>
-                            <td>Ashton Cox</td>
-                            <td>Junior Technical Author</td>
-                            <td>San Francisco</td>
+                            <td><?= $key + 1?></td>
+                            <td><?= $value['name']?></td>
+                            <td>
+                                <img width="100px" height="50px" src="../uploads/image_dm/<?= $value['img']?>" alt="123">
+                            </td>
                             <td>
                                 <a type="button" class="btn btn-warning" href="?act=update_dm">Sửa</a>
                                 <a type="button" class="btn btn-danger">Xóa</a>
                             </td>
                         </tr>
+                        <?php }?>
                     </tbody>
                 </table>
             </div>
