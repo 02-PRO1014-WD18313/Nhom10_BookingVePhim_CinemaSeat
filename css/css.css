@@ -55,33 +55,29 @@ ul .sub-menu {
   display: none;
   position: absolute;
   background-color: #fff; /* Background color for the submenu */
-  border: 1px solid #ccc; 
-  top:77.5px;
+  border: 1px solid #ccc;
+  top: 77.5px;
   width: 150px;
 }
-
 
 ul li:hover > .sub-menu {
   display: block;
 }
 
-
 ul .sub-menu li {
   display: block;
-  width: 100%; 
+  width: 100%;
   text-align: left;
-  padding: 0 ;
+  padding: 0;
   font-size: 1vw;
 }
 
-
 ul .sub-menu li a {
   display: block;
-  padding: 10px; 
-  text-decoration: none; 
-  color: #333; 
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
 }
-
 
 ul .sub-menu li a:hover {
   background-color: #f2f2f2;
@@ -312,6 +308,34 @@ main .box-product .more:hover {
   background: orange;
   color: white;
   transition: 0.3s;
+}
+main .box-posts {
+  margin-left: 30px;
+}
+main .box-posts .post {
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+main .box-posts .post p {
+  width: 45%;
+  font-weight: bold;
+  font-size: 1.2vw;
+  color: rgb(114, 114, 114);
+  height: 50px;
+  overflow: hidden;
+  /* text-overflow: ellipsis;
+  white-space: nowrap; */
+}
+main .box-posts .post p:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+main .box-posts .post img {
+  width: 50%;
+  height: 125px;
+  object-fit: cover;
+  object-position: center;
 }
 footer {
   background: rgb(50, 50, 50);
