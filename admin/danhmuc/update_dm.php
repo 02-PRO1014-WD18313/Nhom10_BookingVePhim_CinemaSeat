@@ -1,6 +1,6 @@
 <?php
 
-if (is_array($tensp)) {
+if (is_array($loadone_dm)) {
     $link = "../uploads/img_dm/".$loadone_dm['img'];
 }
 ?>
