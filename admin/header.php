@@ -108,9 +108,16 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="?act=list_donhang">
                     <i class="fa-solid fa-truck-arrow-right"></i>
                     <span>Quản lý đơn hàng</span></a>
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="?act=list_ctdh">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>Chi tiết đơn hàng</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
