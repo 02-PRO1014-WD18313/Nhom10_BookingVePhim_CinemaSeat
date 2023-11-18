@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <label for="validationCustomUsername" class="form-label font-weight-bold">Hình ảnh</label>
+                    <label for="validationCustomFile" class="form-label font-weight-bold">Hình ảnh</label>
                     <div class="custom-file mb-3">
                         <input name="img" type="file" class="custom-file-input" id="validatedCustomFile" required>
                         <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>
@@ -42,6 +42,18 @@
                     <input class="btn btn-success " type="submit" name="submit" value="Thực hiện"></input>
                     <button type="reset" class="btn btn-outline-secondary">Nhập lại</button>
                     <a class="btn btn-primary" href="?act=list_dm" type="submit">Danh sách danh mục</a>
+                </div>
+                <div class="col-12">
+                    <div class="mt-4">
+                        <?php
+                        if (isset($thongbao) && $thongbao != "") {
+                            echo "<p style='color: green;'>$thongbao</p>";
+                        }
+                        if (isset($err) && $err != "") {
+                            echo "<p style='color: red;'>$err</p>";
+                        }
+                        ?>
+                    </div>
                 </div>
             </form>
         </div>

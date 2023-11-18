@@ -35,8 +35,8 @@
                             <td>2011/07/25</td>
                             <td>$170,750</td>
                             <td>
-                                <a type="button" class="btn btn-warning" href="?act=update_sp">Sửa</a>
-                                <a type="button" class="btn btn-danger">Xóa</a>
+                                <a type="button" class="btn btn-warning" href="?act=sua_sp">Sửa</a>
+                                <a type="button" class="btn btn-danger" href="?act=delete_sp">Xóa</a>
                             </td>
                         </tr>
                     </tbody>

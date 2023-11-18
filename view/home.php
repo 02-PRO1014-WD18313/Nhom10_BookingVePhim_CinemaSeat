@@ -8,7 +8,7 @@
         foreach ($list_dm as $value) {
             extract($value);
         ?>
-            <p><img class="firm" src="image/<?= $img ?>" alt="" /></p>
+            <p><img class="firm" src="uploads/img_dm/<?= $img ?>" alt="" /></p>
         <?php
         }
         ?>

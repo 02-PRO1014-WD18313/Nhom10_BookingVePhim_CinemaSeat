@@ -113,21 +113,21 @@
                         <div class="custom-file mb-2">
                             <input type="file" class="custom-file-input" id="validatedCustomFile" required>
                             <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>
-                            <div class="invalid-feedback">Example invalid custom file feedback</div>
+                            <div class="invalid-feedback">Không được để trống.</div>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="custom-file mb-2">
                             <input type="file" class="custom-file-input" id="validatedCustomFile" required>
                             <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>
-                            <div class="invalid-feedback">Example invalid custom file feedback</div>
+                            <div class="invalid-feedback">Không được để trống.</div>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="validatedCustomFile" required>
                             <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>
-                            <div class="invalid-feedback">Example invalid custom file feedback</div>
+                            <div class="invalid-feedback">Không được để trống.</div>
                         </div>
                     </div>
 

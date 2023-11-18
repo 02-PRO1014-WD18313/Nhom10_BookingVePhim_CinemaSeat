@@ -11,17 +11,22 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     $name = $_POST['name'];
                     $img = null;
 
-                    if ($_FILES['img']['name'] != "") {
+                    $list_dm = loadAll_danhmuc();
+                    foreach ($list_dm as $value) {
+                        if ($value['name'] == $name) {
+                            $err = "Tên danh mục đã tồn tại";
+                            break;
+                        } else {
+                            if ($_FILES['img']['name'] != "") {
 
-                        $img = time() . "_" . $_FILES['img']['name'];
-                        move_uploaded_file($_FILES['img']['tmp_name'], "../uploads/image_dm/$img");
+                                $img = time() . "_" . $_FILES['img']['name'];
+                                move_uploaded_file($_FILES['img']['tmp_name'], "../uploads/img_dm/$img");
+                            }
+                            insert_dm($name, $img);
+                            $thongbao = "Thêm danh mục thành công";
+                        }
                     }
-                    insert_dm($name, $img);
-                    $thongbao = "Thêm danh mục thành công";
-                } else {
-                    $err = "Không được để trống tên danh mục";
                 }
-
                 include "./danhmuc/add_dm.php";
                 break;
             }
@@ -31,10 +36,40 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 break;
             }
         case "delete_dm": {
+                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                    $loadone_dm = loadone_danhmuc($_GET['id']);
+                    if ($loadone_dm['img'] != null) {
+                        $link = "../uploads/img_dm/" . $loadone_dm['img'];
+                        unlink("$link");
+                    }
+                    delete_dm($_GET['id']);
+                }
+                $list_dm = loadAll_danhmuc();
+                include "./danhmuc/list_dm.php";
+                break;
+            }
+
+        case "sua_dm": {
+                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                    $loadone_dm = loadone_danhmuc($_GET['id']);
+                }
+                include "danhmuc/update_dm.php";
                 break;
             }
         case "update_dm": {
-                include "./danhmuc/update_dm.php";
+                if (isset($_POST['submit']) && ($_POST['submit'])) {
+                    $id = $_POST['id'];
+                    $name = $_POST['name'];
+                    $img = null;
+                    if ($_FILES['img']['name'] != "") {
+                        $img = time() . "_" . $_FILES['img']['name'];
+                        move_uploaded_file($_FILES['img']['tmp_name'], "../uploads/img_dm/$img");
+                    }
+                    update_dm($id, $name, $img);
+                }
+                $list_dm = loadAll_danhmuc();
+                $loadone_dm = loadone_danhmuc($_GET['id']);
+                include "danhmuc/list_dm.php";
                 break;
             }
             //quan ly san pham
