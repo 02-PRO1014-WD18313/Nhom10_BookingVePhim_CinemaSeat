@@ -57,7 +57,7 @@
             <div class="sidebar-heading">
                 Danh mục quản lý
             </div>
-
+            
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -86,6 +86,36 @@
                     </div>
                 </div>
             </li>
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities1" aria-expanded="true" aria-controls="collapseUtilities1">
+                    <i class="fa-solid fa-truck-arrow-right"></i>
+                    <span>Quản lý đơn hàng</span>
+                </a>
+                <div id="collapseUtilities1" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="?act=list_donhang">Danh sách đơn hàng</a>
+                        <a class="collapse-item" href="?act=list_ctdh">Chi tết đơn hàng</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2" aria-expanded="true" aria-controls="collapseUtilities2">
+                    <i class="fa-solid fa-maximize"></i>
+                    <span>Quản lý thông số</span>
+                </a>
+                <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="?act=list_donhang">Xuất xứ</a>
+                        <a class="collapse-item" href="?act=list_ctdh">Kiểu máy</a>
+                        <a class="collapse-item" href="?act=list_donhang">Chất liệu vỏ</a>
+                        <a class="collapse-item" href="?act=list_ctdh">Chất liệu dây</a>
+                        <a class="collapse-item" href="?act=list_donhang">Chống nước</a>
+                    </div>
+                </div>
+            </li>
 
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -104,20 +134,6 @@
                     <span>Quản lý bình luận</span>
                 </a>
 
-            </li>
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="?act=list_donhang">
-                    <i class="fa-solid fa-truck-arrow-right"></i>
-                    <span>Quản lý đơn hàng</span></a>
-            </li>
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="?act=list_ctdh">
-                    <i class="fa-solid fa-circle-info"></i>
-                    <span>Chi tiết đơn hàng</span></a>
             </li>
 
             <!-- Nav Item - Tables -->

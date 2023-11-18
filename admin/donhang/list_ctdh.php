@@ -3,7 +3,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 h5 text-dark font-weight-bold">Danh sách đơn hàng</h6>
+            <h6 class="m-0 h5 text-dark font-weight-bold">Chi tiết đơn hàng</h6>
         </div>
         <div class="card-body">
             

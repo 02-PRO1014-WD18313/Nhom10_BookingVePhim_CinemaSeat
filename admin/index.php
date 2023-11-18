@@ -2,6 +2,8 @@
 include "header.php";
 include "../model/pdo.php";
 include "../model/danhmuc.php";
+include "../model/sanpham.php";
+include "../model/thongso.php";
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
@@ -74,6 +76,12 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             }
             //quan ly san pham
         case "add_sp": {
+                $list_dm = loadAll_danhmuc();
+                $list_xuatxu = loadAll_xuatxu();
+                $list_kieumay = loadAll_kieumay();
+                $list_cl_day = loadAll_cl_day();
+                $list_cl_vo = loadAll_cl_vo();
+                $list_chongnuoc = loadAll_chongnuoc();
                 include "./sanpham/add_sp.php";
                 break;
             }

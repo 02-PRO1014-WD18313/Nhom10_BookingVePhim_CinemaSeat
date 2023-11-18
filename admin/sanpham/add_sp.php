@@ -37,10 +37,10 @@
                 <div class="col-md-4 mb-3">
                     <label for="validationCustom04" class="form-label font-weight-bold">Danh mục</label>
                     <select class="custom-select">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <?php foreach ($list_dm as $value) { ?>
+                            <option value="<?= $value['id'] ?>"><?= $value['name'] ?></option>
+                        <?php } ?>
+
                     </select>
                     <div class="invalid-feedback">
                         Không được để trống.
@@ -49,10 +49,9 @@
                 <div class="col-md-4 mb-3">
                     <label for="validationCustom04" class="form-label font-weight-bold">Xuất xứ</label>
                     <select class="custom-select">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <?php foreach ($list_xuatxu as $value) { ?>
+                            <option value="<?= $value['id'] ?>"><?= $value['thongso'] ?></option>
+                        <?php } ?>
                     </select>
                     </select>
                     <div class="invalid-feedback">
@@ -62,10 +61,9 @@
                 <div class="col-md-4 mb-3">
                     <label for="validationCustom04" class="form-label font-weight-bold">Kiểu máy</label>
                     <select class="custom-select">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <?php foreach ($list_kieumay as $value) { ?>
+                            <option value="<?= $value['id'] ?>"><?= $value['thongso'] ?></option>
+                        <?php } ?>
                     </select>
                     <div class="invalid-feedback">
                         Không được để trống.
@@ -74,10 +72,9 @@
                 <div class="col-md-4 mb-3">
                     <label for="validationCustom04" class="form-label font-weight-bold">Chất liệu vỏ</label>
                     <select class="custom-select">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <?php foreach ($list_cl_vo as $value) { ?>
+                            <option value="<?= $value['id'] ?>"><?= $value['thongso'] ?></option>
+                        <?php } ?>
                     </select>
                     <div class="invalid-feedback">
                         Không được để trống.
@@ -86,10 +83,9 @@
                 <div class="col-md-4 mb-3">
                     <label for="validationCustom04" class="form-label font-weight-bold">Chất liệu dây</label>
                     <select class="custom-select">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <?php foreach ($list_cl_day as $value) { ?>
+                            <option value="<?= $value['id'] ?>"><?= $value['thongso'] ?></option>
+                        <?php } ?>
                     </select>
                     <div class="invalid-feedback">
                         Không được để trống.
@@ -98,10 +94,9 @@
                 <div class="col-md-4 mb-3">
                     <label for="validationCustom04" class="form-label font-weight-bold">Chống nước</label>
                     <select class="custom-select">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <?php foreach ($list_chongnuoc as $value) { ?>
+                            <option value="<?= $value['id'] ?>"><?= $value['thongso'] ?> m</option>
+                        <?php } ?>
                     </select>
                     <div class="invalid-feedback">
                         Không được để trống.
@@ -110,19 +105,19 @@
                 <div class="col-md-4 mb-3">
                     <label for="validationCustom03" class="form-label font-weight-bold">Hình ảnh</label>
                     <div class="col-md-12">
-                            <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                            <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>
-                            <div class="invalid-feedback">Không được để trống.</div>
+                        <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                        <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>
+                        <div class="invalid-feedback">Không được để trống.</div>
                     </div>
                     <div class="col-md-12 my-2">
-                            <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                            <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>
-                            <div class="invalid-feedback">Không được để trống.</div>
+                        <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                        <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>
+                        <div class="invalid-feedback">Không được để trống.</div>
                     </div>
                     <div class="col-md-12">
-                            <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                            <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>
-                            <div class="invalid-feedback">Không được để trống.</div>
+                        <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                        <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>
+                        <div class="invalid-feedback">Không được để trống.</div>
                     </div>
                 </div>
                 <div class="col-md-8">
