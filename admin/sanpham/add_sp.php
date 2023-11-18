@@ -110,27 +110,20 @@
                 <div class="col-md-4 mb-3">
                     <label for="validationCustom03" class="form-label font-weight-bold">Hình ảnh</label>
                     <div class="col-md-12">
-                        <div class="custom-file mb-2">
                             <input type="file" class="custom-file-input" id="validatedCustomFile" required>
                             <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>
                             <div class="invalid-feedback">Không được để trống.</div>
-                        </div>
+                    </div>
+                    <div class="col-md-12 my-2">
+                            <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                            <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>
+                            <div class="invalid-feedback">Không được để trống.</div>
                     </div>
                     <div class="col-md-12">
-                        <div class="custom-file mb-2">
                             <input type="file" class="custom-file-input" id="validatedCustomFile" required>
                             <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>
                             <div class="invalid-feedback">Không được để trống.</div>
-                        </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                            <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>
-                            <div class="invalid-feedback">Không được để trống.</div>
-                        </div>
-                    </div>
-
                 </div>
                 <div class="col-md-8">
                     <label for="validationTextarea" class="form-label font-weight-bold">Mô tả</label>

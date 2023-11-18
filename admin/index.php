@@ -15,8 +15,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     foreach ($list_dm as $value) {
                         if ($value['name'] == $name) {
                             $err = "Tên danh mục đã tồn tại";
-                            break;
-                        } else {
+                        }else{
                             if ($_FILES['img']['name'] != "") {
 
                                 $img = time() . "_" . $_FILES['img']['name'];
@@ -24,8 +23,11 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                             }
                             insert_dm($name, $img);
                             $thongbao = "Thêm danh mục thành công";
+                            
                         }
+                        break;
                     }
+
                 }
                 include "./danhmuc/add_dm.php";
                 break;
@@ -38,9 +40,10 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         case "delete_dm": {
                 if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                     $loadone_dm = loadone_danhmuc($_GET['id']);
-                    if ($loadone_dm['img'] != null) {
-                        $link = "../uploads/img_dm/" . $loadone_dm['img'];
+                    if($loadone_dm['img'] != null) {
+                        $link = "../uploads/img_dm/".$loadone_dm['img'];
                         unlink("$link");
+                        
                     }
                     delete_dm($_GET['id']);
                 }
@@ -57,15 +60,15 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 break;
             }
         case "update_dm": {
-                if (isset($_POST['submit']) && ($_POST['submit'])) {
+                if(isset($_POST['submit']) && ($_POST['submit'])){
                     $id = $_POST['id'];
                     $name = $_POST['name'];
                     $img = null;
-                    if ($_FILES['img']['name'] != "") {
-                        $img = time() . "_" . $_FILES['img']['name'];
-                        move_uploaded_file($_FILES['img']['tmp_name'], "../uploads/img_dm/$img");
+                    if($_FILES['img']['name'] != ""){
+                        $img = time()."_".$_FILES['img']['name'];
+                        move_uploaded_file($_FILES['img']['tmp_name'],"../uploads/img_dm/$img");
                     }
-                    update_dm($id, $name, $img);
+                    update_dm($id,$name,$img);
                 }
                 $list_dm = loadAll_danhmuc();
                 $loadone_dm = loadone_danhmuc($_GET['id']);
