@@ -2,13 +2,13 @@
     <div class="banner">
         <img src="image/bg-04.webp" alt="" />
     </div>
-    <h2 class="mt">Thương Hiệu Nổi Tiếng</h2>
+    <h2 class="mt-3">Thương Hiệu Nổi Bật</h2>
     <div class="trademark">
         <?php
         foreach ($list_dm as $value) {
             extract($value);
         ?>
-            <p><img class="firm" src="image/<?= $img ?>" alt="" /></p>
+            <p><img class="firm" src="uploads/img_dm/<?= $img ?>" alt="" /></p>
         <?php
         }
         ?>
