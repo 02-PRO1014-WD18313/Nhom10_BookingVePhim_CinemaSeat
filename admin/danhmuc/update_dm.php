@@ -1,7 +1,7 @@
 <?php
 
 if (is_array($loadone_dm)) {
-    $link = "../uploads/img_dm/".$loadone_dm['img'];
+    $link = "../uploads/img_dm/".$loadone_dm[0]['img'];
 }
 ?>
 <div class="container-fluid">
@@ -12,11 +12,11 @@ if (is_array($loadone_dm)) {
             <h6 class="m-0 fs-5 h5 text-dark font-weight-bold">Cập nhật danh mục</h6>
         </div>
         <div class="card-body">
-            <form class="row g-3 needs-validation" action="?act=update_dm&id=<?= $loadone_dm['id'] ?>" novalidate enctype="multipart/form-data" method="POST">
+            <form class="row g-3 needs-validation" action="?act=update_dm&id=<?= $loadone_dm[0]['id'] ?>" novalidate enctype="multipart/form-data" method="POST">
                 <div class="col-md-5" hidden>
                     <label for="validationCustomUsername" class="form-label font-weight-bold">ID</label>
                     <div class="input-group has-validation">
-                        <input type="text" name="id" class="form-control" value="<?= $loadone_dm['id'] ?>" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                        <input type="text" name="id" class="form-control" value="<?= $loadone_dm[0]['id'] ?>" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
                         <div class="invalid-feedback">
                             Không được để trống
                         </div>
@@ -25,7 +25,7 @@ if (is_array($loadone_dm)) {
                 <div class="col-md-5">
                     <label for="validationCustomUsername" class="form-label font-weight-bold">Tên danh mục</label>
                     <div class="input-group has-validation">
-                        <input type="text" name="name" class="form-control" value="<?= $loadone_dm['name'] ?>" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                        <input type="text" name="name" class="form-control" value="<?= $loadone_dm[0]['name'] ?>" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
                         <div class="invalid-feedback">
                             Không được để trống
                         </div>
@@ -34,7 +34,7 @@ if (is_array($loadone_dm)) {
                 <div class="col-md-2">
                     <label for="validationCustomUsername" class="form-label font-weight-bold">Hình ảnh</label>
                     <div class="card">
-                        <img src="../uploads/img_dm/<?= $loadone_dm['img'] ?>" class="card-img-top" alt="logo-<?= $loadone_dm['name'] ?>">
+                        <img src="../uploads/img_dm/<?= $loadone_dm[0]['img'] ?>" class="card-img-top" alt="">
                     </div>
                 </div>
                 <div class="col-md-5">
