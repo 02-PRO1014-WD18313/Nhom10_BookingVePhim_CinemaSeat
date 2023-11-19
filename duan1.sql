@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 18, 2023 lúc 06:11 PM
+-- Thời gian đã tạo: Th10 19, 2023 lúc 06:17 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -24,61 +24,15 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `chat_lieu_day`
+-- Cấu trúc bảng cho bảng `album`
 --
 
-CREATE TABLE `chat_lieu_day` (
-  `id` int(11) NOT NULL,
-  `thongso` varchar(100) NOT NULL
+CREATE TABLE `album` (
+  `id` int(10) NOT NULL,
+  `name_sp` varchar(255) NOT NULL,
+  `img1` int(11) NOT NULL,
+  `img2` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
-
---
--- Đang đổ dữ liệu cho bảng `chat_lieu_day`
---
-
-INSERT INTO `chat_lieu_day` (`id`, `thongso`) VALUES
-(1, 'Dây kim loại'),
-(2, 'Dây da');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `chat_lieu_vo`
---
-
-CREATE TABLE `chat_lieu_vo` (
-  `id` int(11) NOT NULL,
-  `thongso` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
-
---
--- Đang đổ dữ liệu cho bảng `chat_lieu_vo`
---
-
-INSERT INTO `chat_lieu_vo` (`id`, `thongso`) VALUES
-(1, 'Thép không gỉ mạ vàng PVD'),
-(2, 'Vỏ thép không gỉ');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `chongnuoc`
---
-
-CREATE TABLE `chongnuoc` (
-  `id` int(11) NOT NULL,
-  `thongso` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
-
---
--- Đang đổ dữ liệu cho bảng `chongnuoc`
---
-
-INSERT INTO `chongnuoc` (`id`, `thongso`) VALUES
-(1, '5'),
-(2, '10'),
-(3, '15'),
-(4, '50');
 
 -- --------------------------------------------------------
 
@@ -107,25 +61,6 @@ INSERT INTO `danhmuc` (`id`, `name`, `img`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `kieumay`
---
-
-CREATE TABLE `kieumay` (
-  `id` int(11) NOT NULL,
-  `thongso` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
-
---
--- Đang đổ dữ liệu cho bảng `kieumay`
---
-
-INSERT INTO `kieumay` (`id`, `thongso`) VALUES
-(1, 'Cơ/Automatic'),
-(2, 'Pin/Quazt');
-
--- --------------------------------------------------------
-
---
 -- Cấu trúc bảng cho bảng `sanpham`
 --
 
@@ -133,76 +68,39 @@ CREATE TABLE `sanpham` (
   `id` int(11) NOT NULL,
   `iddm` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `anh` varchar(255) NOT NULL,
-  `gia` int(10) NOT NULL,
-  `gia_new` int(10) NOT NULL,
+  `img` varchar(255) DEFAULT NULL,
+  `gia` int(11) NOT NULL,
+  `gia_new` int(11) NOT NULL,
   `mota` text NOT NULL,
-  `soluong` int(10) NOT NULL
+  `soluong` int(11) NOT NULL,
+  `xuatxu` varchar(100) NOT NULL,
+  `kieumay` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `sanpham`
 --
 
-INSERT INTO `sanpham` (`id`, `iddm`, `name`, `anh`, `gia`, `gia_new`, `mota`, `soluong`) VALUES
-(1, 1, 'Đồng Hồ Casio', 'casio', 1200000, 1000000, 'đẹp vãi', 20),
-(2, 2, 'Đồng hồ Orient', 'Orient', 2300000, 500000, 'hay', 12),
-(3, 3, 'Đồng hồ Citizen', 'Citizen', 500000, 250000, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolore, laborum deleniti veniam in, commodi debitis harum corporis dolor voluptates ipsa dicta totam odio tenetur a odit sint assumenda expedita.', 20),
-(4, 4, 'Đồng Hồ Seiko', 'Seiko', 3500000, 3000000, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolore, laborum deleniti veniam in, commodi debitis harum corporis dolor voluptates ipsa dicta totam odio tenetur a odit sint assumenda expedita.', 15);
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `xuatxu`
---
-
-CREATE TABLE `xuatxu` (
-  `id` int(11) NOT NULL,
-  `thongso` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
-
---
--- Đang đổ dữ liệu cho bảng `xuatxu`
---
-
-INSERT INTO `xuatxu` (`id`, `thongso`) VALUES
-(1, 'Thụy Sỹ'),
-(2, 'Nhật Bản'),
-(3, 'Mỹ'),
-(4, 'Trung Quốc');
+INSERT INTO `sanpham` (`id`, `iddm`, `name`, `img`, `gia`, `gia_new`, `mota`, `soluong`, `xuatxu`, `kieumay`) VALUES
+(1, 4, 'Đồng Hồ Casio', 'dongho1.jpeg', 1200000, 1000, 'sản phẩm oke\"', 20, 'Thụy Sỹ', 'Cơ'),
+(2, 2, 'Đồng hồ Orient', 'dongho2.jpeg', 2300000, 500000, 'hay', 12, '', ''),
+(3, 3, 'Đồng hồ Citizen', 'dongho3.jpeg', 500, 250, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolore, laborum deleniti veniam in, commodi debitis harum corporis dolor voluptates ipsa dicta totam odio tenetur a odit sint assumenda expedita.\"', 20, '123', 'Cơ'),
+(4, 4, 'Đồng Hồ Seiko', 'dongho4.jpeg', 3500000, 3000000, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolore, laborum deleniti veniam in, commodi debitis harum corporis dolor voluptates ipsa dicta totam odio tenetur a odit sint assumenda expedita.', 15, '1323', '123123');
 
 --
 -- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Chỉ mục cho bảng `chat_lieu_day`
+-- Chỉ mục cho bảng `album`
 --
-ALTER TABLE `chat_lieu_day`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `chat_lieu_vo`
---
-ALTER TABLE `chat_lieu_vo`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `chongnuoc`
---
-ALTER TABLE `chongnuoc`
+ALTER TABLE `album`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Chỉ mục cho bảng `danhmuc`
 --
 ALTER TABLE `danhmuc`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `kieumay`
---
-ALTER TABLE `kieumay`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -213,56 +111,26 @@ ALTER TABLE `sanpham`
   ADD KEY `fk_danhmuc_sanpham` (`iddm`);
 
 --
--- Chỉ mục cho bảng `xuatxu`
---
-ALTER TABLE `xuatxu`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT cho bảng `chat_lieu_day`
+-- AUTO_INCREMENT cho bảng `album`
 --
-ALTER TABLE `chat_lieu_day`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT cho bảng `chat_lieu_vo`
---
-ALTER TABLE `chat_lieu_vo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT cho bảng `chongnuoc`
---
-ALTER TABLE `chongnuoc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `album`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `danhmuc`
 --
 ALTER TABLE `danhmuc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
-
---
--- AUTO_INCREMENT cho bảng `kieumay`
---
-ALTER TABLE `kieumay`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `xuatxu`
---
-ALTER TABLE `xuatxu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

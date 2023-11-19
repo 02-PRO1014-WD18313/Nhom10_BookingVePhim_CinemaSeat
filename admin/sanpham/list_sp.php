@@ -6,7 +6,7 @@
             <h6 class="m-0 h5 text-dark font-weight-bold">Danh sách danh mục</h6>
         </div>
         <div class="card-body">
-            
+            <a class="btn btn-success mb-3" href="?act=add_sp">Thêm mới</a>
             <div class="table-responsive">
                 <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -19,14 +19,14 @@
                             <th>Số lượng</th>
                             <th>Xuất xứ</th>
                             <th>Kiểu máy</th>
-                            <th>Quản lý</th>
+                            <th width="100">Quản lý</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach($list_sp as $value) {?>
                         <tr>
                             <td><?= $value['name']?></td>
-                            <td><img width="100" src="../uploads/img_sp/<?= $value['anh']?>" alt=""></td>
+                            <td><img width="100" src="../uploads/img_sp/<?= $value['img']?>" alt=""></td>
                             <td><?= $value['gia']?></td>
                             <td><?= $value['gia_new']?></td>
                             <td width="300"><?= $value['mota'] ?></td>
@@ -34,8 +34,8 @@
                             <td><?= $value['xuatxu']?></td>
                             <td><?= $value['kieumay']?></td>
                             <td>
-                                <a type="button" class="btn btn-warning" href="?act=update_sp?id=<?= $value['id']?>">Sửa</a>
-                                <a type="button" class="btn btn-danger" href="?act=delete_spid=<?= $value['id']?>">Xóa</a>
+                                <a type="submit" class="btn btn-warning" href="?act=update_sp&id=<?= $value['id']?>">Sửa</a>
+                                <a onclick="return confirm('Bạn có muốn xóa <?= $value['name']?> không?')" type="button" class="btn btn-danger" href="?act=delete_sp&id=<?= $value['id']?>">Xóa</a>
                             </td>
                         </tr>
                         <?php }?>

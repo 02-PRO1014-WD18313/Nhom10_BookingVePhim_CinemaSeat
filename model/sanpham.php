@@ -13,7 +13,41 @@ function loadAll_sanpham($key="",$idsp=0)
 
 //-------------------ADMIN------------------//
 function insert_sp($iddm,$name,$img,$gia,$gia_new,$mota,$soluong,$xuatxu,$kieumay){
-    $sql = "INSERT INTO `sanpham`(`iddm`, `name`, `anh`, `gia`, `gia_new`, `mota`, `soluong`, `xuatxu`, `kieumay`) VALUES 
+    $sql = "INSERT INTO `sanpham`(`iddm`, `name`, `img`, `gia`, `gia_new`, `mota`, `soluong`, `xuatxu`, `kieumay`) VALUES 
     ('$iddm','$name','$img','$gia','$gia_new','$mota','$soluong','$xuatxu','$kieumay')";
+    pdo_execute($sql);
+}
+
+
+function delete_sp($id) {
+    $sql = "DELETE FROM `sanpham` WHERE id = $id";
+    pdo_execute($sql);
+}
+
+function update_sp($id,$iddm,$name,$img,$gia,$gia_new,$mota,$soluong,$xuatxu,$kieumay) {
+    if($img != "") {
+        $sql = "UPDATE `sanpham` SET 
+        `iddm` = '$iddm',
+        `name` = '$name',
+        `img` = '$img',
+        `gia` = '$gia',
+        `gia_new` = '$gia_new',
+        `mota` = '$mota',
+        `soluong` = '$soluong',
+        `xuatxu` = '$xuatxu',
+        `kieumay` = '$kieumay'
+        WHERE `id` = $id";
+    }else{
+        $sql = "UPDATE `sanpham` SET 
+        `iddm` = '$iddm',
+        `name` = '$name',
+        `gia` = '$gia',
+        `gia_new` = '$gia_new',
+        `mota` = '$mota',
+        `soluong` = '$soluong',
+        `xuatxu` = '$xuatxu',
+        `kieumay` = '$kieumay'
+        WHERE `id` = $id";
+    }
     pdo_execute($sql);
 }

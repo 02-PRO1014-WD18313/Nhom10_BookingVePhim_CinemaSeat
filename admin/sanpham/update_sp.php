@@ -1,3 +1,9 @@
+<?php
+
+if (is_array($loadone_sp)) {
+    $link = "../uploads/img_dm/".$loadone_sp[0]['img'];
+}
+?>
 <div class="container-fluid">
 
     <!-- DataTales Example -->
@@ -6,135 +12,89 @@
             <h6 class="m-0 h5 text-dark font-weight-bold">Thêm sản phẩm</h6>
         </div>
         <div class="card-body">
-            <form class="row g-3 needs-validation" novalidate enctype="multipart/form-data">
-                <div class="col-md-4 mb-3">
+            <form class="row g-3 needs-validation" action="?act=update_sp&id=<?= $loadone_sp[0]['id'] ?>" novalidate enctype="multipart/form-data" method="POST">
+                <div class="col-md-6 mb-3">
                     <label for="validationCustomUsername" class="form-label font-weight-bold">Tên sản phẩm</label>
                     <div class="input-group has-validation">
-                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                        <input value="<?= $loadone_sp[0]['name'] ?>" name="name" type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
                         <div class="invalid-feedback">
                             Không được để trống.
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustom04" class="form-label font-weight-bold">Danh mục</label>
+                    <select class="custom-select" name="iddm">
+                        <?php foreach ($list_dm as $value) { ?>
+                            <option <?= $value['id'] == $loadone_sp[0]['iddm'] ? "selected" : "" ?> value="<?= $value['id'] ?>"><?= $value['name'] ?></option>
+                        <?php } ?>
+                    </select>
+                    <div class="invalid-feedback">
+                        Không được để trống.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
                     <label for="validationCustomUsername" class="form-label font-weight-bold">Giá sản phẩm</label>
                     <div class="input-group has-validation">
-                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                        <input value="<?= $loadone_sp[0]['gia'] ?>" name="gia" type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
                         <div class="invalid-feedback">
                             Không được để trống.
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustomUsername" class="form-label font-weight-bold">Giá Sale</label>
+                    <div class="input-group has-validation">
+                        <input value="<?= $loadone_sp[0]['gia_new'] ?>" name="gia_new" type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                        <div class="invalid-feedback">
+                            Không được để trống.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
                     <label for="validationCustomUsername" class="form-label font-weight-bold">Số lượng</label>
                     <div class="input-group has-validation">
-                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                        <input value="<?= $loadone_sp[0]['soluong'] ?>" name="soluong" type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
                         <div class="invalid-feedback">
                             Không được để trống.
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-3">
-                    <label for="validationCustom04" class="form-label font-weight-bold">Danh mục</label>
-                    <select class="custom-select">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Không được để trống.
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-6 mb-3">
                     <label for="validationCustom04" class="form-label font-weight-bold">Xuất xứ</label>
-                    <select class="custom-select">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                    </select>
+                    <div class="input-group has-validation">
+                        <input value="<?= $loadone_sp[0]['xuatxu'] ?>" name="xuatxu" type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                        <div class="invalid-feedback">
+                            Không được để trống.
+                        </div>
+                    </div>
                     <div class="invalid-feedback">
                         Không được để trống.
                     </div>
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-6 mb-3">
                     <label for="validationCustom04" class="form-label font-weight-bold">Kiểu máy</label>
-                    <select class="custom-select">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
+                    <div class="input-group has-validation">
+                        <input value="<?= $loadone_sp[0]['kieumay'] ?>" name="kieumay" type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                        <div class="invalid-feedback">
+                            Không được để trống.
+                        </div>
+                    </div>
                     <div class="invalid-feedback">
                         Không được để trống.
                     </div>
                 </div>
-                <div class="col-md-4 mb-3">
-                    <label for="validationCustom04" class="form-label font-weight-bold">Chất liệu vỏ</label>
-                    <select class="custom-select">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Không được để trống.
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="validationCustom04" class="form-label font-weight-bold">Chất liệu dây</label>
-                    <select class="custom-select">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Không được để trống.
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="validationCustom04" class="form-label font-weight-bold">Chống nước</label>
-                    <select class="custom-select">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Không được để trống.
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-6 mb-3">
                     <label for="validationCustom03" class="form-label font-weight-bold">Hình ảnh</label>
                     <div class="col-md-12">
-                        <div class="custom-file mb-2">
-                            <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                            <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>
-                            <div class="invalid-feedback">Example invalid custom file feedback</div>
-                        </div>
+                        <img src="../uploads/img_dm/<?= $loadone_sp[0]['img'] ?>" alt="">
+                        <input name="img" type="file" class="custom-file-input" id="validatedCustomFile">
+                        <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>  
                     </div>
-                    <div class="col-md-12">
-                        <div class="custom-file mb-2">
-                            <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                            <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>
-                            <div class="invalid-feedback">Example invalid custom file feedback</div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                            <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>
-                            <div class="invalid-feedback">Example invalid custom file feedback</div>
-                        </div>
-                    </div>
-
                 </div>
-                <div class="col-md-8">
-                    <label for="validationTextarea" class="form-label font-weight-bold">Mô tả</label>
-                    <textarea class="form-control" id="validationTextarea" placeholder="Nhập mô tả" rows="5" required></textarea>
+                <div class="col-md-12 mb-3">
+                    <label  for="validationTextarea" class="form-label font-weight-bold">Mô tả</label>
+                    <textarea name="mota" class="form-control" id="validationTextarea" placeholder="Nhập mô tả" rows="5" required><?= $loadone_sp[0]['mota'] ?>"</textarea>
                     <div class="invalid-feedback">
                         Không được để trống.
                     </div>
@@ -150,11 +110,10 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-12">
-                    <button class="btn btn-success " type="submit" name="submit">Thực hiện</button>
+                    <input class="btn btn-success " type="submit" name="submit" value="Thực hiện"></input>
                     <button type="reset" class="btn btn-outline-secondary">Nhập lại</button>
-                    <a class="btn btn-primary" href="?act=list_dm" type="submit">Danh sách danh mục</a>
+                    <a class="btn btn-primary" href="?act=list_sp" type="submit">Danh sách danh mục</a>
                 </div>
             </form>
         </div>
