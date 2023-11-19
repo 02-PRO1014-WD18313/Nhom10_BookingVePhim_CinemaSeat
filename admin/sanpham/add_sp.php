@@ -108,7 +108,7 @@
                 <div class="col-12">
                     <input class="btn btn-success " type="submit" name="submit" value="Thực hiện"></input>
                     <button type="reset" class="btn btn-outline-secondary">Nhập lại</button>
-                    <a class="btn btn-primary" href="?act=list_dm" type="submit">Danh sách danh mục</a>
+                    <a class="btn btn-primary" href="?act=list_sp" type="submit">Danh sách danh mục</a>
                 </div>
                 <div class="col-12">
                     <div class="mt-4">

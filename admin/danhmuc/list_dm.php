@@ -6,7 +6,7 @@
             <h6 class="m-0 h5 text-dark font-weight-bold">Danh sách danh mục</h6>
         </div>
         <div class="card-body">
-
+            <a class="btn btn-success mb-3" href="?act=add_dm">Thêm mới</a>
             <div class="table-responsive">
                 <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                     <thead >
