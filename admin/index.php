@@ -70,15 +70,35 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             //quan ly san pham
         case "add_sp": {
                 $list_dm = loadAll_danhmuc();
-                $list_xuatxu = loadAll_xuatxu();
-                $list_kieumay = loadAll_kieumay();
-                $list_cl_day = loadAll_cl_day();
-                $list_cl_vo = loadAll_cl_vo();
-                $list_chongnuoc = loadAll_chongnuoc();
+                if (isset($_POST['submit']) && ($_POST['submit'])) {
+                    $name = $_POST['name'];
+                    $iddm = $_POST['iddm'];
+                    $img = null;
+                    $gia = $_POST['gia'];
+                    $gia_new = $_POST['gia_new'];
+                    $soluong = $_POST['soluong'];    
+                    $xuatxu = $_POST['xuatxu'];
+                    $kieumay = $_POST['kieumay'];
+                    $mota = $_POST['mota'];
+                    //Kiem tra trung ten san pham
+                    $listone_sp = loadAll_sanpham($name, 0);
+                    if (is_array($listone_sp) && count($listone_sp) > 0) {
+                        $err = "Tên sản phẩm đã tồn tại";
+                    } else {
+
+                        if ($_FILES['img']['name'] != "") {
+                            $img = time() . "_" . $_FILES['img']['name'];
+                            move_uploaded_file($_FILES['img']['tmp_name'], "../uploads/img_sp/$img");
+                        }
+                        insert_sp($iddm,$name,$img,$gia,$gia_new,$mota,$soluong,$xuatxu,$kieumay);
+                        $thongbao = "Thêm sản phẩm thành công";
+                    }
+                }
                 include "./sanpham/add_sp.php";
                 break;
             }
         case "list_sp": {
+                $list_sp = loadAll_sanpham();
                 include "./sanpham/list_sp.php";
                 break;
             }
