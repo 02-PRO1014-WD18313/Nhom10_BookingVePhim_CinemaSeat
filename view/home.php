@@ -1,6 +1,6 @@
 <section class="mb">
     <div class="banner">
-        <img src="image/bg-04.webp" alt="" />
+        <img id="img" src="image/slide/banner2.webp" alt="" />
     </div>
     <h2 class="mt-3">Thương Hiệu Nổi Bật</h2>
     <div class="trademark">

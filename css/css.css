@@ -133,14 +133,14 @@ section .banner img {
 }
 section .trademark {
   max-width: 100%;
-  display: flex;
+  display: flex;  
   justify-content: center;
 }
 section .trademark p {
   background: white;
   margin: 10px;
   font-size: 2.5vw;
-  border: 2px solid gray;
+  border: 1px solid gray;
   width: 200px;
   padding: 20px 10px;
   display: flex;
@@ -150,6 +150,9 @@ section .trademark p {
 section .trademark p .firm {
   width: 100%;
   transition: 0.3s;
+}
+section .trademark p:hover{
+  box-shadow: 5px 5px 5px rgb(198, 198, 198);
 }
 section .trademark p:hover .firm {
   transform: scale(1.08);

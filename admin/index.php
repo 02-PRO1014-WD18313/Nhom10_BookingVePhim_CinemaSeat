@@ -29,6 +29,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                         break;
                     }
                 }
+                var_dump($value['name']);
                 include "./danhmuc/add_dm.php";
                 break;
             }
