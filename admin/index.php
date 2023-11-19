@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include "header.php";
 include "../model/pdo.php";
 include "../model/danhmuc.php";
@@ -12,9 +13,8 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 if (isset($_POST['submit']) && ($_POST['submit'])) {
                     $name = $_POST['name'];
                     $img = null;
-
-                    $listone_dm = loadone_danhmuc_name($name);
-                    if (is_array($listone_dm)) {
+                    $listone_dm = loadAll_danhmuc($name, 0);
+                    if (is_array($listone_dm) && count($listone_dm) > 0) {
                         $err = "Tên danh mục đã tồn tại";
                     } else {
 
@@ -36,10 +36,12 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             }
         case "delete_dm": {
                 if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                    $loadone_dm = loadone_danhmuc($_GET['id']);
-                    if ($loadone_dm['img'] != null) {
-                        $link = "../uploads/img_dm/" . $loadone_dm['img'];
-                        unlink("$link");
+                    $loadone_dm = loadAll_danhmuc("", $_GET['id']);
+                    if (isset($loadone_dm[0]['img'])) {
+                        if ($loadone_dm[0]['img'] != "") {
+                            $link = "../uploads/img_dm/" . $loadone_dm[0]['img'];
+                            unlink("$link");
+                        }
                     }
                     delete_dm($_GET['id']);
                 }
@@ -47,30 +49,24 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 include "./danhmuc/list_dm.php";
                 break;
             }
-
-        case "sua_dm": {
-                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                    $loadone_dm = loadone_danhmuc($_GET['id']);
-                }
-                include "danhmuc/update_dm.php";
-                break;
-            }
-        case "update_dm": {
+        case 'update_dm':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $loadone_dm = loadAll_danhmuc("", $_GET['id']);
                 if (isset($_POST['submit']) && ($_POST['submit'])) {
-                    $id = $_POST['id'];
                     $name = $_POST['name'];
                     $img = null;
-                    if ($_FILES['img']['name'] != "") {
+                    if (($_FILES['img']['name'] != $loadone_dm[0]['img']) && ($_FILES['img']['name'] != "")) {
                         $img = time() . "_" . $_FILES['img']['name'];
                         move_uploaded_file($_FILES['img']['tmp_name'], "../uploads/img_dm/$img");
+                        unlink("../uploads/img_dm/" . $loadone_dm[0]['img']);
                     }
-                    update_dm($id, $name, $img);
+                    update_dm($_GET['id'], $name, $img);
+                    header('location: index.php?act=list_dm');
                 }
-                $list_dm = loadAll_danhmuc();
-                $loadone_dm = loadone_danhmuc($_GET['id']);
-                include "danhmuc/list_dm.php";
-                break;
             }
+            $list_dm = loadAll_danhmuc();
+            include './danhmuc/update_dm.php';
+            break;
             //quan ly san pham
         case "add_sp": {
                 $list_dm = loadAll_danhmuc();
@@ -129,3 +125,4 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
     include "home.php";
 }
 include "footer.php";
+ob_end_flush();

@@ -1,6 +1,12 @@
 <?php
-function loadAll_danhmuc(){
+function loadAll_danhmuc($key="",$iddm=0){
     $sql = "SELECT * FROM danhmuc";
+    if($key != ""){
+        $sql .= " WHERE name = '$key'";
+    }
+    if($iddm > 0){
+        $sql .= " WHERE id = $iddm";
+    }
     return pdo_query($sql);
 }
 
@@ -11,15 +17,6 @@ function insert_dm($name, $img){
     pdo_execute($sql);
 }
 
-function loadone_danhmuc($id){
-    $sql = "SELECT * FROM `danhmuc` WHERE id = '$id'";
-    return pdo_query_one($sql);;
-}
-
-function loadone_danhmuc_name($name){
-    $sql = "SELECT * FROM `danhmuc` WHERE name = '$name'";
-    return pdo_query_one($sql);;
-}
 
 function delete_dm($id){
     $sql = "DELETE FROM `danhmuc` WHERE id = '$id'";
