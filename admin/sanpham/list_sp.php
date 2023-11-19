@@ -11,34 +11,34 @@
                 <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th class="fw-bold text-secondary">Tên sản phẩm</th>
-                            <th class="fw-bold text-secondary">Hình ảnh</th>
-                            <th class="fw-bold text-secondary">Giá</th>
-                            <th class="fw-bold text-secondary">Mô tả</th>
-                            <th class="fw-bold text-secondary">Xuất xứ</th>
-                            <th class="fw-bold text-secondary">Kiểu máy</th>
-                            <th class="fw-bold text-secondary">Chất liệu vỏ</th>
-                            <th class="fw-bold text-secondary">Chất liệu dây</th>
-                            <th class="fw-bold text-secondary">Chống nước</th>
-                            <th class="fw-bold text-secondary">Quản lý</th>
+                            <th>Tên</th>
+                            <th>Hình web</th>
+                            <th>Giá</th>
+                            <th>Giá Sale</th>
+                            <th>Mô tả</th>
+                            <th>Số lượng</th>
+                            <th>Xuất xứ</th>
+                            <th>Kiểu máy</th>
+                            <th>Quản lý</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach($list_sp as $value) {?>
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                            <td>2011/07/25</td>
-                            <td>$170,750</td>
+                            <td><?= $value['name']?></td>
+                            <td><img width="100" src="../uploads/img_sp/<?= $value['anh']?>" alt=""></td>
+                            <td><?= $value['gia']?></td>
+                            <td><?= $value['gia_new']?></td>
+                            <td width="300"><?= $value['mota'] ?></td>
+                            <td><?= $value['soluong']?></td>
+                            <td><?= $value['xuatxu']?></td>
+                            <td><?= $value['kieumay']?></td>
                             <td>
-                                <a type="button" class="btn btn-warning" href="?act=sua_sp">Sửa</a>
-                                <a type="button" class="btn btn-danger" href="?act=delete_sp">Xóa</a>
+                                <a type="button" class="btn btn-warning" href="?act=update_sp?id=<?= $value['id']?>">Sửa</a>
+                                <a type="button" class="btn btn-danger" href="?act=delete_spid=<?= $value['id']?>">Xóa</a>
                             </td>
                         </tr>
+                        <?php }?>
                     </tbody>
                 </table>
             </div>
