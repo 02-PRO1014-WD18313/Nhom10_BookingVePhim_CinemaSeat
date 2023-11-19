@@ -16,6 +16,11 @@ function loadone_danhmuc($id){
     return pdo_query_one($sql);;
 }
 
+function loadone_danhmuc_name($name){
+    $sql = "SELECT * FROM `danhmuc` WHERE name = '$name'";
+    return pdo_query_one($sql);;
+}
+
 function delete_dm($id){
     $sql = "DELETE FROM `danhmuc` WHERE id = '$id'";
     pdo_execute($sql);

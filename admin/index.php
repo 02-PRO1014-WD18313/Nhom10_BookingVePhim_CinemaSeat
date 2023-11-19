@@ -13,20 +13,17 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     $name = $_POST['name'];
                     $img = null;
 
-                    $list_dm = loadAll_danhmuc();
-                    foreach ($list_dm as $value) {
-                        if ($value['name'] == $name) {
-                            $err = "Tên danh mục đã tồn tại";
-                        } else {
-                            if ($_FILES['img']['name'] != "") {
+                    $listone_dm = loadone_danhmuc_name($name);
+                    if (is_array($listone_dm)) {
+                        $err = "Tên danh mục đã tồn tại";
+                    } else {
 
-                                $img = time() . "_" . $_FILES['img']['name'];
-                                move_uploaded_file($_FILES['img']['tmp_name'], "../uploads/img_dm/$img");
-                            }
-                            insert_dm($name, $img);
-                            $thongbao = "Thêm danh mục thành công";
+                        if ($_FILES['img']['name'] != "") {
+                            $img = time() . "_" . $_FILES['img']['name'];
+                            move_uploaded_file($_FILES['img']['tmp_name'], "../uploads/img_dm/$img");
                         }
-                        break;
+                        insert_dm($name, $img);
+                        $thongbao = "Thêm danh mục thành công";
                     }
                 }
                 include "./danhmuc/add_dm.php";
