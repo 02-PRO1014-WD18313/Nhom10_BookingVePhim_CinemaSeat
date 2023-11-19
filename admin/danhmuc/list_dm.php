@@ -26,7 +26,7 @@
                                 <img width="100px" height="50px" src="../uploads/img_dm/<?= $value['img']?>" alt="123">
                             </td>
                             <td>
-                                <a type="button" class="btn btn-warning" href="?act=sua_dm&id=<?= $value['id']?>">Sửa</a>
+                                <a type="button" class="btn btn-warning" href="?act=update_dm&id=<?= $value['id']?>">Sửa</a>
                                 <a type="button" class="btn btn-danger" href="?act=delete_dm&id=<?= $value['id']?>" onclick="return confirm('Bạn có muốn xóa <?= $value['name'] ?>')">Xóa</a>
                             </td>
                         </tr>
