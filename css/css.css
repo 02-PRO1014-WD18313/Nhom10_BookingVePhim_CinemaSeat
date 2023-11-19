@@ -41,7 +41,7 @@ header .logo {
 header nav ul li {
   list-style: none;
   display: inline-block;
-  padding: 30px 15px 22px;
+  padding: 30px 15px;
   font-size: 1.2vw;
 }
 header a:hover {
@@ -469,7 +469,7 @@ footer .box-footer h6 {
   padding-bottom: 20px;
 }
 footer h5 {
-  margin-top: 8px;
+  margin-top: 20px;
   text-align: center;
   color: rgb(175, 175, 175);
   font-size: 1vw;
