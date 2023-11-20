@@ -1,5 +1,6 @@
 <?php
 ob_start();
+session_start();
 include "header.php";
 include "../model/pdo.php";
 include "../model/danhmuc.php";
