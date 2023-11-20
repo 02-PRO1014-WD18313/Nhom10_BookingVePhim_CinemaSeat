@@ -34,19 +34,32 @@ function validate($user, $pass, $email, $confirmPass)
 
     return $error;
 }
+
 if (isset($_POST['btn']) && $_POST['btn']) {
-    if (isset($_POST['user']) && isset($_POST['confirmPass'])) {
-        $user = $_POST['user'];
+    if (isset($_POST['email']) && isset($_POST['confirmPass'])) {
+        $email = $_POST['email'];
         $confirmPass = $_POST['confirmPass'];
     } else {
-        $user = $confirmPass = $tel = '';
+        $email = 'admin@gmail.com';
+        $confirmPass =  $_POST['pass'];
     }
     $pass = $_POST['pass'];
-    $email = $_POST['email'];
+    $user = $_POST['user'];
 
 
     $error = validate($user, $pass, $email, $confirmPass);
+
     if (empty($error)) {
-        echo '<script>alert("Đăng ký thành công!")</script>';
+        if ($_GET['act'] == 'dangnhap') {
+            $loi=checkuser($user,$pass);            
+            if(!is_array($loi)){
+                echo 'tk ko chính xác';
+            }else{
+                $_SESSION['user'] = $user;
+                header('location:index.php');
+            }
+        } elseif ($_GET['act'] == 'dangky') {
+            insert_taikhoan($user,$email,$pass);
+        }
     }
 }
