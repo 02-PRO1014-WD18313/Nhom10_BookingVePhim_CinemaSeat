@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 20, 2023 lúc 03:43 AM
+-- Thời gian đã tạo: Th10 20, 2023 lúc 07:53 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -33,6 +33,19 @@ CREATE TABLE `album` (
   `img1` int(11) NOT NULL,
   `img2` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `cart`
+--
+
+CREATE TABLE `cart` (
+  `id` int(11) NOT NULL,
+  `iduser` int(11) NOT NULL,
+  `idsp` int(11) NOT NULL,
+  `soluong` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -98,8 +111,6 @@ CREATE TABLE `taikhoan` (
   `user` varchar(50) NOT NULL,
   `pass` varchar(50) NOT NULL,
   `email` varchar(225) NOT NULL,
-  `diachi` varchar(225) NOT NULL,
-  `tel` int(10) NOT NULL,
   `role` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -107,8 +118,10 @@ CREATE TABLE `taikhoan` (
 -- Đang đổ dữ liệu cho bảng `taikhoan`
 --
 
-INSERT INTO `taikhoan` (`id`, `user`, `pass`, `email`, `diachi`, `tel`, `role`) VALUES
-(1, 'admin', '12345678', 'admin@gmail.com.vn', 'Hà Nội', 123456789, 1);
+INSERT INTO `taikhoan` (`id`, `user`, `pass`, `email`, `role`) VALUES
+(1, 'daiadmin', 'Dai123456', 'admin@gmail.com.vn', 1),
+(2, 'dai', '12345678', 'dai@gmail.com', 0),
+(3, '', '', '', 0);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -119,6 +132,14 @@ INSERT INTO `taikhoan` (`id`, `user`, `pass`, `email`, `diachi`, `tel`, `role`) 
 --
 ALTER TABLE `album`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_sp_cart` (`idsp`),
+  ADD KEY `fk_user_cart` (`iduser`);
 
 --
 -- Chỉ mục cho bảng `danhmuc`
@@ -150,6 +171,12 @@ ALTER TABLE `album`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT cho bảng `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT cho bảng `danhmuc`
 --
 ALTER TABLE `danhmuc`
@@ -165,11 +192,18 @@ ALTER TABLE `sanpham`
 -- AUTO_INCREMENT cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
 --
+
+--
+-- Các ràng buộc cho bảng `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `fk_sp_cart` FOREIGN KEY (`idsp`) REFERENCES `sanpham` (`id`),
+  ADD CONSTRAINT `fk_user_cart` FOREIGN KEY (`iduser`) REFERENCES `taikhoan` (`id`);
 
 --
 -- Các ràng buộc cho bảng `sanpham`

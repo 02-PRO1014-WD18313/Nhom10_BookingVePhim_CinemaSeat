@@ -42,8 +42,8 @@
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" placeholder="Search..." />
                     <!-- <a href="index.php?act=dangnhap">Đăng nhập</a> -->
-                    <a href="index.php?act=dangnhap"><?=isset($_SESSION['user']) ? $_SESSION['user']['user'] : 'Đăng nhap'?></a>
+                    <a href="index.php?act=dangnhap"><?=isset($_SESSION['user']) ? $_SESSION['user'] : 'Đăng nhập'?></a>
                 </div>
+                <div ><a href="index.php?act=dangxuat">Đăng xuất</a></div>
             </div>
-            <!-- <marquee behavior="scroll" direction="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse ullam, adipisci ex illo ea similique sapiente incidunt odit! Fuga corrupti id ullam eum, ratione atque esse at libero dolorum minus?</marquee> -->
         </header>
