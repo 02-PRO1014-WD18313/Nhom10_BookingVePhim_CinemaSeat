@@ -29,4 +29,10 @@ function loadall_taikhoan(){
             $sql="UPDATE taikhoan SET user='".$user."', pass='".$pass."', email='".$email."',  diachi='".$diachi."', tel='".$tel."' WHERE id=".$id;
         pdo_execute($sql);
     }
+    function checkuserlogin($user){
+        $sql="SELECT * FROM taikhoan WHERE  user='".$user."'";
+        $sp=pdo_query_one($sql);
+        return $sp;
+    }
+
 ?>

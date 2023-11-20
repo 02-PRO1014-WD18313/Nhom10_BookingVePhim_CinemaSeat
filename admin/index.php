@@ -76,7 +76,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     $img = null;
                     $gia = $_POST['gia'];
                     $gia_new = $_POST['gia_new'];
-                    $soluong = $_POST['soluong'];    
+                    $soluong = $_POST['soluong'];
                     $xuatxu = $_POST['xuatxu'];
                     $kieumay = $_POST['kieumay'];
                     $mota = $_POST['mota'];
@@ -90,7 +90,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                             $img = time() . "_" . $_FILES['img']['name'];
                             move_uploaded_file($_FILES['img']['tmp_name'], "../uploads/img_sp/$img");
                         }
-                        insert_sp($iddm,$name,$img,$gia,$gia_new,$mota,$soluong,$xuatxu,$kieumay);
+                        insert_sp($iddm, $name, $img, $gia, $gia_new, $mota, $soluong, $xuatxu, $kieumay);
                         $thongbao = "Thêm sản phẩm thành công";
                     }
                 }
@@ -98,49 +98,49 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 break;
             }
         case "delete_sp": {
-            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                $loadone_sp = loadAll_sanpham("", $_GET['id']);
-                if (isset($loadone_sp[0]['img']) && ($loadone_sp[0]['img'] != "")) {
+                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                    $loadone_sp = loadAll_sanpham("", $_GET['id']);
+                    if (isset($loadone_sp[0]['img']) && ($loadone_sp[0]['img'] != "")) {
                         $link = "../uploads/img_sp/" . $loadone_sp[0]['img'];
                         unlink("$link");
+                    }
+                    delete_sp($_GET['id']);
                 }
-                delete_sp($_GET['id']);
+                $list_sp = loadAll_sanpham();
+                include "./sanpham/list_sp.php";
+                break;
             }
-            $list_sp = loadAll_sanpham();
-            include "./sanpham/list_sp.php";
-            break;
-        }
         case "list_sp": {
                 $list_sp = loadAll_sanpham();
                 include "./sanpham/list_sp.php";
                 break;
             }
         case "update_sp": {
-            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                $list_dm = loadAll_danhmuc();
-                $loadone_sp = loadAll_sanpham("", $_GET['id']);
-                if (isset($_POST['submit']) && ($_POST['submit'])) {
-                    $name = $_POST['name'];
-                    $iddm = $_POST['iddm'];
-                    $img = null;
-                    $gia = $_POST['gia'];
-                    $gia_new = $_POST['gia_new'];
-                    $soluong = $_POST['soluong'];    
-                    $xuatxu = $_POST['xuatxu'];
-                    $kieumay = $_POST['kieumay'];
-                    $mota = $_POST['mota'];
-                    if (($_FILES['img']['name'] != $loadone_sp[0]['img']) && ($_FILES['img']['name'] != "")) {
-                        $img = time() . "_" . $_FILES['img']['name'];
-                        move_uploaded_file($_FILES['img']['tmp_name'], "../uploads/img_sp/$img");
-                        unlink("../uploads/img_sp/" . $loadone_sp[0]['img']);
+                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                    $list_dm = loadAll_danhmuc();
+                    $loadone_sp = loadAll_sanpham("", $_GET['id']);
+                    if (isset($_POST['submit']) && ($_POST['submit'])) {
+                        $name = $_POST['name'];
+                        $iddm = $_POST['iddm'];
+                        $img = null;
+                        $gia = $_POST['gia'];
+                        $gia_new = $_POST['gia_new'];
+                        $soluong = $_POST['soluong'];
+                        $xuatxu = $_POST['xuatxu'];
+                        $kieumay = $_POST['kieumay'];
+                        $mota = $_POST['mota'];
+                        if (($_FILES['img']['name'] != $loadone_sp[0]['img']) && ($_FILES['img']['name'] != "")) {
+                            $img = time() . "_" . $_FILES['img']['name'];
+                            move_uploaded_file($_FILES['img']['tmp_name'], "../uploads/img_sp/$img");
+                            unlink("../uploads/img_sp/" . $loadone_sp[0]['img']);
+                        }
+                        update_sp($_GET['id'], $iddm, $name, $img, $gia, $gia_new, $mota, $soluong, $xuatxu, $kieumay);
+                        header('location: index.php?act=list_sp');
                     }
-                    update_sp($_GET['id'],$iddm,$name,$img,$gia,$gia_new,$mota,$soluong,$xuatxu,$kieumay);
-                    header('location: index.php?act=list_sp');
                 }
-            }
-            $list_dm = loadAll_danhmuc();
-            include './sanpham/update_sp.php';
-            break;
+                $list_dm = loadAll_danhmuc();
+                include './sanpham/update_sp.php';
+                break;
             }
             //quan ly tai khoan
         case "list_tk": {
@@ -168,7 +168,10 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 include "./donhang/list_ctdh.php";
                 break;
             }
-
+        case 'dangxuat':
+            session_unset();
+            header('location: ../index.php');
+            break;
 
 
             //thong ke

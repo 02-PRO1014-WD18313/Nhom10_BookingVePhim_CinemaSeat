@@ -45,5 +45,6 @@
                     <a href="index.php?act=dangnhap"><?=isset($_SESSION['user']) ? $_SESSION['user'] : 'Đăng nhập'?></a>
                 </div>
                 <div ><a href="index.php?act=dangxuat">Đăng xuất</a></div>
+                
             </div>
         </header>

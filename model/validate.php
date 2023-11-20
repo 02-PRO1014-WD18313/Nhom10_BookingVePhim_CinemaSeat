@@ -1,6 +1,9 @@
 <?php
 function validate($user, $pass, $email, $confirmPass)
 {
+    $checkuser=checkuserlogin($user);
+    $checkemail=checkemail($email);
+
     $error = [];
     // Validate user
     if (empty($user)) {
@@ -9,7 +12,10 @@ function validate($user, $pass, $email, $confirmPass)
         $error["user"] = "Tên phải lớn hơn 6 ký tự!";
     } elseif (strlen($user) > 10) {
         $error["user"] = "Tên phải nhỏ hơn 10 ký tự!";
+    }elseif($_GET['act']=='dangky' && $checkuser==true){
+        $error["user"] = "Tên đã tồn tại!";
     }
+    
 
     // Validate pass
     if (empty($pass)) {
@@ -23,6 +29,8 @@ function validate($user, $pass, $email, $confirmPass)
         $error["email"] = "Email không được để trống!";
     } elseif (!preg_match("/^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i", $email)) {
         $error["email"] = "Email không đúng định dạng!";
+    }elseif($checkemail==true){
+        $error['email']='Email đã tồn tại!';
     }
 
 
@@ -51,15 +59,25 @@ if (isset($_POST['btn']) && $_POST['btn']) {
 
     if (empty($error)) {
         if ($_GET['act'] == 'dangnhap') {
-            $loi=checkuser($user,$pass);            
-            if(!is_array($loi)){
-                echo 'tk ko chính xác';
+            $dangnhap=checkuser($user,$pass);            
+            if(!is_array($dangnhap)){
+                echo 'Tài khoản hoặc mật khẩu không đúng';
             }else{
+                $_SESSION['role']=$dangnhap['role'];
                 $_SESSION['user'] = $user;
-                header('location:index.php');
+                if(isset($_SESSION['role'])){                                     
+                    if($_SESSION['role']==1){
+                        header('location: ../admin/index.php');
+                    }else{
+                        
+                        header('location: index.php');
+                    }
+                }
             }
         } elseif ($_GET['act'] == 'dangky') {
-            insert_taikhoan($user,$email,$pass);
+            insert_taikhoan($user,$email,$pass,0);
+            header('Location: ?act=dangnhap');
+            
         }
     }
 }
