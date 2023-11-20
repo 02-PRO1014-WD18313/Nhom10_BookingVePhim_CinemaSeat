@@ -67,7 +67,7 @@ if (isset($_POST['btn']) && $_POST['btn']) {
                 $_SESSION['user'] = $user;
                 if(isset($_SESSION['role'])){                                     
                     if($_SESSION['role']==1){
-                        header('location: ../admin/index.php');
+                        header('location: admin/index.php');
                     }else{
                         
                         header('location: index.php');
