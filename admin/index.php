@@ -5,7 +5,7 @@ include "header.php";
 include "../model/pdo.php";
 include "../model/danhmuc.php";
 include "../model/sanpham.php";
-include "../model/thongso.php";
+include "../model/taikhoan.php";
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
@@ -145,11 +145,21 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             }
             //quan ly tai khoan
         case "list_tk": {
+                $list_tk = loadall_taikhoan();
                 include "./taikhoan/list_tk.php";
                 break;
             }
         case "update_tk": {
-                include "./taikhoan/update_tk.php";
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $loadone_tk = loadall_taikhoan("", $_GET['id']);
+                if (isset($_POST['submit']) && ($_POST['submit'])) {
+                    $role = $_POST['role'];
+                    update_role($_GET['id'], $role);
+                    header('location: index.php?act=list_tk');
+                }
+            }
+            // $list_tk = loadall_tailoan();
+            include './taikhoan/update_tk.php';
                 break;
             }
 
