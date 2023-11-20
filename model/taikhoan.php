@@ -4,8 +4,8 @@ function loadall_taikhoan(){
        $listtaikhoan=pdo_query($sql);
        return $listtaikhoan;
 }
-    function insert_taikhoan($user,$pass,$email){
-        $sql="INSERT INTO taikhoan(user,pass,email) values('$user','$pass','$email')";
+    function insert_taikhoan($user,$email,$pass){
+        $sql="INSERT INTO taikhoan(user,email,pass) values('$user','$email','$pass')";
         pdo_execute($sql); 
     }
 
