@@ -12,8 +12,6 @@
                     <thead>
                         <tr>
                             <th class="fw-bold text-secondary">Tên tài khoản</th>
-                            <th class="fw-bold text-secondary">Tên đăng nhập</th>
-                            <th class="fw-bold text-secondary">Mật khẩu</th>
                             <th class="fw-bold text-secondary">Email</th>
                             <th class="fw-bold text-secondary">Số điện thoại</th>
                             <th class="fw-bold text-secondary">Địa chỉ</th>
@@ -22,19 +20,27 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach ($list_tk as $value) {?>
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
+                            <td><?= $value['user']?></td>
+                            <td><?= $value['email']?></td>
+                            <td><?= $value['tel']?></td>
+                            <td><?= $value['address']?></td>
                             <td>
-                                <a type="button" class="btn btn-warning" href="?act=update_sp">Sửa</a>
-                                <a type="button" class="btn btn-danger">Xóa</a>
+                                <?php
+                                    if($value['role'] == 0){
+                                        echo "Người dùng";
+                                    }else if($value['role'] == 1){
+                                        echo "Quản trị viên";
+                                    }
+                                ?>
+                            </td>
+                            <td>
+                                <a type="button" class="btn btn-warning" href="?act=update_tk&id=<?= $value['id']?>">Sửa</a>
+                                <a type="button" class="btn btn-danger" href="?act=delete_tk&id=<?= $value['id']?>">Xóa</a>
                             </td>
                         </tr>
+                        <?php }?>
                     </tbody>
                 </table>
             </div>
