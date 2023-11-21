@@ -1,27 +1,49 @@
-<div class="box-container">
+<?php
+include "../../model/pdo.php";
+include "../../model/taikhoan.php";
+include "../../model/validate.php";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/css.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<style>
+    body{
+        padding-top: 0;
+    }
+</style>
+<body>
+
+
+    <div class="box-container">
         <div class="container-dn">
             <div class="left">
                 <div class="header">
-                    <h2>Chào mừng bạn đến với thế giới đồng hồ</h2>
-                    <h4>Please Login </h4>
+                    <h2>Đăng nhập</h2>
                 </div>
-                <form action="?act=dangnhap" method="post">
+                <form action="" method="post">
                     <div class="input">
-                        <input type="text" placeholder="user name" name="user" >
+                        <input type="text" placeholder="Tên đăng nhập" name="user">
                         <i class="fa-solid fa-user"></i>
                         <li class="error"><?= (isset($error['user'])) ?  $error['user']  : '' ?></li>
                     </div>
                     <div class="input">
-                        <input type="password" placeholder="password" name="pass" >
+                        <input type="password" placeholder="Mật khẩu" name="pass">
                         <i class="fa-solid fa-lock"></i>
                         <li class="error"><?= (isset($error['pass'])) ?  $error['pass']  : '' ?></li>
                     </div>
                     <div class="forget">
-                        <label><input type="checkbox"> Remember me</label>
+                        <label><input type="checkbox"> Ghi nhớ mật khẩu</label>
                     </div>
                     <div class="btn ">
-                        <button name="btn" value="dangnhap" type="submit">Sign in</button>
-                        <span>Bạn chưa có tài khoản? <a href="index.php?act=dangky">Đăng ký</a></span>
+                        <button name="btn" value="dangnhap" type="submit">Đăng nhập</button>
+                        <span>Bạn chưa có tài khoản? <a href="dangky.php?act=dangky">Đăng ký</a></span>
                     </div>
                     <div class="with">
                         <div class="gg mt">
@@ -35,3 +57,6 @@
             </div>
         </div>
     </div>
+</body>
+
+</html>
