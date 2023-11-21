@@ -13,29 +13,64 @@
   <body>
     <div class="container">
       <header>
-        <div class="logo">iWatch</div>
-        <nav>
-          <ul>
-            <li>
-              <a href=""><i class="fa-solid fa-house">&nbsp</i>Home</a>
-            </li>
-            <li>
-              <a href="">Sản Phẩm <i class="fa-solid fa-angle-down"></i></a>
-              <ul class="sub-menu">
-                <li><a href="">Sản Phẩm Nam</a></li>
-                <li><a href="">Sản Phẩm Nữ</a></li>
-              </ul>
-            </li>
-            <li><a href="">Blog</a></li>
-            <li><a href="">Góp ý</a></li>
-            <li><a href="">Liên hệ</a></li>
-          </ul>
-        </nav>
-        <div class="login">
-          <div class="search">
-            <i class="fa-solid fa-magnifying-glass"></i>
+        <div class="top">
+          <div class="logo">
+            <img width="80" src="image/logo.png" alt="" />
+          </div>
+          <div class="input">
+            <div class="icon-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
             <input type="text" placeholder="Search..." />
-            <a href="">Đăng nhập</a>
+          </div>
+          <div class="user">
+            <div class="taikhoan">
+              <img src="image/avata_04.webp" alt="loi" />
+              <span class="span">Xin chào, Tiến Đạt</span> <br />
+              <span>Thành viên </span>
+            </div>
+            <!-- <li><a href="">Đăng nhập </a></li>/
+            <li><a href="">Đăng ký</a></li> -->
+            <div class="icon">
+              <span><i class="fa-regular fa-heart"></i><small>0</small></span>
+              <span>
+                <i class="fa-solid fa-bag-shopping"></i><small>0</small></span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          <div class="left">
+            <div class="danhmuc" onclick="toggleSubMenu(this)">
+              <i class="fa-solid fa-bars"></i><span>Danh Mục</span
+              ><i class="fa-solid fa-angle-down"></i>
+              <ul class="submenu">
+                <li><a href="#">Mục 1</a></li>
+                <li><a href="#">Mục 2</a></li>
+                <li><a href="#">Mục 3</a></li>
+              </ul>
+            </div>
+
+            <nav>
+              <ul>
+                <li>
+                  <a href=""><i class="fa-solid fa-house"></i>Trang Chủ</a>
+                </li>
+                <li><a href="">Cửa hàng</a></li>
+                <li><a href="">Sản phẩm</a></li>
+                <li><a href="">Blog</a></li>
+                <li><a href="">Liên hệ</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="right">
+            <div class="tel">
+              <i class="fa-solid fa-phone-volume"></i>
+            </div>
+            <div class="number">
+              <p>Hotline:</p>
+              <p>0964305701</p>
+            </div>
           </div>
         </div>
       </header>
