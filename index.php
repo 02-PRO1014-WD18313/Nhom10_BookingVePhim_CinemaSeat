@@ -18,6 +18,9 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             session_unset();
             header('location:index.php');
             break;
+        case 'ctsp':
+            include_once 'view/ctsp.php';
+            break;
     }
 } else {
     include 'view/home.php';
