@@ -15,7 +15,7 @@
         <header>
             <div class="top">
                 <div class="logo">
-                    <img width="80" src="image/logo.png" alt="" />
+                    <img width="250" src="image/logg 1.png" alt="" />
                 </div>
                 <div class="input">
                     <div class="icon-search">
@@ -24,13 +24,21 @@
                     <input type="text" placeholder="Search..." />
                 </div>
                 <div class="user">
-                    <div class="taikhoan">
-                        <img src="image/avata_04.webp" alt="loi" />
-                        <span class="span">Xin chào, Tiến Đạt</span> <br />
-                        <span>Thành viên </span>
-                    </div>
-                    <!-- <li><a href="">Đăng nhập </a></li>/
-            <li><a href="">Đăng ký</a></li> -->
+                    <?php
+                    if (isset($_SESSION['user'])) { ?>
+                        <div class="taikhoan">
+                            <img src="image/avata_04.webp" alt="loi" />
+                            <span class="span">Xin chào, <?=$_SESSION['user']?></span> <br />
+                            <span><a href="?act=dangxuat">Đăng xuất</a></span>
+                        </div>
+                    <?php } else { ?>
+                        <?php
+                        ?>
+                        <li><a href="view/taikhoan/dangnhap.php?act=dangnhap">Đăng nhập </a></li>/
+                        <li><a href="view/taikhoan/dangky.php?act=dangky">Đăng ký</a></li>
+                    <?php } ?>
+
+
                     <div class="icon">
                         <span><i class="fa-regular fa-heart"></i><small>0</small></span>
                         <span>
@@ -45,7 +53,7 @@
                         <ul class="submenu">
                             <?php
                             foreach ($list_dm as $value) { ?>
-                                <li><a href="#"><?=$value['name']?></a></li>
+                                <li><a href="#"><?= $value['name'] ?></a></li>
                             <?php }
                             ?>
 
