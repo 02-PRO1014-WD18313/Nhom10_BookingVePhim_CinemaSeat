@@ -60,6 +60,9 @@ header .top .input input {
   padding-left: 10px;
   border: 2px solid #ccc;
 }
+header .top .input form {
+  height: 100%;
+}
 header .top .input input:focus {
   border: 1px solid rgb(141, 228, 255);
   outline: none;
@@ -72,6 +75,12 @@ header .top .input .icon-search {
   height: 100%;
   width: 50px;
   background: #ccc;
+  text-align: center;
+}
+header .top .input .icon-search button {
+  margin-top: 10px;
+  border: none;
+  background: none;
 }
 header .top .input i {
   color: white;
@@ -86,7 +95,8 @@ header .top .user {
   justify-content: space-between;
   align-items: center;
 }
-header .top .user .taikhoan img, .box-comment .comment .img img {
+header .top .user .taikhoan img,
+.box-comment .comment .img img {
   width: 50px;
   height: 50px;
   object-fit: cover;
@@ -271,6 +281,24 @@ main {
   max-width: 100%;
   padding: 50px 100px;
 }
+.box-product {
+  display: flex;
+  justify-content: space-between;
+}
+.box-product .filter{
+width: 25%;
+background: #fff;
+}
+.box-product .listsp{
+  width: 73%;
+}
+.box-product .box-sp select{
+width: 150px;
+height: 35px;
+padding-left: 5px;
+font-size: 1.1rem;
+border-radius: 5px;
+}
 main .title {
   display: flex;
   justify-content: space-between;
@@ -292,6 +320,9 @@ main .block {
   max-width: 100%;
   display: grid;
   grid-template-columns: auto auto auto auto;
+}
+main .listsp{
+  grid-template-columns: auto auto auto;
 }
 main .block .item {
   padding: 0 30px;
@@ -323,6 +354,8 @@ main .block .item .img img {
 main .block .item .name {
   padding-top: 20px;
   font-size: 1.3vw;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 main .block .item .price {
   display: flex;
@@ -433,8 +466,6 @@ main .box-posts .post p {
   color: rgb(114, 114, 114);
   height: 50px;
   overflow: hidden;
-  /* text-overflow: ellipsis;
-  white-space: nowrap; */
 }
 main .box-posts .post p:hover {
   text-decoration: underline;
@@ -579,27 +610,34 @@ main .box-posts .post img {
   padding: 10px 0;
   height: 760px;
 }
-.box-ctsp .bottom .box-Evaluate{
+.box-ctsp .bottom .box-Evaluate {
   border: 1px solid #ccc;
   height: 310px;
   width: 482px;
 }
-.box-ctsp .bottom .box-Evaluate .box-comment #bl{
-font-size: 1.8rem;
-margin: 20px 0 10px 0;
-font-weight: 500;
-} 
- .box-ctsp .bottom .box-Evaluate .box-comment .comment{
+.box-ctsp .bottom .box-Evaluate .box-comment #bl {
+  font-size: 1.8rem;
+  margin: 20px 0 10px 0;
+  font-weight: 500;
+}
+.box-ctsp .bottom .box-Evaluate .box-comment .comment {
   display: flex;
   padding: 10px 0;
 }
-.box-ctsp .bottom .box-Evaluate .box-comment .comment .content p{
-font-size: .8rem;
-} 
-.box-ctsp .bottom .box-Evaluate .box-comment .comment .content p i{
+.box-ctsp .bottom .box-Evaluate .box-comment .comment .content p {
+  font-size: 0.8rem;
+}
+.box-ctsp .bottom .box-Evaluate .box-comment .comment .content p i {
   color: orange;
 }
-.box-ctsp .bottom .box-Evaluate .box-comment .comment .content p span:nth-child(1){
+.box-ctsp
+  .bottom
+  .box-Evaluate
+  .box-comment
+  .comment
+  .content
+  p
+  span:nth-child(1) {
   font-weight: bold;
 }
 .box-ctsp .bottom .Evaluate {
@@ -620,16 +658,15 @@ font-size: .8rem;
 .box-ctsp .bottom .form-Evaluate {
   padding: 20px 0 0 0;
 }
-.box-ctsp .bottom .form-Evaluate button{
+.box-ctsp .bottom .form-Evaluate button {
   padding: 8px 30px;
   font-size: 1.2rem;
   background: #993333;
   border: none;
   color: white;
   border-radius: 5px;
-
 }
-.box-ctsp .bottom .form-Evaluate button:hover{
+.box-ctsp .bottom .form-Evaluate button:hover {
   cursor: pointer;
 }
 .box-ctsp .bottom .form-Evaluate p:nth-child(1) {
@@ -655,18 +692,18 @@ font-size: .8rem;
 /* .box-ctsp .box-splq{
   background: red;
 } */
-.box-ctsp .box-splq h3{
+.box-ctsp .box-splq h3 {
   text-align: center;
   padding: 20px 0;
   font-size: 2rem;
 }
-.box-ctsp .box-splq .block{
+.box-ctsp .box-splq .block {
   width: 100%;
   max-width: 100%;
   display: grid;
   grid-template-columns: auto auto auto auto;
 }
-.box-ctsp .box-splq .block .item{
+.box-ctsp .box-splq .block .item {
   padding: 0 30px;
   background: rgb(255, 255, 255);
   width: 300px;
@@ -675,12 +712,12 @@ font-size: .8rem;
   margin-bottom: 40px;
   border-radius: 10px;
 }
-.box-ctsp .box-splq .block .item p{
+.box-ctsp .box-splq .block .item p {
   border-radius: 4px;
   background: rgb(236, 236, 236);
   margin: 20px 0;
 }
-.box-ctsp .box-splq .block .item .img img{
+.box-ctsp .box-splq .block .item .img img {
   width: 100%;
   height: 250px;
   transition: 0.5s;
@@ -701,7 +738,7 @@ font-size: .8rem;
   background: rgb(145, 7, 7);
   border-radius: 5px;
 }
-.box-ctsp .block .item .Evaluate p:nth-child(1){
+.box-ctsp .block .item .Evaluate p:nth-child(1) {
   background: white;
 }
 .box-ctsp .block .item .Evaluate p .fa-cart-plus {
@@ -730,7 +767,7 @@ font-size: .8rem;
   color: gray;
   font-size: 0.9vw;
 }
-.box-ctsp .block .item .price{
+.box-ctsp .block .item .price {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -738,25 +775,25 @@ font-size: .8rem;
   font-size: 1.3vw;
   color: rgb(210, 1, 1);
 }
-.box-ctsp .box-splq .block .item .img img:hover{
+.box-ctsp .box-splq .block .item .img img:hover {
   transform: scale(1.2);
   transition: 0.5s;
 }
 
-.box-ctsp .box-splq .block .item:hover{
+.box-ctsp .box-splq .block .item:hover {
   box-shadow: 5px 5px 20px rgba(128, 128, 128, 0.5);
   cursor: pointer;
 }
-.box-ctsp .box-splq .block .item .name{
+.box-ctsp .box-splq .block .item .name {
   padding-top: 20px;
   font-size: 1.3vw;
 }
-.box-ctsp .box-splq .block .item .gia span{
-    font-weight: bold;
-    color: #393939;
+.box-ctsp .box-splq .block .item .gia span {
+  font-weight: bold;
+  color: #393939;
 }
-.box-ctsp .box-splq .block .item .gia span:nth-child(1){
-  font-size: .8rem;
+.box-ctsp .box-splq .block .item .gia span:nth-child(1) {
+  font-size: 0.8rem;
   text-decoration: line-through;
   color: #919191;
   margin-right: 10px;
