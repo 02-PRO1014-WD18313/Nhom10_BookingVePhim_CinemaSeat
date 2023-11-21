@@ -16,7 +16,7 @@
   --black: #000;
 }
 body {
-  /* padding-top: 80px; */
+  padding-top: 177px;
   font-family: "Nunito Sans", sans-serif;
   background: rgba(203, 203, 203, 0.2);
 }
@@ -24,7 +24,7 @@ body a {
   text-decoration: none;
 }
 .container {
-  width: 100%;
+  max-width: 1520px;;
   margin: 0 auto;
 }
 .mt {
@@ -33,11 +33,19 @@ body a {
 .mb {
   margin-bottom: 20px;
 }
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  z-index: 10;
+}
 header .top {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  border: 1px solid #fff;
+  border: 1px solid #ccc;
   padding: 20px 0;
 }
 header .top .input {
@@ -118,7 +126,7 @@ header .top .user .icon i {
 header .bottom {
   display: flex;
   justify-content: space-evenly;
-  height: 50px;
+  height: 70px;
 }
 header .bottom .left {
   width: 55%;
@@ -126,15 +134,16 @@ header .bottom .left {
   justify-content: space-between;
 }
 header .bottom .left .danhmuc {
-  background-color: rgb(0, 0, 0);
+  background-color: #ccc;
   width: 35%;
   font-size: 1.2rem;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   display: flex;
   align-items: center;
   transition: 0.5s;
   position: relative;
   border-bottom: 2px solid rgb(0, 0, 0);
+  font-weight: bold;
 }
 header .bottom .left .danhmuc .submenu {
   display: none;
@@ -143,7 +152,10 @@ header .bottom .left .danhmuc .submenu {
   color: black;
   list-style: none;
   width: 100%;
-  top: 50px;
+  top: 70px;
+}
+header .bottom .left .danhmuc .submenu li a {
+  color: black;
 }
 
 /* Định dạng CSS cho mũi tên chỉ xuống */
@@ -164,11 +176,11 @@ header .bottom .left .danhmuc:hover {
   cursor: pointer;
   transition: 0.5s;
 }
-header .bottom .left .danhmuc li{
-  padding: 5px 10px ;
+header .bottom .left .danhmuc li {
+  padding: 10px 20px;
   border-bottom: 1px solid #ccc;
 }
-header .bottom .left .danhmuc li:hover{
+header .bottom .left .danhmuc li:hover {
   background: #ccc;
 }
 header .bottom .left .danhmuc i {
@@ -183,6 +195,14 @@ header .bottom .left nav ul li {
   font-size: 1rem;
   font-weight: bold;
   padding: 0 15px;
+}
+header .bottom .left nav ul li a {
+  color: black;
+  transition: 0.5s;
+}
+header .bottom .left nav ul li:hover a {
+  color: rgb(255, 89, 28);
+  transition: 0.5s;
 }
 header .bottom .left nav {
   display: flex;
@@ -203,19 +223,21 @@ header .bottom .right .number p:nth-child(1) {
 }
 section {
   width: 100%;
-  min-height: 95vh;
+  min-height: 80vh;
   border-bottom: 3px solid #ffffff;
 }
 section h2 {
   text-align: center;
-  color: #d2421a;
+  /* color: #d2421a; */
+  font-size: 2rem;
+  padding: 5px 0 5px 0;
 }
 section .banner {
   min-height: 100%;
 }
 section .banner img {
   width: 100%;
-  height: 450px;
+  height: 390px;
 }
 section .trademark {
   max-width: 100%;
@@ -226,12 +248,13 @@ section .trademark p {
   background: white;
   margin: 10px;
   font-size: 2.5vw;
-  border: 2px solid gray;
+  border: 1px solid #ccc;
   width: 200px;
   padding: 20px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
 }
 section .trademark p .firm {
   width: 100%;
@@ -588,14 +611,11 @@ footer .box-footer p:hover {
   margin-top: 20px;
 }
 .box-container {
-  background-image: url(https://i.pinimg.com/originals/6a/ba/8d/6aba8d6fe7a455389b50d24cfbc84316.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 90vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #ccc;
 }
 .container-dn {
   width: 70%;
@@ -605,9 +625,6 @@ footer .box-footer p:hover {
   background-color: #f5f5f5;
   justify-content: space-between;
   border-radius: 20px;
-  box-shadow: 4px 4px 5px 5px (0, 0, 0rgba, 0.75);
-  -webkit-box-shadow: 4px 4px 5px 5px #c800ff;
-  -moz-box-shadow: 4px 4px 5px 5px rgba(0, 0, 0, 0.75);
 }
 .container-dn .left,
 .container-dn .right {
@@ -679,7 +696,7 @@ footer .box-footer p:hover {
   justify-content: space-between;
   cursor: pointer;
 }
-.fb,
+
 .gg {
   border: 1px solid var(--gray);
   height: 50px;
@@ -689,13 +706,12 @@ footer .box-footer p:hover {
   line-height: 50px;
   font-size: 14px;
 }
-.fb i,
-.gg i {
+
+.gg .fa-google {
   padding: 7px;
   margin-right: 8px;
-  font-size: 17px;
-  color: var(--white);
-  background-color: #0033ffd7;
+  font-size: 1.2rem;
+  color: rgb(43, 0, 255);
   border-radius: 17px;
 }
 .container-dn .right img {
