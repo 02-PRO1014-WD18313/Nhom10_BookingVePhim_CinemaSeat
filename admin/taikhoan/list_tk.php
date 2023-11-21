@@ -36,8 +36,8 @@
                                 ?>
                             </td>
                             <td>
-                                <a type="button" class="btn btn-warning" href="?act=update_tk&id=<?= $value['id']?>">Sửa</a>
-                                <a type="button" class="btn btn-danger" href="?act=delete_tk&id=<?= $value['id']?>">Xóa</a>
+                                <a type="button" class="btn btn-warning" href="?act=update_tk&id=<?= $value['id']?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a type="button" class="btn btn-danger" href="?act=delete_tk&id=<?= $value['id']?>"><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
                         <?php }?>

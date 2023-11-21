@@ -34,8 +34,8 @@
                             <td><?= $value['xuatxu']?></td>
                             <td><?= $value['kieumay']?></td>
                             <td>
-                                <a type="submit" class="btn btn-warning" href="?act=update_sp&id=<?= $value['id']?>">Sửa</a>
-                                <a onclick="return confirm('Bạn có muốn xóa <?= $value['name']?> không?')" type="button" class="btn btn-danger" href="?act=delete_sp&id=<?= $value['id']?>">Xóa</a>
+                                <a type="submit" class="btn btn-warning" href="?act=update_sp&id=<?= $value['id']?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a onclick="return confirm('Bạn có muốn xóa <?= $value['name']?> không?')" type="button" class="btn btn-danger" href="?act=delete_sp&id=<?= $value['id']?>"><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
                         <?php }?>
