@@ -33,6 +33,7 @@
             <?php
             foreach ($list_sp_home as $value) {
                 extract($value); ?>
+                <a href="?act=ctsp&idsp=<?= $id ?>">
                 <div class="item">
                     <div class="name"><?= $name ?></div>
                     <div class="img">
@@ -51,6 +52,7 @@
                         <p><i class="fa-solid fa-cart-plus"></i></p>
                     </div>
                 </div>
+                </a>
             <?php }
             ?>
 
