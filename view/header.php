@@ -5,46 +5,74 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trang chủ</title>
-    <script src="https://kit.fontawesome.com/509cc166d7.js" crossorigin="anonymous"></script>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link rel="stylesheet" href="css/css.css" />
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container">
         <header>
-            <div class="logo">iWatch</div>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="index.php"><i class="fa-solid fa-house">&nbsp</i>Home</a>
-                    </li>
-                    <li>
-                        <a href="">Sản Phẩm <i class="fa-solid fa-angle-down"></i></a>
-                        <ul class="sub-menu">
+            <div class="top">
+                <div class="logo">
+                    <img width="80" src="image/logo.png" alt="" />
+                </div>
+                <div class="input">
+                    <div class="icon-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <input type="text" placeholder="Search..." />
+                </div>
+                <div class="user">
+                    <div class="taikhoan">
+                        <img src="image/avata_04.webp" alt="loi" />
+                        <span class="span">Xin chào, Tiến Đạt</span> <br />
+                        <span>Thành viên </span>
+                    </div>
+                    <!-- <li><a href="">Đăng nhập </a></li>/
+            <li><a href="">Đăng ký</a></li> -->
+                    <div class="icon">
+                        <span><i class="fa-regular fa-heart"></i><small>0</small></span>
+                        <span>
+                            <i class="fa-solid fa-bag-shopping"></i><small>0</small></span>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="left">
+                    <div class="danhmuc" onclick="toggleSubMenu(this)">
+                        <i class="fa-solid fa-bars"></i><span>Danh Mục</span><i class="fa-solid fa-angle-down"></i>
+                        <ul class="submenu">
                             <?php
-                            foreach ($list_dm as $value) {
-                                extract($value); ?>
-                                <li><a href=""><?=$name?></a></li>
-                            <?php    }
+                            foreach ($list_dm as $value) { ?>
+                                <li><a href="#"><?=$value['name']?></a></li>
+                            <?php }
                             ?>
 
+
                         </ul>
-                    </li>
-                    <li><a href="">Blog</a></li>
-                    <li><a href="">Góp ý</a></li>
-                    <li><a href="">Liên hệ</a></li>
-                </ul>
-            </nav>
-            <div class="login">              
-                <div class="search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Search..." />
-                    <!-- <a href="index.php?act=dangnhap">Đăng nhập</a> -->
-                    <a href="index.php?act=dangnhap"><?=isset($_SESSION['user']) ? $_SESSION['user'] : 'Đăng nhập'?></a>
+                    </div>
+
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href=""><i class="fa-solid fa-house"></i>Trang Chủ</a>
+                            </li>
+                            <li><a href="">Cửa hàng</a></li>
+                            <li><a href="">Sản phẩm</a></li>
+                            <li><a href="">Blog</a></li>
+                            <li><a href="">Liên hệ</a></li>
+                        </ul>
+                    </nav>
                 </div>
-                <div ><a href="index.php?act=dangxuat">Đăng xuất</a></div>
-                
+                <div class="right">
+                    <div class="tel">
+                        <i class="fa-solid fa-phone-volume"></i>
+                    </div>
+                    <div class="number">
+                        <p>Hotline:</p>
+                        <p>0964305701</p>
+                    </div>
+                </div>
             </div>
         </header>

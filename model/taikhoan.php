@@ -1,8 +1,14 @@
 <?php
-function loadall_taikhoan(){
-    $sql="SELECT * FROM taikhoan ORDER BY id desc";
-       $listtaikhoan=pdo_query($sql);
-       return $listtaikhoan;
+function loadall_taikhoan($key="",$idtk=0){
+       $sql = "SELECT * FROM taikhoan";
+       if($key != ""){
+           $sql .= " WHERE user = '$key'";
+       }
+       if($idtk > 0){
+           $sql .= " WHERE id = $idtk";
+       }
+       $sql .= " ORDER BY id desc";
+       return pdo_query($sql);
 }
     function insert_taikhoan($user,$email,$pass){
         $sql="INSERT INTO taikhoan(user,email,pass) values('$user','$email','$pass')";
@@ -29,6 +35,11 @@ function loadall_taikhoan(){
             $sql="UPDATE taikhoan SET user='".$user."', pass='".$pass."', email='".$email."',  diachi='".$diachi."', tel='".$tel."' WHERE id=".$id;
         pdo_execute($sql);
     }
+        
+    function update_role($id,$role){
+            $sql="UPDATE taikhoan SET role='".$role."' WHERE id=".$id;
+            pdo_execute($sql);
+        }
     function checkuserlogin($user){
         $sql="SELECT * FROM taikhoan WHERE  user='".$user."'";
         $sp=pdo_query_one($sql);
