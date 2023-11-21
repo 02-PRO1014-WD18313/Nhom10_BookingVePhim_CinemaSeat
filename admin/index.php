@@ -5,7 +5,8 @@ include "header.php";
 include "../model/pdo.php";
 include "../model/danhmuc.php";
 include "../model/sanpham.php";
-include "../model/thongso.php";
+include "../model/taikhoan.php";
+include "../model/donhang.php";
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
@@ -145,11 +146,20 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             }
             //quan ly tai khoan
         case "list_tk": {
+                $list_tk = loadall_taikhoan();
                 include "./taikhoan/list_tk.php";
                 break;
             }
         case "update_tk": {
-                include "./taikhoan/update_tk.php";
+                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                    $loadone_tk = loadall_taikhoan("", $_GET['id']);
+                    if (isset($_POST['submit']) && ($_POST['submit'])) {
+                        $role = $_POST['role'];
+                        update_role($_GET['id'], $role);
+                        header('location: index.php?act=list_tk');
+                    }
+                }
+                include './taikhoan/update_tk.php';
                 break;
             }
 
@@ -160,7 +170,23 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             }
             //quan ly don hang
         case "list_donhang": {
+                $list_donhang = loadall_donhang();
                 include "./donhang/list_donhang.php";
+                break;
+            }
+        case "update_donhang": {
+                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                    $loadone_dh = loadall_donhang($_GET['id']);
+                    if (isset($_POST['submit']) && ($_POST['submit'])) {
+                        $name = $_POST['name'];
+                        $tel = $_POST['tel'];
+                        $address = $_POST['address'];
+                        $trangthai = $_POST['trangthai'];
+                        update_donhang($_GET['id'], $name, $tel, $address, $trangthai);
+                        header('location: index.php?act=list_donhang');
+                    }
+                }
+                include './donhang/update_donhang.php';
                 break;
             }
 
