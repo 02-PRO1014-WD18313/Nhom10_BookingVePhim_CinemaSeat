@@ -8,7 +8,7 @@
         foreach ($list_dm as $value) {
             extract($value);
         ?>
-            <p><img class="firm" src="uploads/img_dm/<?= $img ?>" alt="" /></p>
+            <p><a href="?act=listsp&iddm=<?= $id ?>"><img class="firm" src="uploads/img_dm/<?= $img ?>" alt="" /></a></p>
         <?php
         }
         ?>
@@ -34,24 +34,24 @@
             foreach ($list_sp_home as $value) {
                 extract($value); ?>
                 <a href="?act=ctsp&idsp=<?= $id ?>">
-                <div class="item">
-                    <div class="name"><?= $name ?></div>
-                    <div class="img">
-                        <p>
-                            <img src="uploads/img_sp/<?= $img ?>" alt="" />
-                        </p>
+                    <div class="item">
+                        <div class="name"><?= $name ?></div>
+                        <div class="img">
+                            <p>
+                                <img src="uploads/img_sp/<?= $img ?>" alt="" />
+                            </p>
+                        </div>
+                        <div class="price">
+                            <span><?= number_format($gia) ?> VND</span><span><?= number_format($gia_new) ?> VND</span>
+                        </div>
+                        <div class="Evaluate">
+                            <p>
+                                <i class="fa-solid fa-star"></i> <span>(4.5)</span> <br />
+                                <span>Đã mua 4.5k</span>
+                            </p>
+                            <p><i class="fa-solid fa-cart-plus"></i></p>
+                        </div>
                     </div>
-                    <div class="price">
-                        <span><?= number_format($gia) ?> VND</span><span><?= number_format($gia_new) ?> VND</span>
-                    </div>
-                    <div class="Evaluate">
-                        <p>
-                            <i class="fa-solid fa-star"></i> <span>(4.5)</span> <br />
-                            <span>Đã mua 4.5k</span>
-                        </p>
-                        <p><i class="fa-solid fa-cart-plus"></i></p>
-                    </div>
-                </div>
                 </a>
             <?php }
             ?>

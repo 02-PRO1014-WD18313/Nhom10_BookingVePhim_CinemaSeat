@@ -18,17 +18,19 @@
                     <img width="250" src="image/logg 1.png" alt="" />
                 </div>
                 <div class="input">
-                    <div class="icon-search">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
-                    <input type="text" placeholder="Search..." />
+                    <form action="?act=listsp" method="post">
+                        <div class="icon-search">
+                            <button name="btn" value="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                        <input name="key" type="text" placeholder="Search..." />
+                    </form>
                 </div>
                 <div class="user">
                     <?php
                     if (isset($_SESSION['user'])) { ?>
                         <div class="taikhoan">
                             <img src="image/avata_04.webp" alt="loi" />
-                            <span class="span">Xin chào, <?=$_SESSION['user']?></span> <br />
+                            <span class="span">Xin chào, <?= $_SESSION['user'] ?></span> <br />
                             <span><a href="?act=dangxuat">Đăng xuất</a></span>
                         </div>
                     <?php } else { ?>
