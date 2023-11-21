@@ -21,6 +21,21 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         case 'ctsp':
             include_once 'view/ctsp.php';
             break;
+        case 'listsp':
+            if (isset($_POST['btn']) && $_POST['btn']) {
+                $key = $_POST['key'];
+            } else {
+                $key = '';
+            }
+
+            if (isset($_GET['iddm']) && $_GET['iddm'] > 0) {
+                $iddm = $_GET['iddm'];
+            } else {
+                $iddm = 0;
+            }
+            $listsp_dm = listsp_dm($key, $iddm);
+            include_once 'view/listsp.php';
+            break;
     }
 } else {
     include 'view/home.php';
