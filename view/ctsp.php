@@ -57,7 +57,7 @@
                 <span>&nbsp; &nbsp; <?= $loadone_sp[0]['soluong']?> sản phẩm có sẵn</span>
             </div>
             <div class="box-submit">
-                <button>THÊM VÀO GIỎ HÀNG</button><button>MUA NGAY</button>
+                <button><a href="?act=addtocart&idsp=<?= $id ?>">THÊM VÀO GIỎ HÀNG</a></button><button>MUA NGAY</button>
             </div>
         </div>
     </div>
