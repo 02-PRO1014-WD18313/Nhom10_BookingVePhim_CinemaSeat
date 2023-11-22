@@ -65,13 +65,12 @@ if (isset($_POST['btn']) && $_POST['btn']) {
                 echo 'Tài khoản hoặc mật khẩu không đúng';
             } else {
                 $_SESSION['role'] = $dangnhap['role'];
-
+                $_SESSION['user'] = $user;
                 if (isset($_SESSION['role'])) {
                     if ($_SESSION['role'] == 1) {
                         header('location: ../../admin/index.php');
                     } else {
-                        $_SESSION['iduser'] = $dangnhap['id'];
-                        $_SESSION['user'] = $user;
+                        $_SESSION['iduser'] = $dangnhap['id'];                       
                         header('location: ../../index.php');
                     }
                 }
