@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 20, 2023 lúc 07:53 AM
+-- Thời gian đã tạo: Th10 21, 2023 lúc 05:28 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
--- Phiên bản PHP: 8.2.4
+-- Phiên bản PHP: 8.1.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -74,6 +74,28 @@ INSERT INTO `danhmuc` (`id`, `name`, `img`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `donhang`
+--
+
+CREATE TABLE `donhang` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `ten_nhan` varchar(255) NOT NULL,
+  `tel` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `trangthai` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `donhang`
+--
+
+INSERT INTO `donhang` (`id`, `id_user`, `ten_nhan`, `tel`, `address`, `trangthai`) VALUES
+(1, 1, 'Trần Duy Khánh  123', '0989999123', '99 Cầu Giấy, Hà Nội, Việt Nam', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `sanpham`
 --
 
@@ -98,7 +120,24 @@ INSERT INTO `sanpham` (`id`, `iddm`, `name`, `img`, `gia`, `gia_new`, `mota`, `s
 (1, 4, 'Đồng Hồ Casio', 'dongho1.jpeg', 1200000, 1000, 'sản phẩm oke\"', 20, 'Thụy Sỹ', 'Cơ'),
 (2, 2, 'Đồng hồ Orient', 'dongho2.jpeg', 2300000, 500000, 'hay', 12, '', ''),
 (3, 3, 'Đồng hồ Citizen', 'dongho3.jpeg', 500, 250, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolore, laborum deleniti veniam in, commodi debitis harum corporis dolor voluptates ipsa dicta totam odio tenetur a odit sint assumenda expedita.\"', 20, '123', 'Cơ'),
-(4, 4, 'Đồng Hồ Seiko', 'dongho4.jpeg', 3500000, 3000000, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolore, laborum deleniti veniam in, commodi debitis harum corporis dolor voluptates ipsa dicta totam odio tenetur a odit sint assumenda expedita.', 15, '1323', '123123');
+(4, 4, 'Đồng Hồ Seiko', 'dongho4.jpeg', 3500000, 3000000, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolore, laborum deleniti veniam in, commodi debitis harum corporis dolor voluptates ipsa dicta totam odio tenetur a odit sint assumenda expedita.', 15, '1323', '123123'),
+(13, 5, 'Tissot T006.407.16.033.00', '1700576058_Tissot T006.407.16.033.00.jpeg', 1200000, 890000, 'đẹp', 10, 'Hàn Quốc', 'Kiểu mạ vàng ấy'),
+(14, 3, 'Citizen NH8363-14H', '1700576274_Citizen NH8363-14H.jpeg', 750000, 500000, 'hay', 5, 'Việt Nam', 'Kiểu mạ vàng ấy'),
+(15, 3, 'Citizen BM7256-50E', '1700576346_Citizen BM7256-50E.jpeg', 950000, 750000, 'đẹp', 12, 'Nhật Bản', 'Mạ Kim Cương'),
+(16, 6, 'Longines L2.321.4.87.2', '1700576415_Longines L2.321.4.87.2.jpeg', 2200000, 1500000, 'Ngon', 8, 'Trung Quốc', 'Mạ Bạc'),
+(17, 6, 'Longines L3.742.4.96.6', '1700576490_Longines L3.742.4.96.6.jpeg', 550000, 490000, 'Cứng', 15, 'Ấn Độ', 'Bọc Thép'),
+(18, 1, 'Orient RA-AR0003L10B', '1700576568_Orient RA-AR0003L10B.jpeg', 650000, 450000, 'Hợp Phết', 20, 'Iran', 'Mạ Non'),
+(19, 2, 'Orient FAG02005W0', '1700576653_Orient FAG02005W0.jpeg', 1500000, 1000000, 'Hơi Mỏng', 10, 'Irac', 'Bọc Giấy'),
+(20, 2, 'Orient FAG02005W1', '1700576720_Orient FAG02005W1.jpeg', 630000, 540000, 'Chất Lượng Kém', 16, 'Hàn Quốc', 'Bọc Ni Lông'),
+(21, 2, 'Orient SK RA-AA0B02R19B', '1700576815_Orient SK RA-AA0B02R19B.jpeg', 3600000, 2500000, 'Trơn Quá', 15, 'Việt Nam', 'Pha Nhớt'),
+(22, 4, 'Seiko 42mm SUR211P1', '1700576974_Seiko 42mm SUR211P1.jpeg', 790000, 520000, 'Dễ Rách', 18, 'Ý', 'Giấy Ăn '),
+(23, 4, 'Seiko 42.5mm SRPD76K1', '1700577362_Seiko 42.5mm SRPD76K1.jpeg', 1200000, 950000, 'Nói ít thôi', 5, 'Nhật Bản', 'Khó Nói'),
+(24, 4, 'Seiko 42mm SNZG13J1', '1700577470_Seiko 42mm SNZG13J1.jpeg', 520000, 350000, 'Trơn', 20, 'Trung Quốc', 'Dầu mỡ'),
+(25, 4, 'Seiko 38mm SNKD99K1-5', '1700577580_Seiko 38mm SNKD99K1-5.jpeg', 1450000, 1200000, 'Cháy năng', 13, 'Ấn Độ', 'Da đen'),
+(26, 1, 'Casio 42mm MTP-1375L', '1700577643_Casio 42mm MTP-1375L.jpeg', 1250000, 950000, 'Ngon', 21, 'Hàn Quốc', 'Trắng '),
+(27, 1, 'Casio G-Shock GA-2100', '1700577701_Casio G-Shock GA-2100.jpeg', 950000, 630000, 'Ngạc Nhiên', 7, 'Nga', 'Ôi Dồi Ôi'),
+(28, 1, 'Casio 43.5mm MTP-1374L', '1700577758_Casio 43.5mm MTP-1374L.jpeg', 850000, 620000, 'Siêu bền', 9, 'Na Uy', 'Cứng Cáp'),
+(29, 1, 'Casio AE-1200WHD', '1700577843_Casio AE-1200WHD.jpeg', 690000, 550000, 'Đẹp Xuất Sắc', 10, 'Thụy Sỹ', 'Very Good');
 
 -- --------------------------------------------------------
 
@@ -107,21 +146,22 @@ INSERT INTO `sanpham` (`id`, `iddm`, `name`, `img`, `gia`, `gia_new`, `mota`, `s
 --
 
 CREATE TABLE `taikhoan` (
-  `id` int(10) NOT NULL,
+  `id` int(11) NOT NULL,
   `user` varchar(50) NOT NULL,
   `pass` varchar(50) NOT NULL,
   `email` varchar(225) NOT NULL,
-  `role` int(10) NOT NULL
+  `tel` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `role` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `taikhoan`
 --
 
-INSERT INTO `taikhoan` (`id`, `user`, `pass`, `email`, `role`) VALUES
-(1, 'daiadmin', 'Dai123456', 'admin@gmail.com.vn', 1),
-(2, 'dai', '12345678', 'dai@gmail.com', 0),
-(3, '', '', '', 0);
+INSERT INTO `taikhoan` (`id`, `user`, `pass`, `email`, `tel`, `address`, `role`) VALUES
+(1, 'daiadmin', 'Dai123456', 'admin@gmail.com.vn', NULL, NULL, 1),
+(2, 'dai123123', 'Qa123123', 'dai@gmail.com', NULL, NULL, 0);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -145,6 +185,12 @@ ALTER TABLE `cart`
 -- Chỉ mục cho bảng `danhmuc`
 --
 ALTER TABLE `danhmuc`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `donhang`
+--
+ALTER TABLE `donhang`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -183,16 +229,22 @@ ALTER TABLE `danhmuc`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
+-- AUTO_INCREMENT cho bảng `donhang`
+--
+ALTER TABLE `donhang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

@@ -15,22 +15,33 @@
         <header>
             <div class="top">
                 <div class="logo">
-                    <img width="80" src="image/logo.png" alt="" />
+                    <a href="index.php"><img width="250" src="image/logg 1.png" alt="" /></a>
+
                 </div>
                 <div class="input">
-                    <div class="icon-search">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
-                    <input type="text" placeholder="Search..." />
+                    <form action="?act=listsp" method="post">
+                        <div class="icon-search">
+                            <button name="btn" value="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                        <input name="key" type="text" placeholder="Search..." />
+                    </form>
                 </div>
                 <div class="user">
-                    <div class="taikhoan">
-                        <img src="image/avata_04.webp" alt="loi" />
-                        <span class="span">Xin chào, Tiến Đạt</span> <br />
-                        <span>Thành viên </span>
-                    </div>
-                    <!-- <li><a href="">Đăng nhập </a></li>/
-            <li><a href="">Đăng ký</a></li> -->
+                    <?php
+                    if (isset($_SESSION['user'])) { ?>
+                        <div class="taikhoan">
+                            <img src="image/avata_04.webp" alt="loi" />
+                            <span class="span">Xin chào, <?= $_SESSION['user'] ?></span> <br />
+                            <span><a href="?act=dangxuat">Đăng xuất</a></span>
+                        </div>
+                    <?php } else { ?>
+                        <?php
+                        ?>
+                        <li><a href="view/taikhoan/dangnhap.php?act=dangnhap">Đăng nhập </a></li>/
+                        <li><a href="view/taikhoan/dangky.php?act=dangky">Đăng ký</a></li>
+                    <?php } ?>
+
+
                     <div class="icon">
                         <span><i class="fa-regular fa-heart"></i><small>0</small></span>
                         <span>
@@ -45,7 +56,7 @@
                         <ul class="submenu">
                             <?php
                             foreach ($list_dm as $value) { ?>
-                                <li><a href="#"><?=$value['name']?></a></li>
+                                <li><a href="?act=listsp&iddm=<?= $value['id'] ?>"><?= $value['name'] ?></a></li>
                             <?php }
                             ?>
 
@@ -76,3 +87,15 @@
                 </div>
             </div>
         </header>
+        <!-- <script>
+            var prevScrollpos = window.pageYOffset;
+            window.onscroll = function() {
+                var currentScrollPos = window.pageYOffset;
+                if (prevScrollpos > currentScrollPos) {
+                    document.querySelector(".bottom").style.display = "flex";
+                } else {
+                    document.querySelector(".bottom").style.display = "none";
+                }
+                prevScrollpos = currentScrollPos;
+            };
+        </script> -->
