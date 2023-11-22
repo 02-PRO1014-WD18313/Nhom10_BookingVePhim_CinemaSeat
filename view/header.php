@@ -56,7 +56,7 @@
                         <ul class="submenu">
                             <?php
                             foreach ($list_dm as $value) { ?>
-                                <li><a href="#"><?= $value['name'] ?></a></li>
+                                <li><a href="?act=listsp&iddm=<?= $value['id'] ?>"><?= $value['name'] ?></a></li>
                             <?php }
                             ?>
 

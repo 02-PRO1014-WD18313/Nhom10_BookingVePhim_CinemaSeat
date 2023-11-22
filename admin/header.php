@@ -35,9 +35,9 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-icon">
-                    <i class="fa-solid fa-user-secret"></i>
+                    <!-- <i class="fa-solid fa-user-secret"></i> -->
                 </div>
-                <div class="sidebar-brand-text mx-3">ADMIN</div>
+                <div class="sidebar-brand-text mx-3"><img width="150" src="../image/logg 1.png" alt=""></div>
             </a>
 
             <!-- Divider -->
