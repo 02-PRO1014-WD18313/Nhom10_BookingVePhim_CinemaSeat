@@ -10,7 +10,7 @@ function loadAll_sanpham($key = "", $idsp = 0)
     }
     return pdo_query($sql);
 }
-function listsp_dm($key = "", $iddm = 0)
+function listsp_dm($key = "", $iddm = 0, $filter_p = "")
 {
     $sql = "SELECT * FROM sanpham";
     if ($key != "") {
@@ -18,6 +18,11 @@ function listsp_dm($key = "", $iddm = 0)
     }
     if ($iddm > 0) {
         $sql .= " WHERE iddm = $iddm";
+    }
+    if($filter_p == "Tăng dần"){
+        $sql .= " ORDER BY gia_new ASC";
+    }else{
+        $sql .= " ORDER BY gia_new DESC";
     }
     return pdo_query($sql);
 }

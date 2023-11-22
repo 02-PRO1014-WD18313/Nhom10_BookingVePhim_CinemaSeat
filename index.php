@@ -23,17 +23,32 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
         case 'listsp':
             if (isset($_POST['btn']) && $_POST['btn']) {
-                $key = $_POST['key'];
+                if (isset($_POST['key']) && $_POST['key'] != '') {
+                    $key = $_POST['key'];
+                    $_SESSION['key'] = $key;
+                } else {
+                    $key = '';
+                }
+                if (isset($_GET['iddm']) && $_GET['iddm'] > 0) {
+                    $iddm = $_GET['iddm'];
+                } else {
+                    $iddm = 0;
+                }
+                if (isset($_POST['filter_p']) && $_POST['filter_p'] != '') {
+                    $filter_p = $_POST['filter_p'];
+                    $iddm = $iddm;
+                    if (isset($_SESSION['key']) && $_SESSION['key'] != '') {
+                        $key = $_SESSION['key'];
+                    }
+                } else {
+                    $filter_p  = '';
+                }
             } else {
-                $key = '';
-            }
-
-            if (isset($_GET['iddm']) && $_GET['iddm'] > 0) {
+                $key = $filter_p = '';
                 $iddm = $_GET['iddm'];
-            } else {
-                $iddm = 0;
+                unset($_SESSION['key']);
             }
-            $listsp_dm = listsp_dm($key, $iddm);
+            $listsp_dm = listsp_dm($key, $iddm, $filter_p);
             include_once 'view/listsp.php';
             break;
     }
