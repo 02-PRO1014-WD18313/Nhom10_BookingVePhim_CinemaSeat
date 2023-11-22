@@ -1012,3 +1012,6 @@ footer .box-footer p:hover {
   border-radius: 5px;
   cursor: pointer;
 }
+table {
+  margin-top: 50px;
+}
