@@ -45,7 +45,11 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 }
             } else {
                 $key = $filter_p = '';
-                $iddm = $_GET['iddm'];
+                if(isset($_GET['iddm'])){
+                    $iddm = $_GET['iddm'];
+                }else{
+                    $iddm = 0;
+                }
                 unset($_SESSION['key']);
             }
             $listsp_dm = listsp_dm($key, $iddm, $filter_p);
