@@ -18,46 +18,43 @@
                 </p>
             </div>
             <div class="img-big">
-                <img src="image/dong-ho-citizen-em1074-82d_1680330969 1.png" alt="" />
+                <img src="./uploads/img_sp/<?= $loadone_sp[0]['img']?>" alt="" />
             </div>
         </div>
         <div class="information">
             <h3 class="mb">
-                Đồng hồ Casio Lorem ipsum dolor sit amet consectetur
-                adipisicing.
+                <?= $loadone_sp[0]['name']?>
             </h3>
             <div class="Evaluate mb">
                 <i class="fa-solid fa-star"></i><small>(4.5)</small> |
                 <span>4.5k <small>đã bán</small></span>
             </div>
             <div class="price mb">
-                <p><span>₫1.000.000 </span><span>₫500.000</span></p>
+                <p><span>₫<?= $loadone_sp[0]['gia']?></span><span>₫<?= $loadone_sp[0]['gia_new']?></span></p>
                 <p>50% GIẢM</p>
             </div>
             <div class="des-sort mb">
-                <p>Mô tả ngắn:</p>
+                <p>Mô tả:</p>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Beatae, a modi dolor ea ab maxime quam tempore pariatur
-                    dolore quia?
+                <?= $loadone_sp[0]['mota']?>
                 </p>
             </div>
             <div class="des-sort mb">
                 <p>Xuất xứ:</p>
                 <p>
-                    Trung qUÓC
+                <?= $loadone_sp[0]['xuatxu']?>
                 </p>
             </div>
             <div class="des-sort mb">
                 <p>Kiểu máy:</p>
                 <p>
-                    DSFABKB
+                <?= $loadone_sp[0]['kieumay']?>
                 </p>
             </div>
             <div class="box-input mb">
                 Số lượng:
                 <input class="qtt" type="number" min="1" max="2" value="1" />
-                <span>&nbsp; &nbsp; 150 sản phẩm có sẵn</span>
+                <span>&nbsp; &nbsp; <?= $loadone_sp[0]['soluong']?> sản phẩm có sẵn</span>
             </div>
             <div class="box-submit">
                 <button>THÊM VÀO GIỎ HÀNG</button><button>MUA NGAY</button>
@@ -176,19 +173,20 @@
 
                 <div class="stars">
                     Đánh giá của bạn: &nbsp;
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
                 </div>
-                <h1 id="demo"></h1>
+                <!-- <h1 id="demo"></h1> -->
+                <input type="text" id="demo" name="stars">
                 </p>
                 <script>
                     const stars = document.querySelectorAll(".stars i");
                     stars.forEach((star, index1) => {
                         star.addEventListener("click", () => {
-                            document.getElementById("demo").innerHTML = index1 + 1;
+                            document.getElementById("demo").value = index1 + 1;
                             stars.forEach((star, index2) => {
                                 index1 >= index2 ?
                                     star.classList.add("active") :
