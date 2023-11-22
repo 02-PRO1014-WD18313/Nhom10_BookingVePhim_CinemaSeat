@@ -63,7 +63,7 @@ header .top .input input {
 header .top .input form {
   height: 100%;
 }
-header .top .input input:focus {
+body input:focus {
   border: 1px solid rgb(141, 228, 255);
   outline: none;
   box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
@@ -281,23 +281,61 @@ main {
   max-width: 100%;
   padding: 50px 100px;
 }
-.box-product {
+.box-productt {
   display: flex;
   justify-content: space-between;
 }
-.box-product .filter{
-width: 25%;
-background: #fff;
+.box-productt .filter h4 {
+  padding: 5px 10px 0 10px;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
-.box-product .listsp{
-  width: 73%;
+.box-productt .filter .filter-price {
+  border-bottom: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 20px;
 }
-.box-product .box-sp select{
-width: 150px;
-height: 35px;
-padding-left: 5px;
-font-size: 1.1rem;
-border-radius: 5px;
+
+.box-productt .filter .filter-price input[type="number"] {
+  width: 100px;
+  height: 25px;
+  border-radius: 2px;
+  padding-left: 5px;
+}
+.box-productt .filter .filter-price input[type="text"] {
+  width: 50%;
+  outline: none;
+  border: 1px solid #ccc;
+  height: 25px;
+  padding-left: 5px;
+}
+.box-productt .filter {
+  width: 25%;
+  background: #fff;
+}
+.box-productt .filter button {
+  width: 25%;
+  border: none;
+  font-size: 1.2rem;
+  float: right;
+  margin-right: 10px;
+  padding: 5px;
+}
+.box-productt .box-sp {
+  width: 72%;
+}
+.box-productt .box-sp select {
+  width: 150px;
+  height: 35px;
+  padding-left: 5px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+}
+.box-productt .box-sp form button {
+  height: 35px;
+  width: 50px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 main .title {
   display: flex;
@@ -321,7 +359,7 @@ main .block {
   display: grid;
   grid-template-columns: auto auto auto auto;
 }
-main .listsp{
+.box-productt .listsp {
   grid-template-columns: auto auto auto;
 }
 main .block .item {
@@ -401,7 +439,7 @@ aside .right-now button {
   border-radius: 2px;
   transition: 0.3s ease-out;
 }
-aside .right-now button:hover {
+body button:hover {
   background: rgb(224, 99, 26);
   border: 1px solid rgb(255, 255, 255);
   cursor: pointer;
@@ -959,4 +997,18 @@ footer .box-footer p:hover {
   font-size: 12px;
   list-style: none;
   margin-left: 18px;
+}
+
+#scrollDownBtn {
+  display: none;
+  /* Ẩn nút khi trang tải lên */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
