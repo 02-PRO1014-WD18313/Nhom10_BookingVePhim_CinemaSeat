@@ -70,6 +70,7 @@ if (isset($_POST['btn']) && $_POST['btn']) {
                     if ($_SESSION['role'] == 1) {
                         header('location: ../../admin/index.php');
                     } else {
+                        $_SESSION['iduser'] = $dangnhap['id'];
                         $_SESSION['user'] = $user;
                         header('location: ../../index.php');
                     }
