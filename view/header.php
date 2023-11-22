@@ -45,7 +45,7 @@
                     <div class="icon">
                         <span><i class="fa-regular fa-heart"></i><small>0</small></span>
                         <span>
-                            <i class="fa-solid fa-bag-shopping"></i><small>0</small></span>
+                            <a href="?act=addtocart"><i class="fa-solid fa-bag-shopping"></i></a><small>0</small></span>
                     </div>
                 </div>
             </div>
@@ -67,10 +67,10 @@
                     <nav>
                         <ul>
                             <li>
-                                <a href=""><i class="fa-solid fa-house"></i>Trang Chủ</a>
+                                <a href="index.php"><i class="fa-solid fa-house"></i>Trang Chủ</a>
                             </li>
                             <li><a href="">Cửa hàng</a></li>
-                            <li><a href="">Sản phẩm</a></li>
+                            <li><a href="?act=listsp">Sản phẩm</a></li>
                             <li><a href="">Blog</a></li>
                             <li><a href="">Liên hệ</a></li>
                         </ul>
