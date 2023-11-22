@@ -15,7 +15,8 @@
         <header>
             <div class="top">
                 <div class="logo">
-                    <img width="250" src="image/logg 1.png" alt="" />
+                    <a href="index.php"><img width="250" src="image/logg 1.png" alt="" /></a>
+
                 </div>
                 <div class="input">
                     <form action="?act=listsp" method="post">
@@ -86,3 +87,15 @@
                 </div>
             </div>
         </header>
+        <!-- <script>
+            var prevScrollpos = window.pageYOffset;
+            window.onscroll = function() {
+                var currentScrollPos = window.pageYOffset;
+                if (prevScrollpos > currentScrollPos) {
+                    document.querySelector(".bottom").style.display = "flex";
+                } else {
+                    document.querySelector(".bottom").style.display = "none";
+                }
+                prevScrollpos = currentScrollPos;
+            };
+        </script> -->
