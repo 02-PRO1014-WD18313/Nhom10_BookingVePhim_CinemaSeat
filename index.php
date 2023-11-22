@@ -19,6 +19,9 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             header('location:index.php');
             break;
         case 'ctsp':
+            if (isset($_GET['idsp']) && $_GET['idsp'] > 0) {
+                $loadone_sp = loadAll_sanpham("", $_GET['idsp']);
+            }
             include_once 'view/ctsp.php';
             break;
         case 'listsp':
