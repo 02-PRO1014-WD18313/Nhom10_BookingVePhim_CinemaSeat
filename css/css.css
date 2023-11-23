@@ -1027,3 +1027,27 @@ footer .box-footer p:hover {
 table {
   margin-top: 50px;
 }
+.container-table {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.container-table .table-left {
+  margin-right: 30px;
+  background-color: #e2e2e2;
+}
+
+.container-table .table-right h3{
+  text-align: center;
+}
+.container-table .table-right .thongtin {
+  margin-top: 10px;
+}
+.container-table .table-right .ip-thanhtoan {
+  width: 100%;
+  padding: 7px 90px 7px 5px;
+}
+.container-table .table-right .checkout-btn {
+  width: 270px;
+}
