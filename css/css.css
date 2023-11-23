@@ -285,46 +285,60 @@ main {
   display: flex;
   justify-content: space-between;
 }
-.box-productt .filter h4 {
-  padding: 5px 10px 0 10px;
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-.box-productt .filter .filter-price {
-  border-bottom: 1px solid #ccc;
-  padding: 15px;
-  margin-bottom: 20px;
-}
 
-.box-productt .filter .filter-price input[type="number"] {
-  width: 100px;
-  height: 25px;
-  border-radius: 2px;
-  padding-left: 5px;
-}
-.box-productt .filter .filter-price input[type="text"] {
-  width: 50%;
-  outline: none;
-  border: 1px solid #ccc;
-  height: 25px;
-  padding-left: 5px;
-}
 .box-productt .filter {
-  width: 25%;
+  width: 20%;
   background: #fff;
+  padding: 10px;
+  border-radius: 5px;
 }
-.box-productt .filter button {
-  width: 25%;
-  border: none;
-  font-size: 1.2rem;
-  float: right;
-  margin-right: 10px;
-  padding: 5px;
+.box-productt .filter .pro_top {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 15px 0;
+}
+.box-productt .filter .trademark_top{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+}
+.box-productt .filter .trademark_top img{
+  margin: 15px 5px;
+}
+.box-productt .filter .tieude{
+  margin-top: 10px;
+ font-size: 1.1rem;
+border-bottom: 1px solid #ccc;
+padding-bottom: 5px;
+}
+.box-productt .filter .pro_top .titlee p {
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+.box-productt .filter .pro_top .img_top {
+  width: 30%;
+}
+.box-productt .filter .pro_top .titlee {
+  width: 60%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.box-productt .filter .pro_top .titlee p i {
+  color: orange;
+}
+.box-productt .filter .pro_top .titlee p:nth-child(2) {
+  font-size: 1rem;
 }
 .box-productt .box-sp {
-  width: 72%;
+  width: 79%;
 }
-.box-productt .box-sp select {
+.box-productt .box-sp form{
+  display: flex;
+}
+.box-productt .box-sp .div{
+  margin-right: 20px;
+}
+.box-productt .box-sp .div select {
   width: 150px;
   height: 35px;
   padding-left: 5px;
@@ -337,6 +351,7 @@ main {
   border-radius: 5px;
   border: 1px solid #ccc;
 }
+
 main .title {
   display: flex;
   justify-content: space-between;
@@ -357,56 +372,54 @@ main .block {
   width: 100%;
   max-width: 100%;
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: repeat(5, 1fr);
 }
 .box-productt .listsp {
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(4, 1fr);
 }
 main .block .item {
-  padding: 0 30px;
+  padding: 20px 30px;
   background: rgb(255, 255, 255);
-  width: 300px;
+  width: 250px;
   margin-left: 50%;
   transform: translateX(-50%);
   margin-bottom: 40px;
   border-radius: 10px;
 }
-main .block .item .img p {
-  border-radius: 4px;
-  background: rgb(236, 236, 236);
-  margin: 20px 0;
-}
+
 main .block .item:hover {
   box-shadow: 5px 5px 20px rgba(128, 128, 128, 0.5);
   cursor: pointer;
 }
 main .block .item .img img:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   transition: 0.5s;
 }
 main .block .item .img img {
   width: 100%;
-  height: 250px;
+  height: 200px;
   transition: 0.5s;
 }
 main .block .item .name {
   padding-top: 20px;
-  font-size: 1.3vw;
+  font-size: 1.2vw;
   text-overflow: ellipsis;
   white-space: nowrap;
+  overflow: hidden;
 }
 main .block .item .price {
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
-  font-size: 1.3vw;
+  font-size: 1.1vw;
   color: rgb(210, 1, 1);
 }
 main .block .item .Evaluate {
   display: flex;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 20px 0 0 0;
 }
 main .block .item .Evaluate .fa-star {
   color: orange;
@@ -446,7 +459,6 @@ body button:hover {
   transition: 0.3s ease-in;
 }
 main .block .item .Evaluate p:nth-child(2) {
-  color: white;
   padding: 10px 11px 0 9px;
   background: rgb(145, 7, 7);
   border-radius: 5px;
@@ -468,7 +480,7 @@ main .block .item .Evaluate p .fa-cart-plus:hover {
     transform: rotate(-15deg);
   }
 }
-main .block .item .price span:nth-child(1) {
+main .block .item .price p:nth-child(1) {
   font-size: 0.9vw;
   color: rgb(174, 174, 174);
   text-decoration: line-through;
