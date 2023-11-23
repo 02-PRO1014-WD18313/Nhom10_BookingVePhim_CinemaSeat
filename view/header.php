@@ -21,9 +21,9 @@
                 <div class="input">
                     <form action="?act=listsp" method="post">
                         <div class="icon-search">
-                            <button name="btn" value="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <button name="submit" value="submit" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
-                        <input name="key" type="text" placeholder="Search..." />
+                        <input name="kyw" type="text" placeholder="Search..." />
                     </form>
                 </div>
                 <div class="user">

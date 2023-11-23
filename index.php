@@ -88,11 +88,6 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             include_once 'view/cart/viewcart.php';
             break;
-        case 'delete_cart':
-            
-            include_once 'view/cart/viewcart.php';
-            break;
-
     }
 } else {
     include 'view/home.php';
