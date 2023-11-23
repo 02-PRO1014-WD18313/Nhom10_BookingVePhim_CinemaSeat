@@ -74,17 +74,6 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include_once 'view/listsp.php';
             break;
         case 'addtocart':
-<<<<<<< HEAD
-            if (isset($_GET['idsp']) && ($_GET['idsp'] > 0)) {
-                $idsp = $_GET['idsp'];
-                $iduser = $_SESSION['iduser'];
-                $soluong = 1;
-                // echo $iduser . $idsp;
-                
-                insert_cart($iduser, $idsp, $soluong);
-                // $loadAll_cart = loadAll_cart($_SESSION['iduser']);
-                // header('Location: ' . $_SERVER['REQUEST_URI']);
-=======
             if (isset($_SESSION['user'])) {
                 if (isset($_GET['idsp']) && ($_GET['idsp'] > 0)) {
                     $idsp = $_GET['idsp'];
@@ -96,7 +85,6 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     // header('Location: ' . $_SERVER['REQUEST_URI']);
                 }
                 $loadAll_cart = loadAll_cart($_SESSION['iduser']);
->>>>>>> ea7cf3a159a6c86ef6af396209b14592260b6822
             }
             include_once 'view/cart/viewcart.php';
             break;
