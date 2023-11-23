@@ -10,20 +10,31 @@ function loadAll_sanpham($key = "", $idsp = 0)
     }
     return pdo_query($sql);
 }
-function listsp_dm($key = "", $iddm = 0, $filter_p = "")
+function listsp_dm($key = "", $iddm = 0, $gia = "", $kieumay = "", $xuatxu = "")
 {
-    $sql = "SELECT * FROM sanpham";
+    $sql = "SELECT * FROM sanpham WHERE 1";
+    if ($gia != "" && $kieumay != "" && $xuatxu != "") {
+        $sql .= " AND gia_new BETWEEN $gia AND kieumay = '$kieumay' AND xuatxu = '$xuatxu'";
+    }
+    if ($kieumay != "" && $xuatxu != "") {
+        $sql .= " AND kieumay = '$kieumay' AND xuatxu = '$xuatxu'";
+    }
+    if ($xuatxu != "") {
+        $sql .= " AND xuatxu = '$xuatxu'";
+    }
+    if ($kieumay != "") {
+        $sql .= " AND kieumay = '$kieumay'";
+    }
+    if ($gia != "") {
+        $sql .= " AND gia_new BETWEEN $gia";
+    }
     if ($key != "") {
-        $sql .= " WHERE name LIKE '%$key%'";
+        $sql .= " AND name LIKE '%$key%'";
     }
     if ($iddm > 0) {
-        $sql .= " WHERE iddm = $iddm";
+        $sql .= " AND iddm = $iddm";
     }
-    if($filter_p == "Tăng dần"){
-        $sql .= " ORDER BY gia_new ASC";
-    }else{
-        $sql .= " ORDER BY gia_new DESC";
-    }
+
     return pdo_query($sql);
 }
 

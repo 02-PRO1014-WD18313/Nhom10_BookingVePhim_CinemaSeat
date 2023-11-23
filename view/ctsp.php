@@ -1,3 +1,13 @@
+<?php
+$stars= $sale = 0;
+foreach ($loadone_sp as $value) {
+    $sale = ($value['gia'] - $value['gia_new']) / $value['gia'] * 100;
+}
+foreach ($loadbl_sp as $value) {
+         $stars += $value['star'] / count($loadbl_sp);
+}
+?>
+
 <h6 class="path">
     <span><i class="fa-solid fa-house"></i>Home</span>
     <i style="font-size: 5px" class="fa-solid fa-circle"></i> Chi tiết
@@ -18,46 +28,46 @@
                 </p>
             </div>
             <div class="img-big">
-                <img src="./uploads/img_sp/<?= $loadone_sp[0]['img']?>" alt="" />
+                <img src="./uploads/img_sp/<?= $loadone_sp[0]['img'] ?>" alt="" />
             </div>
         </div>
         <div class="information">
             <h3 class="mb">
-                <?= $loadone_sp[0]['name']?>
+                <?= $loadone_sp[0]['name'] ?>
             </h3>
             <div class="Evaluate mb">
                 <i class="fa-solid fa-star"></i><small>(4.5)</small> |
                 <span>4.5k <small>đã bán</small></span>
             </div>
             <div class="price mb">
-                <p><span>₫<?= $loadone_sp[0]['gia']?></span><span>₫<?= $loadone_sp[0]['gia_new']?></span></p>
-                <p>50% GIẢM</p>
+                <p><span>₫<?= $loadone_sp[0]['gia'] ?></span><span>₫<?= $loadone_sp[0]['gia_new'] ?></span></p>
+                <p><?= number_format(floor($sale)) ?>% GIẢM</p>
             </div>
             <div class="des-sort mb">
                 <p>Mô tả:</p>
                 <p>
-                <?= $loadone_sp[0]['mota']?>
+                    <?= $loadone_sp[0]['mota'] ?>
                 </p>
             </div>
             <div class="des-sort mb">
                 <p>Xuất xứ:</p>
                 <p>
-                <?= $loadone_sp[0]['xuatxu']?>
+                    <?= $loadone_sp[0]['xuatxu'] ?>
                 </p>
             </div>
             <div class="des-sort mb">
                 <p>Kiểu máy:</p>
                 <p>
-                <?= $loadone_sp[0]['kieumay']?>
+                    <?= $loadone_sp[0]['kieumay'] ?>
                 </p>
             </div>
             <div class="box-input mb">
                 Số lượng:
                 <input class="qtt" type="number" min="1" max="2" value="1" />
-                <span>&nbsp; &nbsp; <?= $loadone_sp[0]['soluong']?> sản phẩm có sẵn</span>
+                <span>&nbsp; &nbsp; <?= $loadone_sp[0]['soluong'] ?> sản phẩm có sẵn</span>
             </div>
             <div class="box-submit">
-                <button><a href="?act=addtocart&idsp=<?= $id ?>">THÊM VÀO GIỎ HÀNG</a></button><button>MUA NGAY</button>
+                <button>THÊM VÀO GIỎ HÀNG</button><button>MUA NGAY</button>
             </div>
         </div>
     </div>
@@ -67,9 +77,9 @@
             <div class="Evaluate">
                 <p>Phản hồi khách hàng</p>
                 <p>
-                    <span>4.5</span>
+                    <span><?= number_format($stars, 1) ?></span>
                     <small><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></small>
-                    <small>(36 đánh giá)</small>
+                    <small>(<?= count($loadbl_sp) ?> đánh giá)</small>
                 </p>
                 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                 <script type="text/javascript">
@@ -124,46 +134,27 @@
             </div>
             <div class="box-comment">
                 <p id="bl">Bình luận</p>
-                <div class="comment">
-                    <div class="img"><img src="image/avata_04.webp" alt=""></div>
-                    <div class="content">
-                        <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </p>
-                        <p><span>Tien Dat </span> . <span>26/12/2022</span></p>
-                        <p>Được thiết kế rất giống với chiếc Galaxy tab S6 có giá gần gấp đôi, với việc loại bỏ duy nhất.
-                        </p>
+                <?php
+                foreach ($loadbl_sp as $value) {
+                    extract($value) ?>
+                    <div class="comment">
+                        <div class="img"><img src="image/avata_04.webp" alt=""></div>
+                        <div class="content">
+                            <p>
+                                <?php
+                                for ($i = 0; $i < $star; $i++) {
+                                    echo '<i class="fa-solid fa-star"></i>';
+                                }
+                                ?>
+                            </p>
+                            <p><span><?= $user ?> </span> . <span><?= date('d/m/Y', strtotime($date)) ?></span></p>
+                            <p><?= $noidung ?>
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="comment">
-                    <div class="img"><img src="image/avata_04.webp" alt=""></div>
-                    <div class="content">
-                        <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </p>
-                        <p><span>Tien Dat </span> . <span>26/12/2022</span></p>
-                        <p>Được thiết kế rất giống với chiếc Galaxy tab S6 có giá gần gấp đôi, với việc loại bỏ duy nhất.
-                        </p>
-                    </div>
-                </div>
-                <div class="comment">
-                    <div class="img"><img src="image/avata_04.webp" alt=""></div>
-                    <div class="content">
-                        <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </p>
-                        <p><span>Tien Dat </span> . <span>26/12/2022</span></p>
-                        <p>Được thiết kế rất giống với chiếc Galaxy tab S6 có giá gần gấp đôi, với việc loại bỏ duy nhất.
-                        </p>
-                    </div>
-                </div>
-                <div class="comment">
-                    <div class="img"><img src="image/avata_04.webp" alt=""></div>
-                    <div class="content">
-                        <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </p>
-                        <p><span>Tien Dat </span> . <span>26/12/2022</span></p>
-                        <p>Được thiết kế rất giống với chiếc Galaxy tab S6 có giá gần gấp đôi, với việc loại bỏ duy nhất.
-                        </p>
-                    </div>
-                </div>
+                <?php }
+                ?>
+
             </div>
         </div>
         <div class="form-Evaluate">
@@ -196,9 +187,9 @@
                     });
                 </script>
                 <p>
-                    <textarea name="" id="" cols="70" rows="10" placeholder="Nhập nội dung đánh giá"></textarea>
+                    <textarea name="noidung" id="" cols="70" rows="10" placeholder="Nhập nội dung đánh giá"></textarea>
                 </p>
-                <button>Gửi</button>
+                <button name="submit" value="submit" type="submit">Gửi</button>
             </form>
         </div>
     </div>

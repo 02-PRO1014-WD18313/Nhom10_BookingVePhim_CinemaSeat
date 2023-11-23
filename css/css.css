@@ -851,7 +851,6 @@ main .box-posts .post img {
 footer {
   background: rgb(50, 50, 50);
   padding: 20px 20px;
-  margin-top: 50px;
 }
 .footer {
   display: grid;
@@ -1025,68 +1024,6 @@ footer .box-footer p:hover {
   border-radius: 5px;
   cursor: pointer;
 }
-<<<<<<< HEAD
-
-/* .container-table {
-  display: flex;
-  margin-top: 12px;
-}
-.container-table table{
-  text-align: center;
-  margin-left: 220px;
-  margin-right: 50px;
-
- 
-  background-color: #dcdada9a;
-}
-
-.checkout-btn {
-  border: 1px solid #ccc;
-  width: 250px;
-  height: 30px;
-}
-
-.cart-thanhtoan h3 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-.cart-thanhtoan .thongtin {
-  margin-top: 10px;
-}
-.cart-thanhtoan .ip-thanhtoan {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 250px;
-  padding: 7px 50px 7px 5px;
-}
-.container-table .thanhtoan-online p {
-  margin: 7px 0;
-} */
-.container-table {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.container-table .table-left {
-  margin-right: 30px;
-  background-color: #e2e2e2;
-}
-
-.container-table .table-right h3{
-  text-align: center;
-}
-.container-table .table-right .thongtin {
-  margin-top: 10px;
-}
-.container-table .table-right .ip-thanhtoan {
-  width: 100%;
-  padding: 7px 90px 7px 5px;
-}
-.container-table .table-right .checkout-btn {
-  width: 270px;
-=======
 table {
   margin-top: 50px;
->>>>>>> ea7cf3a159a6c86ef6af396209b14592260b6822
 }
