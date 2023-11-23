@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 21, 2023 lúc 05:28 PM
+-- Thời gian đã tạo: Th10 23, 2023 lúc 10:37 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.1.17
 
@@ -37,6 +37,32 @@ CREATE TABLE `album` (
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `binhluan`
+--
+
+CREATE TABLE `binhluan` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_pro` int(11) NOT NULL,
+  `noidung` text NOT NULL,
+  `date` date NOT NULL,
+  `star` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `binhluan`
+--
+
+INSERT INTO `binhluan` (`id`, `id_user`, `id_pro`, `noidung`, `date`, `star`) VALUES
+(1, 2, 1, 'hay', '2023-11-09', 4),
+(2, 2, 1, 'ddepj', '2023-11-16', 5),
+(3, 2, 1, 'ajhsgd', '2023-11-22', 5),
+(8, 2, 1, 'hay qaus', '2023-11-23', 4),
+(9, 2, 1, 'hay qaus', '2023-11-23', 4);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `cart`
 --
 
@@ -46,6 +72,15 @@ CREATE TABLE `cart` (
   `idsp` int(11) NOT NULL,
   `soluong` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `cart`
+--
+
+INSERT INTO `cart` (`id`, `iduser`, `idsp`, `soluong`) VALUES
+(2, 2, 14, 1),
+(3, 2, 17, 1),
+(4, 2, 13, 1);
 
 -- --------------------------------------------------------
 
@@ -117,9 +152,9 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`id`, `iddm`, `name`, `img`, `gia`, `gia_new`, `mota`, `soluong`, `xuatxu`, `kieumay`) VALUES
-(1, 4, 'Đồng Hồ Casio', 'dongho1.jpeg', 1200000, 1000, 'sản phẩm oke\"', 20, 'Thụy Sỹ', 'Cơ'),
+(1, 4, 'Đồng Hồ Casio', 'dongho1.jpeg', 1200000, 1000, 'sản phẩm oke\"', 20, 'Thụy Sỹ', 'Cơ/Automatic'),
 (2, 2, 'Đồng hồ Orient', 'dongho2.jpeg', 2300000, 500000, 'hay', 12, '', ''),
-(3, 3, 'Đồng hồ Citizen', 'dongho3.jpeg', 500, 250, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolore, laborum deleniti veniam in, commodi debitis harum corporis dolor voluptates ipsa dicta totam odio tenetur a odit sint assumenda expedita.\"', 20, '123', 'Cơ'),
+(3, 3, 'Đồng hồ Citizen', 'dongho3.jpeg', 500, 250, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolore, laborum deleniti veniam in, commodi debitis harum corporis dolor voluptates ipsa dicta totam odio tenetur a odit sint assumenda expedita.\"', 20, 'Thụy Sỹ', 'Cơ/Automatic'),
 (4, 4, 'Đồng Hồ Seiko', 'dongho4.jpeg', 3500000, 3000000, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolore, laborum deleniti veniam in, commodi debitis harum corporis dolor voluptates ipsa dicta totam odio tenetur a odit sint assumenda expedita.', 15, '1323', '123123'),
 (13, 5, 'Tissot T006.407.16.033.00', '1700576058_Tissot T006.407.16.033.00.jpeg', 1200000, 890000, 'đẹp', 10, 'Hàn Quốc', 'Kiểu mạ vàng ấy'),
 (14, 3, 'Citizen NH8363-14H', '1700576274_Citizen NH8363-14H.jpeg', 750000, 500000, 'hay', 5, 'Việt Nam', 'Kiểu mạ vàng ấy'),
@@ -174,6 +209,14 @@ ALTER TABLE `album`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `binhluan`
+--
+ALTER TABLE `binhluan`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_tk_bl` (`id_user`),
+  ADD KEY `fk_pro_bl` (`id_pro`);
+
+--
 -- Chỉ mục cho bảng `cart`
 --
 ALTER TABLE `cart`
@@ -217,10 +260,16 @@ ALTER TABLE `album`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT cho bảng `binhluan`
+--
+ALTER TABLE `binhluan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `danhmuc`
