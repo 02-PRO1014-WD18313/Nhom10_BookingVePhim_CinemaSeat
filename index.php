@@ -65,7 +65,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $idsp = $_GET['idsp'];
                 $iduser = $_SESSION['iduser'];
                 $soluong = 1;
-                echo $iduser . $idsp;
+                // echo $iduser . $idsp;
                 
                 insert_cart($iduser, $idsp, $soluong);
                 // $loadAll_cart = loadAll_cart($_SESSION['iduser']);
@@ -75,6 +75,11 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             
             include_once 'view/cart/viewcart.php';
             break;
+        case 'delete_cart':
+            
+            include_once 'view/cart/viewcart.php';
+            break;
+
     }
 } else {
     include 'view/home.php';

@@ -7,4 +7,8 @@
         $sql = "INSERT INTO `cart` (`iduser`, `idsp`, `soluong`) VALUES ('$iduser', '$idsp', '$soluong')";
         pdo_execute($sql);
     }
+    function delete_cart($id) {
+        $sql = 'DELETE FROM `cart` WHERE $id = "$id"';
+        pdo_execute($sql);
+    }
 ?>
