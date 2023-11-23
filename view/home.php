@@ -35,23 +35,21 @@
                 extract($value); ?>
 
                 <div class="item">
-                    <div class="name"><?= $name ?></div>
                     <a href="?act=ctsp&idsp=<?= $id ?>">
-                        <div class="img">
-                            <p>
-                                <img src="uploads/img_sp/<?= $img ?>" alt="" />
-                            </p>
+                        <div class="img">                          
+                                <img src="uploads/img_sp/<?= $img ?>" alt="" />                         
                         </div>
                     </a>
+                    <div class="name"><?= $name ?></div>
                     <div class="price">
-                        <span><?= number_format($gia) ?> VND</span><span><?= number_format($gia_new) ?> VND</span>
+                       <p><?= number_format($gia_new) ?> ₫</p> <p><?= number_format($gia) ?> ₫</p>
                     </div>
                     <div class="Evaluate">
                         <p>
                             <i class="fa-solid fa-star"></i> <span>(4.5)</span> <br />
                             <span>Đã mua 4.5k</span>
                         </p>
-                        <p><a href="?act=addtocart&idsp=<?= $id ?>"><i class="fa-solid fa-cart-plus"></i></a></p>
+                        <p><a style="color: white;" href="?act=addtocart&idsp=<?= $id ?>"><i class="fa-solid fa-cart-plus"></i></a></p>
                     </div>
                 </div>
 
