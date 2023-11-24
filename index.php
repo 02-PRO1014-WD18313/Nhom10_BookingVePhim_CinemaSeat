@@ -40,6 +40,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 // từ khóa
                 if (isset($_POST['kyw'])) {
                     $key = $_POST['kyw'];
+                    $_SESSION['key'] = $key;
                 } else {
                     $key = "";
                 }
@@ -63,6 +64,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 }
             } else {
                 $key = $gia = $kieumay = $xuatxu = "";
+                unset($_SESSION['key']);
             }
             // id danh mục
             if (isset($_GET['iddm']) && $_GET['iddm'] > 0) {
@@ -75,14 +77,13 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
         case 'addtocart':
             if (isset($_SESSION['user'])) {
-                if (isset($_GET['idsp']) && ($_GET['idsp'] > 0)) {
+                if (isset($_POST['btn']) && $_POST['btn']) {
                     $idsp = $_GET['idsp'];
                     $iduser = $_SESSION['iduser'];
                     $soluong = 1;
-                    echo $iduser . $idsp;
                     insert_cart($iduser, $idsp, $soluong);
                     // $loadAll_cart = loadAll_cart($_SESSION['iduser']);
-                    // header('Location: ' . $_SERVER['REQUEST_URI']);
+                    header('Location: ' . $_SERVER['REQUEST_URI']);
                 }
                 $loadAll_cart = loadAll_cart($_SESSION['iduser']);
             }
