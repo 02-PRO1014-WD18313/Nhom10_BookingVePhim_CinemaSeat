@@ -279,7 +279,10 @@ section .trademark p {
 }
 main {
   max-width: 100%;
-  padding: 50px 100px;
+  padding: 0 100px 50px 100px;
+}
+.result{
+  margin: 10px 0 10px 100px;
 }
 .box-productt {
   display: flex;
@@ -427,10 +430,6 @@ main .block .item .Evaluate .fa-star {
 main .block .item .Evaluate p i {
   font-size: 1.5vw;
 }
-main .block .item .Evaluate p span {
-  color: gray;
-  font-size: 0.9vw;
-}
 aside {
   display: flex;
   justify-content: space-between;
@@ -458,13 +457,18 @@ body button:hover {
   cursor: pointer;
   transition: 0.3s ease-in;
 }
-main .block .item .Evaluate p:nth-child(2) {
-  padding: 10px 11px 0 9px;
+main .block .item .Evaluate form {
+  width: 40px;height: 40px;
   background: rgb(145, 7, 7);
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-main .block .item .Evaluate p .fa-cart-plus {
-  margin-top: 3px;
+main .block .item .Evaluate form button{
+  background: none;
+  border: none;
+  color: white;
 }
 main .block .item .Evaluate p .fa-cart-plus:hover {
   animation: search 0.5s linear infinite;
@@ -549,27 +553,34 @@ main .box-posts .post img {
   display: flex;
   background: white;
   justify-content: space-between;
-  padding: 20px 30px;
+  padding: 20px 60px;
 }
 .box-ctsp .top .image {
-  width: 52.5%;
+  width: 52%;
   display: flex;
   justify-content: space-between;
 }
+.box-ctsp .top .image .img-small img.selected {
+  border: 2px solid green;
+}
 .box-ctsp .top .image .img-small img {
-  width: 130px;
+  width: 150px;
   height: 150px;
-  border: none;
-  background: #e6e6e6;
+  border: 1px solid #ccc;
 }
 .box-ctsp .top .image .img-small p {
   padding-bottom: 5px;
 }
 .box-ctsp .top .image .img-big {
-  background: #e6e6e6;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
 }
 .box-ctsp .top .information {
-  width: 40%;
+  width: 45%;
+}
+.box-ctsp .top .image .img-big img{
+  width: 450px;
 }
 .box-ctsp .top .information .price {
   padding-left: 20px;
@@ -664,6 +675,10 @@ main .box-posts .post img {
   border: 1px solid #ccc;
   height: 310px;
   width: 482px;
+}
+.box-ctsp .bottom .box-Evaluate .box-comment{
+  overflow: auto;
+  height: 425px;
 }
 .box-ctsp .bottom .box-Evaluate .box-comment #bl {
   font-size: 1.8rem;
@@ -1024,30 +1039,122 @@ footer .box-footer p:hover {
   border-radius: 5px;
   cursor: pointer;
 }
-table {
-  margin-top: 50px;
-}
 .container-table {
-  margin-top: 20px;
   display: flex;
+  justify-content: space-between;
+  padding: 20px 50px;
+}
+.table-left{
+  border-spacing: 10px;
+}
+.container-table .table-left{
+  width: 65%;
+  border-collapse: collapse;
+}
+.container-table td, .container-table th {
+  text-align: center;
+  padding: 10px 16px;
+  border: none;
+}
+
+.container-table tbody tr{background-color: #ffffff;} 
+.container-table tbody tr:hover {background-color: #ccc;}
+.container-table th { 
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #2e2e2e;
+  color: white;
+}
+.container-table .table-left tbody tr {
+border-bottom: 1px solid #ccc;
+}
+.container-table .table-left button {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  background: rgb(255, 225, 0);
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.container-table .table-left input {
+  width: 70px;
+  height: 25px;
+  text-align: center;
+  border: none;
+  background: #e6e6e6;
+  border-radius: 8px;
+}
+.container-table .table-left .fa-xmark{
+  padding: 8px;
+  background: red;
+  color: white;
+  border-radius: 3px;
+}
+.container-table .table-left .btn {
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
-
-.container-table .table-left {
-  margin-right: 30px;
-  background-color: #e2e2e2;
+.container-table .table-right{
+width: 30%;
 }
-
-.container-table .table-right h3{
-  text-align: center;
+.container-table .table-right .discount input{
+  width: 335px;
+  padding: 12px 10px;
+  border: none;
+  font-size: 1rem;
 }
-.container-table .table-right .thongtin {
-  margin-top: 10px;
+.container-table .table-right .discount button{
+  width: 90px;
+  border: none;
+  padding: 12px 12px;
+  background: rgb(255, 225, 0);
+  color: black;
+  font-size: 1rem;
 }
-.container-table .table-right .ip-thanhtoan {
+.container-table .table-right .form-sum form {
+background: white;
+padding: 10px 30px 25px 30px;
+border-radius: 5px;
+}
+.container-table .table-right .form-sum h3{
+  position: relative;
+  margin: 30px 0 20px 0;
+}
+.container-table .table-right .form-sum h3::before{
+content: " ";
+position: absolute;
+right: 0;
+top: 12px;
+width: 250px;
+height: 1.5px;
+background: red;
+}
+.container-table .table-right .form-sum .total{
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+.container-table .table-right .form-sum form .total:nth-child(4){
+  font-size: 1.3rem;
+}
+.container-table .table-right .form-sum form hr{
+  margin-top: 20px;
+}
+.container-table .table-right .form-sum form button{
+  margin: 20px 0 40px 0 ;
   width: 100%;
-  padding: 7px 90px 7px 5px;
+  height: 50px;
+  font-size: 1.1rem;
+  background: rgb(255, 225, 0);
+  border: none;
+  font-weight: bold;
+  border-radius: 3px;
 }
-.container-table .table-right .checkout-btn {
-  width: 270px;
+.container-table .table-right .form-sum form button:hover{
+font-size: 1.2em;
 }
