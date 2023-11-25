@@ -133,6 +133,11 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             include "view/taikhoan/uploadtk.php";
             break;
+        case 'thongtin':
+            include 'view/cart/thongtin.php';
+            break;
+        
+        
     }
 } else {
     include 'view/home.php';

@@ -1183,3 +1183,95 @@ footer .box-footer p:hover {
 .container-table .table-right .form-sum form button:hover {
   font-size: 1.2em;
 }
+
+/* css thong tin thanh toán */
+.container-thanhtoan {
+  display: flex;
+  justify-content: center;
+  /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+}
+.container-thanhtoan h5{
+  border-bottom:1px solid gray !important;
+  padding-bottom: 9px;
+  font-size: 20px;
+}
+.box {
+  display: flex;
+}
+.box-left {
+  height: 600px;
+  width: 920px;
+  margin-right: 20px;
+}
+.box-ip {
+  display: flex;
+  font-size: 16px;
+  margin: 10px 0 20px 0;
+  padding: 20px 0;
+  justify-content: center;
+  background-color: rgb(233, 233, 233);
+}
+.box-left .ip-left {
+  margin-right: 25px;
+}
+.box-tien {
+  margin: 10px 0 20px 0;
+  background-color: rgb(233, 233, 233);
+}
+.box-ip .ip input {
+  margin-top: 7px;
+  border: 1px solid gray;
+  padding: 7px 250px 7px 10px;
+  border-radius: 3px;
+}
+.box-ip .ip {
+  margin-top: 10px;
+}
+
+.box-right{
+  font-size: 17px;
+  width: 400px;
+}
+.box-right .box-tien {
+  padding: 17px;
+}
+.box-thanhtoan .box-thanhtoan-online {
+  margin-top: 10px;
+  font-size: 16px;
+  background-color: rgb(227, 225, 225);
+  padding: 20px 70px 20px 35px;
+}
+.bta {
+  padding: 7px;
+}
+.box-thanhtoan .box-thanhtoan-online button {
+  border: none;
+  background-color: rgb(255, 247, 0);
+  width: 865px;
+  height: 40px;
+  font-weight: bold;
+}
+.box-thanhtoan .box-thanhtoan-online button:hover {
+  cursor: pointer;
+  background-color: rgb(0, 255, 42);
+  color: white;
+  font-size: 15px;
+}
+.tien, .voch, .tienn{
+  display: flex;
+}
+.vocher {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  margin: 7px 0;
+}
+.tien .tien-left {
+  margin: 2px 120px 5px 0;
+}
+.vocher .voch {
+  padding: 8px 0;
+}
+.text-pro {
+  font-size: 16px;
+  margin-bottom:10px;
+}
