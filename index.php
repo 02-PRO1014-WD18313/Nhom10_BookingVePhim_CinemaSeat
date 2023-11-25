@@ -11,10 +11,9 @@ include 'model/binhluan.php';
 
 
 
-
-$list_sp_home = loadAll_sanpham();
+$loadstar = loadstar();
+// $list_sp_home = loadAll_sanpham();
 $list_dm = loadAll_danhmuc();
-
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
@@ -104,9 +103,18 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
 
                     header('Location: ' . $_SERVER['REQUEST_URI']);
                 }
+                if (isset($_POST['btn_giam']) && $_POST['btn_giam']) {
+                    update_soluong($_SESSION['iduser'], $_GET['idcart'], $giam = "a", $tang = "");
+                    header("Location: ?act=addtocart");
+                    exit();
+                }
+                if (isset($_POST['btn_tang']) && $_POST['btn_tang']) {
+                    update_soluong($_SESSION['iduser'], $_GET['idcart'], $giam = "", $tang = "a");
+                    header("Location: ?act=addtocart");
+                    exit();
+                }
                 $loadAll_cart = loadAll_cart($_SESSION['iduser']);
             }
-
             include_once 'view/cart/viewcart.php';
             break;
         case 'uploadtk':
@@ -116,7 +124,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     $pass = $_POST['pass'];
                     $email = $_POST['email'];
                     $id = $_POST['id'];
-                    if($user =='' || $pass =='' || $email ==''){
+                    if ($user == '' || $pass == '' || $email == '') {
                         echo 'Không được để trống các trường';
                     }
                     update_taikhoan($id, $user, $pass, $email);
