@@ -31,9 +31,9 @@ function loadall_taikhoan($key="",$idtk=0){
         $sp=pdo_query_one($sql);
         return $sp;
     }
-    function  update_taikhoan($id,$user,$pass,$email,$diachi,$tel){
-            $sql="UPDATE taikhoan SET user='".$user."', pass='".$pass."', email='".$email."',  diachi='".$diachi."', tel='".$tel."' WHERE id=".$id;
-        pdo_execute($sql);
+    function  update_taikhoan($id,$user,$pass,$email){
+            $sql="UPDATE taikhoan SET user='".$user."', pass='".$pass."', email='".$email."' WHERE id=".$id;
+            pdo_execute($sql);
     }
         
     function update_role($id,$role){
@@ -45,5 +45,8 @@ function loadall_taikhoan($key="",$idtk=0){
         $sp=pdo_query_one($sql);
         return $sp;
     }
-
+    function selectone_tk($id){
+        $sql = "SELECT * FROM taikhoan WHERE id=".$id;
+        return pdo_query_one($sql);
+    }
 ?>

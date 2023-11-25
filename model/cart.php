@@ -1,4 +1,5 @@
 <?php
+
 function loadAll_cart($iduser)
 {
     $sql = "SELECT cart.id as idcart, sanpham.id as idsp, sanpham.name,sanpham.gia, sanpham.gia_new, sanpham.img, cart.soluong FROM sanpham JOIN cart ON cart.idsp = sanpham.id WHERE cart.iduser = '$iduser' order by cart.id desc";
@@ -24,3 +25,4 @@ function update_sl($id, $idsp)
     $sql = "UPDATE cart SET soluong = soluong + 1 WHERE iduser = '$id' AND idsp = '$idsp'";
     pdo_execute($sql);
 }
+

@@ -1,15 +1,25 @@
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Profile</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 
 <body>
+
+    <title>Tài koản</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+
+<body> 
+
     <div class="container">
         <h1 class="text-center">Thông tin cá nhân</h1>
         <div class="container">
@@ -24,11 +34,14 @@
                             <div class="profile-usertitle-job text-center"> Name </div>
                         </div>
                         <div class="profile-userbuttons">
+
                             <button type="button" class="btn btn-success btn-sm">Trang chủ</button>
+
                         </div>
                         <div class="profile-usermenu">
                             <ul class="nav">
                                 <div class="" ><span>Menu</span></div>
+
                                 <li class="active"> <a href="#"> <i class="glyphicon glyphicon-info-sign"></i>Cập nhật thông tin cá nhân </a>
                                 </li>
                                 <li> <a href="#"> <i class="glyphicon glyphicon-heart"></i> Sảnphẩm yêu thích </a>
@@ -38,6 +51,7 @@
                                 <li> <a href="#"> <i class="glyphicon glyphicon-envelope"></i> Cập nhật tài khoản </a>
                                 </li>
                                 <button type="button" class="btn btn-danger btn-sm">Thoát ra</button>
+
 
                             </ul>
                         </div>
@@ -55,9 +69,13 @@
             </div>
         </div>
     </div>
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet">
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="js/jquery-1.11.1.min.js"></script>
 </body>
 
+
 </html>
+

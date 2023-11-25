@@ -105,10 +105,12 @@
                     input.value = quantity;
                     total.textContent = '₫' + number_format(price * quantity);
 
+
                     // Update the totalAmount variable when the quantity changes
                     totalAmount -= price;
                 }
                 updateTotalAmount();
+
             });
 
             // Add click event listener for increment button
@@ -117,6 +119,7 @@
                     quantity++;
                     input.value = quantity;
                     total.textContent = '₫' + number_format(price * quantity);
+
 
                     // Update the totalAmount variable when the quantity changes
                     totalAmount += price;
@@ -133,6 +136,7 @@
                 }
                 total.textContent = '₫' + number_format(price * quantity);
 
+
                 // Update the totalAmount variable when the quantity changes
                 totalAmount = (totalAmount - (price * (quantity - 1))) + (price * quantity);
 
@@ -142,6 +146,7 @@
             // Initialize the totalAmount variable with the initial values
             totalAmount += price * quantity;
             updateTotalAmount();
+
         });
 
         // Function to format numbers as currency
@@ -149,10 +154,12 @@
             return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
 
+
         // Function to update the total amount in the HTML
         function updateTotalAmount() {
             // Update the total amount in the HTML
             document.querySelector('.total-amount').textContent = '₫' + number_format(totalAmount);
         }
+
     });
 </script>

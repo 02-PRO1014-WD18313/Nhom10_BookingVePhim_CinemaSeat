@@ -490,15 +490,16 @@ body button:hover {
   transition: 0.3s ease-in;
 }
 main .block .item .Evaluate form {
-  width: 40px;
-  height: 40px;
+
+  width: 40px;height: 40px;
   background: rgb(145, 7, 7);
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-main .block .item .Evaluate form button {
+
+main .block .item .Evaluate form button{
   background: none;
   border: none;
   color: white;
@@ -586,7 +587,8 @@ main .box-product .more:hover {
 .box-ctsp .top .information {
   width: 45%;
 }
-.box-ctsp .top .image .img-big img {
+
+.box-ctsp .top .image .img-big img{
   width: 450px;
 }
 .box-ctsp .top .information .price {
@@ -1159,6 +1161,7 @@ footer .box-footer p:hover {
   justify-content: space-between;
   font-weight: bold;
 }
+
 .container-table .table-right .form-sum form .total:nth-child(4) {
   font-size: 1.3rem;
 }
@@ -1167,6 +1170,7 @@ footer .box-footer p:hover {
 }
 .container-table .table-right .form-sum form button {
   margin: 20px 0 40px 0;
+
   width: 100%;
   height: 50px;
   font-size: 1.1rem;
@@ -1175,6 +1179,7 @@ footer .box-footer p:hover {
   font-weight: bold;
   border-radius: 3px;
 }
+
 .container-table .table-right .form-sum form button:hover {
   font-size: 1.2em;
 }
