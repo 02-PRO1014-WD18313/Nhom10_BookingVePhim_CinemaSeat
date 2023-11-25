@@ -33,6 +33,7 @@
                             <img src="image/avata_04.webp" alt="loi" />
                             <span class="span">Xin chào, <?= $_SESSION['user'] ?></span> <br />
                             <span><a href="?act=dangxuat">Đăng xuất</a></span>
+                            <li><a href="?act=uploadtk">Cập nhật</a></li>
                         </div>
                     <?php } else { ?>
                         <?php
