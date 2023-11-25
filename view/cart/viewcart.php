@@ -13,34 +13,45 @@
         </thead>
         <tbody>
             <?php if (isset($_SESSION['user'])) {
-                $i = 1;
-                foreach ($loadAll_cart as $value) {
-                    extract($value);
-                    $quantity = 1; // Initialize quantity to 1
+                if (isset($_SESSION['count_cart']) && $_SESSION['count_cart'] > 0) {
+                    $i = 1;
+                    foreach ($loadAll_cart as $value) {
+                        extract($value);
+                        $quantity = 1; // Initialize quantity to 1
             ?>
-                    <tr>
-                        <td><?= $i++ ?></td>
-                        <td><img width="60" src="uploads/img_sp/<?= $img ?>" alt=""></td>
-                        <td> <a href="?act=ctsp&idsp=<?= $id ?>"><?= $name ?> </a></td>
-                        <td>₫<?= number_format($gia_new) ?> </td>
-                        <td>
-                            <div class="btn">
-                                <button class="decrement">
-                                    <i class="fa-solid fa-minus"></i>
-                                </button>
-                                <input type="text" class="quantity" value="<?= $soluong ?>">
-                                <button class="increment">
-                                    <i class="fa-solid fa-plus"></i>
-                                </button>
-                            </div>
-                        </td>
-                        <td class="total">₫<span class="price"><?= number_format($gia_new) ?></span></td>
-                        <td><a href="?act=delete_cart&id=<?= $id ?>"><i class="fa-solid fa-xmark"></i></a></td>
-                    </tr>
-                <?php
-                } ?>
+                        <tr>
+                            <td><?= $i++ ?></td>
+                            <td><img width="60" src="uploads/img_sp/<?= $img ?>" alt=""></td>
+                            <td> <a href="?act=ctsp&idsp=<?= $id ?>"><?= $name ?> </a></td>
+                            <td>₫<?= number_format($gia_new) ?> </td>
+                            <td>
+                                <div class="btn">
+                                    <button class="decrement">
+                                        <i class="fa-solid fa-minus"></i>
+                                    </button>
+                                    <input type="text" class="quantity" value="<?= $soluong ?>">
+                                    <button class="increment">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="total">₫<span class="price"><?= number_format($gia_new) ?></span></td>
+                            <td>
+                                <form action="?act=addtocart&idcart=<?= $idcart ?>" method="post">
+                                    <button onclick="return confirm('Bạn muốn xóa sản phẩm này ?')" type="submit" name="btn_delete" value="btn_delete"><i class="fa-solid fa-xmark"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                } else { ?>
+                    <td style="text-align: center; font-weight: bold" colspan="7">Không có sản phẩm trong giỏ hàng</td>
+                    </td>
+                <?php  }
+
+                ?>
             <?php } else { ?>
-                <td style="text-align: center; font-weight: bold" colspan="6">Bạn cần đăng nhập để thực hiện thêm vào giỏ hàng</td>
+                <td style="text-align: center; font-weight: bold" colspan="7">Bạn cần đăng nhập để thực hiện thêm vào giỏ hàng</td>
             <?php } ?>
         </tbody>
     </table>
@@ -62,7 +73,7 @@
                 <hr>
                 <div class="total mt">
                     <p>Tổng cộng</p>
-                    <p>₫1.210.000</p>
+                    <p class="total-amount">₫0</p>
                 </div>
                 <button>Tiến hành thanh toán</button>
             </form>
@@ -73,6 +84,9 @@
     document.addEventListener("DOMContentLoaded", function() {
         // Get all elements with class "btn"
         var btns = document.querySelectorAll('.btn');
+
+        // Initialize the total variable to store the sum of all product prices
+        var totalAmount = 0;
 
         // Loop through each "btn" element
         btns.forEach(function(btn) {
@@ -90,7 +104,13 @@
                     quantity--;
                     input.value = quantity;
                     total.textContent = '₫' + number_format(price * quantity);
+
+
+                    // Update the totalAmount variable when the quantity changes
+                    totalAmount -= price;
                 }
+                updateTotalAmount();
+
             });
 
             // Add click event listener for increment button
@@ -99,7 +119,12 @@
                     quantity++;
                     input.value = quantity;
                     total.textContent = '₫' + number_format(price * quantity);
+
+
+                    // Update the totalAmount variable when the quantity changes
+                    totalAmount += price;
                 }
+                updateTotalAmount();
             });
 
             // Add input event listener to update total when input value changes
@@ -110,12 +135,31 @@
                     input.value = quantity;
                 }
                 total.textContent = '₫' + number_format(price * quantity);
+
+
+                // Update the totalAmount variable when the quantity changes
+                totalAmount = (totalAmount - (price * (quantity - 1))) + (price * quantity);
+
+                updateTotalAmount();
             });
+
+            // Initialize the totalAmount variable with the initial values
+            totalAmount += price * quantity;
+            updateTotalAmount();
+
         });
 
         // Function to format numbers as currency
         function number_format(number) {
             return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
+
+
+        // Function to update the total amount in the HTML
+        function updateTotalAmount() {
+            // Update the total amount in the HTML
+            document.querySelector('.total-amount').textContent = '₫' + number_format(totalAmount);
+        }
+
     });
 </script>

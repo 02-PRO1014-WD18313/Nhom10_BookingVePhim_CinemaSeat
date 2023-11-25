@@ -32,8 +32,12 @@
                         <div class="taikhoan">
                             <img src="image/avata_04.webp" alt="loi" />
                             <span class="span">Xin chào, <?= $_SESSION['user'] ?></span> <br />
-                            <span><a href="?act=dangxuat">Đăng xuất</a></span>
-                            <li><a href="?act=uploadtk">Cập nhật</a></li>
+                            <span>Khách hàng</span>
+                            <ul class="tt-taikhoan">
+                                <li><i class="fa-solid fa-clock-rotate-left"></i><a href="#">Lịch Sử</a></li>
+                                <li><i class="fa-solid fa-clipboard-user"></i><a href="#">Tài Khoản</a></li>
+                                <li><i class="fa-solid fa-right-from-bracket fa-rotate-180"></i><a href="?act=dangxuat">Đăng Xuất</a></li>
+                            </ul>
                         </div>
                     <?php } else { ?>
                         <?php
@@ -46,7 +50,7 @@
                     <div class="icon">
                         <span><i class="fa-regular fa-heart"></i><small>0</small></span>
                         <span>
-                            <a href="?act=addtocart"><i class="fa-solid fa-bag-shopping"></i></a><small>0</small></span>
+                            <a href="?act=addtocart"><i class="fa-solid fa-bag-shopping"></i></a><small><?= (isset($_SESSION['count_cart'])) ? $_SESSION['count_cart'] : 0 ?></small></span>
                     </div>
                 </div>
             </div>

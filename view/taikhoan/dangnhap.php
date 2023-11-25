@@ -1,7 +1,9 @@
 <?php
 include "../../model/pdo.php";
 include "../../model/taikhoan.php";
+include '../../model/cart.php';
 include "../../model/validate.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
