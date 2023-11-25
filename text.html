@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        /* Optional: Add some basic styling for better appearance */
+        button {
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cart">
+        <div class="product">
+            <p>Product 1</p>
+            <p>Quantity: <input type="number" class="quantity" value="1"></p>
+            <p>Total: $<span class="total">10.00</span></p>
+            <button onclick="decreaseQuantity(0)">-</button>
+            <button onclick="increaseQuantity(0)">+</button>
+        </div>
+        <div class="product">
+            <p>Product 2</p>
+            <p>Quantity: <input type="number" class="quantity" value="1"></p>
+            <p>Total: $<span class="total">15.00</span></p>
+            <button onclick="decreaseQuantity(1)">-</button>
+            <button onclick="increaseQuantity(1)">+</button>
+        </div>
+        <div class="product">
+            <p>Product 3</p>
+            <p>Quantity: <input type="number" class="quantity" value="1"></p>
+            <p>Total: $<span class="total">20.00</span></p>
+            <button onclick="decreaseQuantity(2)">-</button>
+            <button onclick="increaseQuantity(2)">+</button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize product information
+        const products = [
+            { price: 10.00, quantity: 1 },
+            { price: 15.00, quantity: 1 },
+            { price: 20.00, quantity: 1 }
+        ];
+
+        // Function to increase the quantity for a specific product
+        function increaseQuantity(index) {
+            products[index].quantity++;
+            updateQuantityAndTotal(index);
+        }
+
+        // Function to decrease the quantity for a specific product
+        function decreaseQuantity(index) {
+            if (products[index].quantity > 1) {
+                products[index].quantity--;
+                updateQuantityAndTotal(index);
+            }
+        }
+
+        // Function to update the quantity and total display for a specific product
+        function updateQuantityAndTotal(index) {
+            // Update quantity
+            document.getElementsByClassName("quantity")[index].value = products[index].quantity;
+
+            // Calculate total
+            const total = products[index].quantity * products[index].price;
+
+            // Update total display
+            document.getElementsByClassName("total")[index].innerText = total.toFixed(2); // toFixed để làm tròn đến 2 chữ số thập phân
+        }
+    </script>
+
+</body>
+</html>

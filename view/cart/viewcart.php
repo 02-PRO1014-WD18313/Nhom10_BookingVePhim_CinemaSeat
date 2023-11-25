@@ -71,7 +71,7 @@
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-// Get all elements with class "btn"
+        // Get all elements with class "btn"
         var btns = document.querySelectorAll('.btn');
 
         // Loop through each "btn" element

@@ -36,20 +36,27 @@
 
                 <div class="item">
                     <a href="?act=ctsp&idsp=<?= $id ?>">
-                        <div class="img">                          
-                                <img src="uploads/img_sp/<?= $img ?>" alt="" />                         
+                        <div class="img">
+                            <img src="uploads/img_sp/<?= $img ?>" alt="" />
                         </div>
                     </a>
                     <div class="name"><?= $name ?></div>
                     <div class="price">
-                       <p><?= number_format($gia_new) ?> ₫</p> <p><?= number_format($gia) ?> ₫</p>
+                        <p><?= number_format($gia) ?> ₫</p>
+                        <p><?= number_format($gia_new) ?> ₫</p>
                     </div>
                     <div class="Evaluate">
                         <p>
                             <i class="fa-solid fa-star"></i> <span>(4.5)</span> <br />
                             <span>Đã mua 4.5k</span>
                         </p>
-                        <p><a style="color: white;" href="?act=addtocart&idsp=<?= $id ?>"><i class="fa-solid fa-cart-plus"></i></a></p>
+
+                        <form action="?act=addtocart&idsp=<?= $id ?>" method="post">
+                            <p>
+                                <button type="submit" name="btn" value="btn"><i class="fa-solid fa-cart-plus"></i></button>
+                            </p>
+                        </form>
+
                     </div>
                 </div>
 
@@ -75,7 +82,8 @@
                         </p>
                     </div>
                     <div class="price">
-                        <span><?= number_format($gia) ?> ₫</span><span><?= number_format($gia_new) ?> ₫</span>
+                        <span><?= number_format($gia) ?> ₫</span>
+                        <span> <?= number_format($gia_new) ?> ₫</span>
                     </div>
                     <div class="Evaluate">
                         <p>
