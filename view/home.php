@@ -31,7 +31,7 @@
         </div>
         <div class="block mt">
             <?php
-            foreach ($list_sp_home as $value) {
+            foreach ($loadstar as $value) {
                 extract($value); ?>
 
                 <div class="item">
@@ -47,7 +47,7 @@
                     </div>
                     <div class="Evaluate">
                         <p>
-                            <i class="fa-solid fa-star"></i> <span>(4.5)</span> <br />
+                            <i class="fa-solid fa-star"></i> <span>(<?= number_format($avg_star, 1) ?>)</span> <br />
                             <span>Đã mua 4.5k</span>
                         </p>
 
@@ -72,27 +72,35 @@
         </div>
         <div class="block mt">
             <?php
-            foreach ($list_sp_home as $value) {
+            foreach ($loadstar as $value) {
                 extract($value); ?>
+
                 <div class="item">
-                    <div class="name"><?= $name ?></div>
-                    <div class="img">
-                        <p>
+                    <a href="?act=ctsp&idsp=<?= $id ?>">
+                        <div class="img">
                             <img src="uploads/img_sp/<?= $img ?>" alt="" />
-                        </p>
-                    </div>
+                        </div>
+                    </a>
+                    <div class="name"><?= $name ?></div>
                     <div class="price">
-                        <span><?= number_format($gia) ?> ₫</span>
-                        <span> <?= number_format($gia_new) ?> ₫</span>
+                        <p><?= number_format($gia) ?> ₫</p>
+                        <p><?= number_format($gia_new) ?> ₫</p>
                     </div>
                     <div class="Evaluate">
                         <p>
-                            <i class="fa-solid fa-star"></i> <span>(4.5)</span> <br />
+                            <i class="fa-solid fa-star"></i> <span>(<?= number_format($avg_star, 1) ?>)</span> <br />
                             <span>Đã mua 4.5k</span>
                         </p>
-                        <p><i class="fa-solid fa-cart-plus"></i></p>
+
+                        <form action="?act=addtocart&idsp=<?= $id ?>" method="post">
+                            <p>
+                                <button type="submit" name="btn" value="btn"><i class="fa-solid fa-cart-plus"></i></button>
+                            </p>
+                        </form>
+
                     </div>
                 </div>
+
             <?php }
             ?>
 
