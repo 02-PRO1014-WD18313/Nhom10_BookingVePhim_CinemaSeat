@@ -10,6 +10,8 @@ include 'model/cart.php';
 include 'model/binhluan.php';
 
 
+
+
 $list_sp_home = loadAll_sanpham();
 $list_dm = loadAll_danhmuc();
 
@@ -88,6 +90,22 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $loadAll_cart = loadAll_cart($_SESSION['iduser']);
             }
             include_once 'view/cart/viewcart.php';
+            break;
+        case 'uploadtk':
+            if (isset($_SESSION['user'])) {
+                if (isset($_POST['btn']) && ($_POST['btn'] > 0)) {
+                    $user = $_POST['user'];
+                    $pass = $_POST['pass'];
+                    $email = $_POST['email'];
+                    $id = $_POST['id'];
+                    if($user =='' || $pass =='' || $email ==''){
+                        echo 'Không được để trống các trường';
+                    }
+                    update_taikhoan($id, $user, $pass, $email);
+                }
+                $lay = selectone_tk($_SESSION['iduser']);
+            }
+            include "view/taikhoan/uploadtk.php";
             break;
     }
 } else {
