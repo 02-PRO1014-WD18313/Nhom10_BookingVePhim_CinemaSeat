@@ -34,6 +34,9 @@ function listsp_dm($key = "", $iddm = 0, $gia = "", $kieumay = "", $xuatxu = "")
     if ($iddm > 0) {
         $sql .= " AND iddm = $iddm";
     }
+    if ($key != "" && $gia != "" && $kieumay != "" && $xuatxu != "") {
+        $sql = "AND name LIKE '%$key%' AND  gia_new BETWEEN $gia AND kieumay = '$kieumay' AND xuatxu = '$xuatxu'";
+    }
 
     return pdo_query($sql);
 }
@@ -82,4 +85,27 @@ function update_sp($id, $iddm, $name, $img, $gia, $gia_new, $mota, $soluong, $xu
         WHERE `id` = $id";
     }
     pdo_execute($sql);
+}
+function loadstar()
+{
+    $sql = "SELECT
+    sp.id,
+    sp.name,
+    sp.img,
+    sp.gia,
+    sp.gia_new,
+    sp.mota,
+    sp.soluong,
+    sp.xuatxu,
+    sp.kieumay,
+    IFNULL(AVG(bl.star), 0) AS avg_star
+FROM
+    sanpham sp
+LEFT JOIN
+    binhluan bl ON sp.id = bl.id_pro
+GROUP BY
+    sp.id
+ORDER BY
+    sp.id";
+    return pdo_query($sql);
 }

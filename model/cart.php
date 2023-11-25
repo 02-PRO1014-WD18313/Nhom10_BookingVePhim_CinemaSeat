@@ -25,4 +25,18 @@ function update_sl($id, $idsp)
     $sql = "UPDATE cart SET soluong = soluong + 1 WHERE iduser = '$id' AND idsp = '$idsp'";
     pdo_execute($sql);
 }
+function update_soluong($id, $idsp, $giam = "", $tang = "")
+{
+    $min_quantity = 1;
+    $max_quantity = 10;
 
+    if ($tang != "") {
+        $sql = "UPDATE cart SET soluong = LEAST(soluong + 1, $max_quantity) WHERE iduser = '$id' AND id = '$idsp'";
+        pdo_execute($sql);
+    }
+
+    if ($giam != "") {
+        $sql = "UPDATE cart SET soluong = GREATEST(soluong - 1, $min_quantity) WHERE iduser = '$id' AND id = '$idsp'";
+        pdo_execute($sql);
+    }
+}
