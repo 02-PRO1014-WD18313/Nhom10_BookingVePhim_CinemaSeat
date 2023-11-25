@@ -99,28 +99,4 @@
         </div>
         <button class="more">Xem thêm</button>
     </div>
-    <div class="box-product">
-        <div class="title">
-            <h5>Review & Bài viết</h5>
-        </div>
-        <div class="block mt">
-            <div class="video-review">
-                <iframe width="700" height="395" src="https://www.youtube.com/embed/zlhVtQrmZW8?si=WY8Yg1yIdsgAkL3F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-            <div class="box-posts">
-                <div class="post">
-                    <img src="image/avata_04.webp" alt="" />
-                    <p>Những xu hướng đồng hồ nữ hot nhất năm nay</p>
-                </div>
-                <div class="post">
-                    <img src="image/avata_04.webp" alt="" />
-                    <p>Những xu hướng đồng hồ nữ hot nhất năm nay</p>
-                </div>
-                <div class="post">
-                    <img src="image/avata_04.webp" alt="" />
-                    <p>Đồng hồ thông minh và ứng dụng không ngừng mở rộng của</p>
-                </div>
-            </div>
-        </div>
-    </div>
 </main>
