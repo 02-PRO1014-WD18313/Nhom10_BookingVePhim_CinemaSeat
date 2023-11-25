@@ -1,3 +1,15 @@
+<p class="result">
+    <?php
+    $i = 0;
+    foreach ($listsp_dm as $value) {
+        $i++;
+    }
+    if (isset($_SESSION['key'])) { ?>
+        Kết quả tìm kiếm từ khóa "<?= $_SESSION['key'] ?>" <?= ($i++) ?> sản phẩm
+    <?php }
+    ?>
+</p>
+
 <main class="box-productt">
     <div class="filter">
         <p class="tieude">Sản Phẩm Được Đánh Giá Cao</p>
@@ -37,8 +49,8 @@
     </div>
     <div class="box-sp">
         <form action="" method="post">
-        <div class="div">
-        <i class="fa-solid fa-filter"></i> Bộ lọc
+            <div class="div">
+                <i class="fa-solid fa-filter"></i> Bộ lọc
             </div>
             <div class="div">
                 <select name="gia" id="">

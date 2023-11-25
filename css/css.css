@@ -22,6 +22,7 @@ body {
 }
 body a {
   text-decoration: none;
+  color: black;
 }
 .container {
   max-width: 1520px;
@@ -95,16 +96,47 @@ header .top .user {
   justify-content: space-between;
   align-items: center;
 }
+header .top .user .taikhoan {
+  position: relative;
+}
+header .top .user .taikhoan .tt-taikhoan {
+  background: #e6e6e6;
+  width: 200px;
+  position: absolute;
+  border-radius: 5px;
+  top: 50px;
+  display: none;
+}
+header .top .user .taikhoan:hover .tt-taikhoan {
+  display: block;
+}
+header .top .user .taikhoan .tt-taikhoan li {
+  display: block;
+  padding: 8px 10px;
+}
+header .top .user .taikhoan .tt-taikhoan li:hover {
+  background: rgba(255, 0, 0, 0.2);
+  border-left: 4px solid orangered;
+}
+header .top .user .taikhoan .tt-taikhoan li i {
+  padding: 0 15px;
+}
+header .top .user .taikhoan img{
+margin-bottom: 3px;
+}
 header .top .user .taikhoan img,
 .box-comment .comment .img img {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   object-fit: cover;
   object-position: center;
   border-radius: 50%;
   border: 1px solid #ccc;
   float: left;
   margin-right: 10px;
+}
+header .top .user .taikhoan img:hover {
+  cursor: pointer;
 }
 header .top .user .taikhoan span {
   font-weight: bold;
@@ -279,7 +311,10 @@ section .trademark p {
 }
 main {
   max-width: 100%;
-  padding: 50px 100px;
+  padding: 0 100px 50px 100px;
+}
+.result {
+  margin: 10px 0 10px 100px;
 }
 .box-productt {
   display: flex;
@@ -297,18 +332,18 @@ main {
   justify-content: space-evenly;
   margin: 15px 0;
 }
-.box-productt .filter .trademark_top{
+.box-productt .filter .trademark_top {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
 }
-.box-productt .filter .trademark_top img{
+.box-productt .filter .trademark_top img {
   margin: 15px 5px;
 }
-.box-productt .filter .tieude{
+.box-productt .filter .tieude {
   margin-top: 10px;
- font-size: 1.1rem;
-border-bottom: 1px solid #ccc;
-padding-bottom: 5px;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
 }
 .box-productt .filter .pro_top .titlee p {
   margin-bottom: 5px;
@@ -332,10 +367,10 @@ padding-bottom: 5px;
 .box-productt .box-sp {
   width: 79%;
 }
-.box-productt .box-sp form{
+.box-productt .box-sp form {
   display: flex;
 }
-.box-productt .box-sp .div{
+.box-productt .box-sp .div {
   margin-right: 20px;
 }
 .box-productt .box-sp .div select {
@@ -427,10 +462,6 @@ main .block .item .Evaluate .fa-star {
 main .block .item .Evaluate p i {
   font-size: 1.5vw;
 }
-main .block .item .Evaluate p span {
-  color: gray;
-  font-size: 0.9vw;
-}
 aside {
   display: flex;
   justify-content: space-between;
@@ -458,13 +489,19 @@ body button:hover {
   cursor: pointer;
   transition: 0.3s ease-in;
 }
-main .block .item .Evaluate p:nth-child(2) {
-  padding: 10px 11px 0 9px;
+main .block .item .Evaluate form {
+  width: 40px;
+  height: 40px;
   background: rgb(145, 7, 7);
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-main .block .item .Evaluate p .fa-cart-plus {
-  margin-top: 3px;
+main .block .item .Evaluate form button {
+  background: none;
+  border: none;
+  color: white;
 }
 main .block .item .Evaluate p .fa-cart-plus:hover {
   animation: search 0.5s linear infinite;
@@ -501,32 +538,6 @@ main .box-product .more:hover {
   color: white;
   transition: 0.3s;
 }
-main .box-posts {
-  margin-left: 30px;
-}
-main .box-posts .post {
-  display: flex;
-  margin-bottom: 10px;
-  justify-content: space-between;
-}
-main .box-posts .post p {
-  width: 45%;
-  font-weight: bold;
-  font-size: 1.2vw;
-  color: rgb(114, 114, 114);
-  height: 50px;
-  overflow: hidden;
-}
-main .box-posts .post p:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
-main .box-posts .post img {
-  width: 50%;
-  height: 125px;
-  object-fit: cover;
-  object-position: center;
-}
 .path {
   margin-top: 10px;
   font-size: 1.2rem;
@@ -549,27 +560,34 @@ main .box-posts .post img {
   display: flex;
   background: white;
   justify-content: space-between;
-  padding: 20px 30px;
+  padding: 20px 60px;
 }
 .box-ctsp .top .image {
-  width: 52.5%;
+  width: 52%;
   display: flex;
   justify-content: space-between;
 }
+.box-ctsp .top .image .img-small img.selected {
+  border: 2px solid green;
+}
 .box-ctsp .top .image .img-small img {
-  width: 130px;
+  width: 150px;
   height: 150px;
-  border: none;
-  background: #e6e6e6;
+  border: 1px solid #ccc;
 }
 .box-ctsp .top .image .img-small p {
   padding-bottom: 5px;
 }
 .box-ctsp .top .image .img-big {
-  background: #e6e6e6;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
 }
 .box-ctsp .top .information {
-  width: 40%;
+  width: 45%;
+}
+.box-ctsp .top .image .img-big img {
+  width: 450px;
 }
 .box-ctsp .top .information .price {
   padding-left: 20px;
@@ -664,6 +682,10 @@ main .box-posts .post img {
   border: 1px solid #ccc;
   height: 310px;
   width: 482px;
+}
+.box-ctsp .bottom .box-Evaluate .box-comment {
+  overflow: auto;
+  height: 425px;
 }
 .box-ctsp .bottom .box-Evaluate .box-comment #bl {
   font-size: 1.8rem;
@@ -1024,6 +1046,135 @@ footer .box-footer p:hover {
   border-radius: 5px;
   cursor: pointer;
 }
-table {
-  margin-top: 50px;
+.container-table {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px;
+}
+
+.container-table .table-left {
+  width: 65%;
+  border-collapse: collapse;
+  border-spacing: 10px;
+  height: 10px;
+}
+.container-table td,
+.container-table th {
+  text-align: center;
+  padding: 10px 16px;
+  border: none;
+}
+
+.container-table tbody tr {
+  background-color: #ffffff;
+}
+.container-table tbody tr:hover {
+  background-color: #ccc;
+}
+.container-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #2e2e2e;
+  color: white;
+}
+.container-table .table-left tbody tr {
+  border-bottom: 1px solid #ccc;
+}
+.container-table .table-left .btn button {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  background: rgb(255, 225, 0);
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.container-table .table-left input {
+  width: 70px;
+  height: 25px;
+  text-align: center;
+  border: none;
+  background: #e6e6e6;
+  border-radius: 8px;
+}
+.container-table .table-left .fa-xmark {
+  padding: 8px;
+  background: red;
+  color: white;
+  border-radius: 3px;
+  border: none;
+}
+.container-table .table-left .fa-pen-to-square{
+  padding: 8px;
+  background: rgb(89, 255, 0);
+  color: white;
+  border-radius: 3px;
+  border: none;
+}
+.container-table .table-left .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container-table .table-right {
+  width: 30%;
+}
+.container-table .table-right .discount input {
+  width: 335px;
+  padding: 12px 10px;
+  border: none;
+  font-size: 1rem;
+}
+.container-table .table-right .discount button {
+  width: 90px;
+  border: none;
+  padding: 12px 12px;
+  background: rgb(255, 225, 0);
+  color: black;
+  font-size: 1rem;
+}
+.container-table .table-right .form-sum form {
+  background: white;
+  padding: 10px 30px 25px 30px;
+  border-radius: 5px;
+}
+.container-table .table-right .form-sum h3 {
+  position: relative;
+  margin: 30px 0 20px 0;
+}
+.container-table .table-right .form-sum h3::before {
+  content: " ";
+  position: absolute;
+  right: 0;
+  top: 12px;
+  width: 250px;
+  height: 1.5px;
+  background: red;
+}
+.container-table .table-right .form-sum .total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+.container-table .table-right .form-sum form .total:nth-child(4) {
+  font-size: 1.3rem;
+}
+.container-table .table-right .form-sum form hr {
+  margin-top: 20px;
+}
+.container-table .table-right .form-sum form button {
+  margin: 20px 0 40px 0;
+  width: 100%;
+  height: 50px;
+  font-size: 1.1rem;
+  background: rgb(255, 225, 0);
+  border: none;
+  font-weight: bold;
+  border-radius: 3px;
+}
+.container-table .table-right .form-sum form button:hover {
+  font-size: 1.2em;
 }
