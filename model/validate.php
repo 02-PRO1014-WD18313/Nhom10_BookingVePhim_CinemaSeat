@@ -64,20 +64,21 @@ if (isset($_POST['btn']) && $_POST['btn']) {
             if (!is_array($dangnhap)) {
                 echo 'Tài khoản hoặc mật khẩu không đúng';
             } else {
+                $_SESSION['count_cart'] = count(count_cart($dangnhap['id']));
                 $_SESSION['role'] = $dangnhap['role'];
                 $_SESSION['user'] = $user;
                 if (isset($_SESSION['role'])) {
                     if ($_SESSION['role'] == 1) {
                         header('location: ../../admin/index.php');
                     } else {
-                        $_SESSION['iduser'] = $dangnhap['id'];                       
+                        $_SESSION['iduser'] = $dangnhap['id'];
                         header('location: ../../index.php');
                     }
                 }
             }
         } elseif ($_GET['act'] == 'dangky') {
             insert_taikhoan($user, $email, $pass, 0);
-            header('Location: ?act=dangnhap');
+            header('Location: dangnhap.php?act=dangnhap');
         }
     }
 }

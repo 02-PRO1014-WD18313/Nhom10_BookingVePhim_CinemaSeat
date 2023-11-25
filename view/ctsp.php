@@ -1,10 +1,10 @@
 <?php
-$stars= $sale = 0;
+$stars = $sale = 0;
 foreach ($loadone_sp as $value) {
     $sale = ($value['gia'] - $value['gia_new']) / $value['gia'] * 100;
 }
 foreach ($loadbl_sp as $value) {
-         $stars += $value['star'] / count($loadbl_sp);
+    $stars += $value['star'] / count($loadbl_sp);
 }
 ?>
 
@@ -18,17 +18,17 @@ foreach ($loadbl_sp as $value) {
         <div class="image">
             <div class="img-small">
                 <p>
-                    <img src="image/dong-ho-citizen-em1074-82d_1680330969 1.png" alt="" />
+                    <img class="selected" src="uploads/img_sp/<?= $loadone_sp[0]['img'] ?>" alt="" onclick="showImage(this)" />
                 </p>
                 <p>
-                    <img src="image/dong-ho-citizen-em1074-82d_1680330969 1.png" alt="" />
+                    <img src="uploads/img_sp/1700576274_Citizen NH8363-14H.jpeg" alt="" onclick="showImage(this)" />
                 </p>
                 <p>
-                    <img src="image/dong-ho-citizen-em1074-82d_1680330969 1.png" alt="" />
+                    <img src="uploads/img_sp/1700576346_Citizen BM7256-50E.jpeg" alt="" onclick="showImage(this)" />
                 </p>
             </div>
             <div class="img-big">
-                <img src="./uploads/img_sp/<?= $loadone_sp[0]['img'] ?>" alt="" />
+                <img src="./uploads/img_sp/<?= $loadone_sp[0]['img'] ?>" alt="" id="mainImage" />
             </div>
         </div>
         <div class="information">
@@ -36,7 +36,7 @@ foreach ($loadbl_sp as $value) {
                 <?= $loadone_sp[0]['name'] ?>
             </h3>
             <div class="Evaluate mb">
-                <i class="fa-solid fa-star"></i><small>(4.5)</small> |
+                <i class="fa-solid fa-star"></i><small><?= number_format($stars, 1) ?></small> |
                 <span>4.5k <small>đã bán</small></span>
             </div>
             <div class="price mb">
@@ -142,8 +142,12 @@ foreach ($loadbl_sp as $value) {
                         <div class="content">
                             <p>
                                 <?php
-                                for ($i = 0; $i < $star; $i++) {
-                                    echo '<i class="fa-solid fa-star"></i>';
+                                for ($i = 1; $i <= 5; $i++) {
+                                    if ($i <= $star) {
+                                        echo '<i class="fa-solid fa-star"></i>';
+                                    } else {
+                                        echo '<i class="fa-regular fa-star"></i>';
+                                    }
                                 }
                                 ?>
                             </p>
@@ -215,3 +219,16 @@ foreach ($loadbl_sp as $value) {
         </div>
     </div>
 </div>
+<script>
+    function showImage(imgElement) {
+        var mainImage = document.getElementById("mainImage");
+        mainImage.src = imgElement.src;
+
+        // Loại bỏ lớp 'selected' từ tất cả các ảnh nhỏ
+        var smallImages = document.querySelectorAll('.img-small img');
+        smallImages.forEach(img => img.classList.remove('selected'));
+
+        // Thêm lớp 'selected' cho ảnh được chọn
+        imgElement.classList.add('selected');
+    }
+</script>
