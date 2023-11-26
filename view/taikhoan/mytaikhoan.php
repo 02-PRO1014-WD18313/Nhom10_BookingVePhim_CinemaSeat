@@ -1,81 +1,56 @@
+<div class="container-tk">
+        <div class="nav-tk">
+            <ul>
+                <li><a href="#" id="trangtaikhoan">Trang tài khoản</a></li>
+                <li><a href="#">Đơn hàng</a></li>
+                <li><a href="#">Đăng xuất</a></li>
+                <li><a href="#">Thoát</a></li>
+            </ul>
+        </div>
+        <div class="box-tk-left">
+            <div class="box-tk" id="hien">
+                <h3 class="title-tk">THÔNG TIN TÀI KHOẢN</h3>
+                <div class="ip-tk">
+                    <div class="ip-tk-left">
+                        <label for="user">Tên đăng nhập <span style="color: red;">*</span></label> <br>
+                        <input type="text" name="user" id="user" value="Nguyen Van A"><br>
 
+                        <label for="sdt">Số điện thoại <span style="color: red;">*</span></label> <br>
+                        <input type="text" name="sdt" id="sdt" value="+84"><br>
 
+                        <label for="email">Email <span style="color: red;">*</span></label> <br>
+                        <input type="text" name="email" id="email" value="nguyenvana@gmail.com">
+                    </div>
+                    <div class="ip-tk-right">
+                        <label for="mk">Mật khẩu<span style="color: red;">*</span></label> <br>
+                        <input type="password" name="mk" id="mk" value="yyeyeyey"><br>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Profile</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-</head>
-
-<body>
-
-    <title>Tài koản</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-</head>
-
-<body> 
-
-    <div class="container">
-        <h1 class="text-center">Thông tin cá nhân</h1>
-        <div class="container">
-            <div class="row profile">
-                <div class="col-md-3">
-                    <div class="profile-sidebar">
-                        <div class="profile-userpic"> <img
-                                src="https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png"
-                                class="img-responsive" alt="Thông tin cá nhân">
-                        </div>
-                        <div class="profile-usertitle">
-                            <div class="profile-usertitle-job text-center"> Name </div>
-                        </div>
-                        <div class="profile-userbuttons">
-
-                            <button type="button" class="btn btn-success btn-sm">Trang chủ</button>
-
-                        </div>
-                        <div class="profile-usermenu">
-                            <ul class="nav">
-                                <div class="" ><span>Menu</span></div>
-
-                                <li class="active"> <a href="#"> <i class="glyphicon glyphicon-info-sign"></i>Cập nhật thông tin cá nhân </a>
-                                </li>
-                                <li> <a href="#"> <i class="glyphicon glyphicon-heart"></i> Sảnphẩm yêu thích </a>
-                                </li>
-                                <li> <a href="#" target="_blank"> <i class="glyphicon glyphicon-shopping-cart"></i> Quản lý đơn hàng </a>
-                                </li>
-                                <li> <a href="#"> <i class="glyphicon glyphicon-envelope"></i> Cập nhật tài khoản </a>
-                                </li>
-                                <button type="button" class="btn btn-danger btn-sm">Thoát ra</button>
-
-
-                            </ul>
-                        </div>
+                        <label for="diachi">Địa chỉ <span style="color: red;">*</span></label> <br>
+                        <input type="text" name="diachi" id="diachi" value="Hà Nội"><br>
+                        <button class="btn-capnhat" name="btn" type="submit">Cập nhật</button>
                     </div>
                 </div>
-                <div class="col-md-9">
-                    <div class="profile-content">Tên đăng nhập:...........</div>
-                    <div class="profile-content">Tên đăng nhập:...........</div>
-                    <div class="profile-content">Tên đăng nhập:...........</div>
-                    <div class="profile-content">Tên đăng nhập:...........</div>
-                    <div class="profile-content">Tên đăng nhập:...........</div>
-                    <div class="profile-content">Tên đăng nhập:...........</div>
-                    <div class="profile-content">Tên đăng nhập:...........</div>
+            </div>
+            <div class="box-donhang">
+                <h3>ĐƠN HÀNG</h3>
+                <div class="table-donhang">
+                    <table style="width:100%">
+                        <tr>
+                          <th>#</th>
+                          <th>Sản phẩm</th>
+                          <th>Trạng thái đơn hàng</th>
+                          <th>Giá</th>
+                          <th>So luong</th>
+                        </tr>
+                        <tr>
+                          <td>11</td>
+                          <td>Đồng hồ Casio</td>
+                          <td>Chờ xử lý</td>
+                          <td>1.2000.000 VND</td>
+                          <td>1</td>
+                        </tr>
+                      </table>
                 </div>
             </div>
         </div>
     </div>
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet">
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="js/jquery-1.11.1.min.js"></script>
-</body>
-
-
-</html>
-
