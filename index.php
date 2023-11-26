@@ -79,7 +79,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         case 'addtocart':
             if (isset($_SESSION['user'])) {
                 $found = false;
-                $loadAll_cart = loadAll_cart($_SESSION['iduser']);
+                $loadAll_cart = loadAll_cart($_SESSION['iduser'],0);
                 if (isset($_POST['btn']) && $_POST['btn']) {
                     $idsp = $_GET['idsp'];
                     $iduser = $_SESSION['iduser'];
@@ -113,7 +113,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     header("Location: ?act=addtocart");
                     exit();
                 }
-                $loadAll_cart = loadAll_cart($_SESSION['iduser']);
+                $loadAll_cart = loadAll_cart($_SESSION['iduser'],0);
             }
             include_once 'view/cart/viewcart.php';
             break;
@@ -133,7 +133,16 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             include "view/taikhoan/uploadtk.php";
             break;
+            case 'thanhtoantc':
+                include 'view/cart/thanhtoantc.php';
+                break;
         case 'thongtin':
+            if(isset($_GET['idcart']) && $_GET['idcart'] > 0){
+                $idcart = $_GET['idcart'];
+            }else{
+                $idcart = 0;
+            }
+            $loadAll_cart = loadAll_cart($_SESSION['iduser'],$idcart);
             include 'view/cart/thongtin.php';
             break;
         
