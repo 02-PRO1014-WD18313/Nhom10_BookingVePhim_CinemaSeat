@@ -165,7 +165,6 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                             $soluong = $loadAll_cart[$i]['soluong'];
                             $thanhtien = $_POST['thanhtien'];
                             $img = $loadAll_cart[$i]['img'];
-                            echo $iddh . ' ' . $idcart . ' ' . $name . ' ' . $gia . ' ' . $soluong . ' ' . $thanhtien . ' ' . $img . '<br>';
                             insert_chitietdonhang($iddh, $idsp, $name, $gia, $soluong, $thanhtien , $img);
                             delete_cart($idcart);
                           }  
