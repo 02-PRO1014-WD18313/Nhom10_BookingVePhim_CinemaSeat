@@ -8,7 +8,8 @@ include 'view/header.php';
 include 'model/taikhoan.php';
 include 'model/cart.php';
 include 'model/binhluan.php';
-
+include 'model/validate_form.php';
+include 'model/donhang.php';
 
 
 $loadstar = loadstar();
@@ -79,7 +80,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         case 'addtocart':
             if (isset($_SESSION['user'])) {
                 $found = false;
-                $loadAll_cart = loadAll_cart($_SESSION['iduser'],0);
+                $loadAll_cart = loadAll_cart($_SESSION['iduser']);
                 if (isset($_POST['btn']) && $_POST['btn']) {
                     $idsp = $_GET['idsp'];
                     $iduser = $_SESSION['iduser'];
@@ -113,7 +114,10 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     header("Location: ?act=addtocart");
                     exit();
                 }
-                $loadAll_cart = loadAll_cart($_SESSION['iduser'],0);
+                $loadAll_cart = loadAll_cart($_SESSION['iduser']);
+            } else {
+                header('Location: view/taikhoan/dangnhap.php?act=dangnhap');
+                exit();
             }
             include_once 'view/cart/viewcart.php';
             break;
@@ -133,20 +137,46 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             include "view/taikhoan/uploadtk.php";
             break;
-            case 'thanhtoantc':
-                include 'view/cart/thanhtoantc.php';
-                break;
+        case 'thanhtoantc':
+            include 'view/cart/thanhtoantc.php';
+            break;
         case 'thongtin':
-            if(isset($_GET['idcart']) && $_GET['idcart'] > 0){
+            if (isset($_GET['idcart']) && $_GET['idcart'] > 0) {
                 $idcart = $_GET['idcart'];
-            }else{
+            } else {
                 $idcart = 0;
             }
-            $loadAll_cart = loadAll_cart($_SESSION['iduser'],$idcart);
+            $loadAll_cart = loadAll_cart($_SESSION['iduser']);
+            if (isset($_POST['btn_thanhtoan']) && $_POST['btn_thanhtoan']) {
+                if (isset($_POST['thanhtoan']) && $_POST['thanhtoan'] == "Thanh toán khi nhận hàng") {
+                    $thanhtoan = $_POST['thanhtoan'];
+                    $user = $_POST['user'];
+                    $email = $_POST['email'];
+                    $sdt = $_POST['sdt'];
+                    $address = $_POST['address'];
+                    $err = validate_form($user, $email, $sdt, $address);
+                    if (empty($err)) {
+                       $iddh =  insert_donhang($_SESSION['iduser'], $user, $sdt, $email, $address);
+                        for($i = 0; $i < count($loadAll_cart); $i++){
+                            $idsp = $loadAll_cart[$i]['idsp'];
+                            $idcart = $loadAll_cart[$i]['idcart'];
+                            $name = $loadAll_cart[$i]['name'];
+                            $gia = $loadAll_cart[$i]['gia_new'];
+                            $soluong = $loadAll_cart[$i]['soluong'];
+                            $thanhtien = $_POST['thanhtien'];
+                            $img = $loadAll_cart[$i]['img'];
+                            echo $iddh . ' ' . $idcart . ' ' . $name . ' ' . $gia . ' ' . $soluong . ' ' . $thanhtien . ' ' . $img . '<br>';
+                            insert_chitietdonhang($iddh, $idsp, $name, $gia, $soluong, $thanhtien , $img);
+                            delete_cart($idcart);
+                          }  
+                        }
+                } else {
+                    $error = 'Vui lòng chọn phương thức thanh toán!';
+                }
+            }
+            $loadAll_cart = loadAll_cart($_SESSION['iduser']);
             include 'view/cart/thongtin.php';
             break;
-        
-        
     }
 } else {
     include 'view/home.php';
