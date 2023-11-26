@@ -1,21 +1,20 @@
 <?php
 function loadall_donhang($iddh = 0)
 {
-    $sql = "select * from donhang ";
+    $sql = "select * from donhang";
     if ($iddh > 0) {
-        $sql .= " where id = $iddh";
+        $sql .= " where id = '$iddh'";
     }
-    $sql .= " order by id desc";
     return pdo_query($sql);
 }
 
-function update_donhang($iddh, $name, $tel, $address, $trangthai)
+function update_donhang($iddh, $name, $tel, $address, $ghichu, $trangthai)
 {
-    $sql = "
-    UPDATE `donhang` SET 
-    `ten_nhan`='$name',
+    $sql = "UPDATE `donhang` SET 
+    `nguoi_nhan`='$name',
     `tel`='$tel',
     `address`='$address',
+    `ghi_chu`='$ghichu',
     `trangthai`='$trangthai' WHERE `id` = $iddh";
     pdo_execute($sql);
 }
@@ -33,4 +32,16 @@ function insert_chitietdonhang($iddh, $idsp, $name, $gia, $soluong, $thanhtien ,
 {
     $sql = "INSERT INTO `ct_don_hang`( `id_dh`, `id_sp`, `soluong`, `gia_ban`, `img`, `name`, `thanhtien`) VALUES ('$iddh','$idsp','$soluong','$gia','$img','$name','$thanhtien')";
     pdo_execute($sql);
+}
+
+function loadone_chitietdonhang($iddh)
+{
+    $sql = "select * from ct_don_hang where id_dh = '$iddh'";
+    return pdo_query($sql);
+}
+
+function loadall_chitietdonhang() {
+    $sql = "select * from ct_don_hang 
+    inner join donhang on ct_don_hang.id_dh = donhang.id";
+    return pdo_query($sql);
 }

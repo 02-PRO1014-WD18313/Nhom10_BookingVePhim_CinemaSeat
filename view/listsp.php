@@ -1,3 +1,6 @@
+<?php
+include "global.php";
+?>
 <p class="result">
     <?php
     $i = 0;
@@ -63,16 +66,17 @@
             <div class="div">
                 <select name="kieumay" id="">
                     <option value="" hidden>Kiểu máy</option>
-                    <option value="Cơ/Automatic">Cơ/Automatic</option>
-                    <option value="Pin/ Quazt">Pin/ Quazt</option>
+                    <?php foreach($kieumay as $value){?>
+                        <option value="<?= $value ?>"><?= $value ?></option>
+                    <?php }?>
                 </select>
             </div>
             <div class="div">
                 <select name="xuatxu" id="">
                     <option value="" hidden>Xuất xứ</option>
-                    <option value="Nhật Bản">Nhật Bản</option>
-                    <option value="Hàn Quốc">Hàn Quốc</option>
-                    <option value="Thụy Sỹ">Thụy Sỹ</option>
+                    <?php foreach($xuatxu as $value){?>
+                        <option value="<?= $value ?>"><?= $value ?></option>
+                    <?php }?>
                 </select>
             </div>
             <button name="submit" type="submit" value="submit">Lọc</button>
