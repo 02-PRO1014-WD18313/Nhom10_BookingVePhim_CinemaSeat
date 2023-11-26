@@ -15,6 +15,7 @@
                             <th class="fw-bold text-secondary">Tên người nhận</th>
                             <th class="fw-bold text-secondary">Số điện thoại</th>
                             <th class="fw-bold text-secondary">Địa chỉ</th>
+                            <th class="fw-bold text-secondary">Ghi chú</th>
                             <th class="fw-bold text-secondary">Trạng thái</th>
                             <th class="fw-bold text-secondary">Quản lý</th>
                         </tr>
@@ -26,6 +27,7 @@
                                 <td><?= $value['ten_nhan']?></td>
                                 <td><?= $value['tel'] ?></td>
                                 <td><?= $value['address'] ?></td>
+                                <td>Ghi chú</td>
                                 <td>
                                     <?php
                                         if($value['trangthai'] == 0){

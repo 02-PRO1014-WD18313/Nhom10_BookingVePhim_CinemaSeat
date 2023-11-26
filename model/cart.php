@@ -1,8 +1,12 @@
 <?php
 
-function loadAll_cart($iduser)
+function loadAll_cart($iduser, $idcart = 0)
 {
-    $sql = "SELECT cart.id as idcart, sanpham.id as idsp, sanpham.name,sanpham.gia, sanpham.gia_new, sanpham.img, cart.soluong FROM sanpham JOIN cart ON cart.idsp = sanpham.id WHERE cart.iduser = '$iduser' order by cart.id desc";
+    if ($idcart > 0) {
+        $sql = "SELECT cart.id as idcart, sanpham.id as idsp, sanpham.name,sanpham.gia, sanpham.gia_new, sanpham.img, cart.soluong FROM sanpham JOIN cart ON cart.idsp = sanpham.id WHERE cart.iduser = '$iduser' AND cart.id = '$idcart' order by cart.id desc";
+    } else {
+        $sql = "SELECT cart.id as idcart, sanpham.id as idsp, sanpham.name,sanpham.gia, sanpham.gia_new, sanpham.img, cart.soluong FROM sanpham JOIN cart ON cart.idsp = sanpham.id WHERE cart.iduser = '$iduser' order by cart.id desc";
+    }
     return pdo_query($sql);
 }
 function insert_cart($iduser, $idsp, $soluong)
