@@ -13,10 +13,11 @@
         </thead>
         <tbody>
             <?php if (isset($_SESSION['user'])) {
+                $tong = 0;
+                $money = 0;
                 if (isset($_SESSION['count_cart']) && $_SESSION['count_cart'] > 0) {
                     $i = 1;
-                    $tong = 0;
-                    $money = 0;
+
                     foreach ($loadAll_cart as $value) {
                         extract($value);
                         $money = $gia_new * $soluong;
@@ -61,28 +62,35 @@
             <?php } ?>
         </tbody>
     </table>
-    <div class="table-right">
-        <div class="discount">
-            <input type="text" placeholder="Nhập mã giảm giá"><button>Áp dụng</button>
+    <?php
+    if ($money == "0") { ?>
+
+    <?php } else { ?>
+        <div class="table-right">
+            <div class="discount">
+                <input type="text" placeholder="Nhập mã giảm giá"><button>Áp dụng</button>
+            </div>
+            <div class="form-sum">
+                <h3>TỔNG ĐƠN HÀNG</h3>
+                <form action="" method="post">
+                    <div class="total mt">
+                        <p>Tổng phụ</p>
+                        <p>₫<?= number_format($tong) ?></p>
+                    </div>
+                    <div class="total mt">
+                        <p>Phí vận chuyển</p>
+                        <p>₫30.000</p>
+                    </div>
+                    <hr>
+                    <div class="total mt">
+                        <p>Tổng cộng</p>
+                        <p class="total-amount">₫<?= number_format($tong + 30000) ?></p>
+                    </div>
+                    <button><a href="?act=thongtin">Tiến hành thanh toán</a></button>
+                </form>
+            </div>
         </div>
-        <div class="form-sum">
-            <h3>TỔNG ĐƠN HÀNG</h3>
-            <form action="" method="post">
-                <div class="total mt">
-                    <p>Tổng phụ</p>
-                    <p>₫<?=number_format($tong)?></p>
-                </div>
-                <div class="total mt">
-                    <p>Phí vận chuyển</p>
-                    <p>₫30.000</p>
-                </div>
-                <hr>
-                <div class="total mt">
-                    <p>Tổng cộng</p>
-                    <p class="total-amount">₫<?= number_format($tong + 30000 )?></p>
-                </div>
-                <button><a href="?act=thongtin">Tiến hành thanh toán</a></button>
-            </form>
-        </div>
-    </div>
+    <?php }
+    ?>
+
 </div>
