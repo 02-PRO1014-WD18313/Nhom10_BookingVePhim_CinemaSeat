@@ -89,20 +89,9 @@
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="validationTextarea" class="form-label font-weight-bold">Mô tả</label>
-                    <textarea name="mota" class="form-control" id="validationTextarea" placeholder="Nhập mô tả" rows="5" required></textarea>
+                    <textarea name="mota" class="form-control" id="validationTextarea" placeholder="Nhập mô tả" rows="3" required></textarea>
                     <div class="invalid-feedback">
                         Không được để trống.
-                    </div>
-                </div>
-                <div class="col-12 mb-3">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                        <label class="form-check-label" for="invalidCheck">
-                            Xác nhận
-                        </label>
-                        <div class="invalid-feedback">
-                            Bạn cần xác nhận trước khi thực hiện.
-                        </div>
                     </div>
                 </div>
                 <div class="col-12">

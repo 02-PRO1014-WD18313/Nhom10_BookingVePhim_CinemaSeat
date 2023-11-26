@@ -26,19 +26,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 mb-3">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                        <label class="form-check-label" for="invalidCheck">
-                            Xác nhận
-                        </label>
-                        <div class="invalid-feedback">
-                            Bạn cần xác nhận trước khi thực hiện
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12">
+                <div class="col-12 mt-1">
                     <input class="btn btn-success " type="submit" name="submit" value="Thực hiện"></input>
                     <button type="reset" class="btn btn-outline-secondary">Nhập lại</button>
                     <a class="btn btn-primary" href="?act=list_dm" type="submit">Danh sách danh mục</a>
