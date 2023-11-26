@@ -72,6 +72,7 @@ if (isset($_POST['btn']) && $_POST['btn']) {
                         header('location: ../../admin/index.php');
                     } else {
                         $_SESSION['iduser'] = $dangnhap['id'];
+                        $_SESSION['email'] = $dangnhap['email'];
                         header('location: ../../index.php');
                     }
                 }
