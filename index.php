@@ -121,26 +121,10 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             include_once 'view/cart/viewcart.php';
             break;
-        case 'uploadtk':
-            if (isset($_SESSION['user'])) {
-                if (isset($_POST['btn']) && ($_POST['btn'] > 0)) {
-                    $user = $_POST['user'];
-                    $pass = $_POST['pass'];
-                    $email = $_POST['email'];
-                    $id = $_POST['id'];
-                    if ($user == '' || $pass == '' || $email == '') {
-                        echo 'Không được để trống các trường';
-                    }
-                    update_taikhoan($id, $user, $pass, $email);
-                }
-                $lay = selectone_tk($_SESSION['iduser']);
-            }
-            include "view/taikhoan/uploadtk.php";
-            break;
         case 'thanhtoantc':
             include 'view/cart/thanhtoantc.php';
             break;
-        case 'thongtin':
+        case 'thanhtoan':
             if (isset($_GET['idcart']) && $_GET['idcart'] > 0) {
                 $idcart = $_GET['idcart'];
             } else {
@@ -156,8 +140,8 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     $address = $_POST['address'];
                     $err = validate_form($user, $email, $sdt, $address);
                     if (empty($err)) {
-                       $iddh =  insert_donhang($_SESSION['iduser'], $user, $sdt, $email, $address);
-                        for($i = 0; $i < count($loadAll_cart); $i++){
+                        $iddh =  insert_donhang($_SESSION['iduser'], $user, $sdt, $email, $address);
+                        for ($i = 0; $i < count($loadAll_cart); $i++) {
                             $idsp = $loadAll_cart[$i]['idsp'];
                             $idcart = $loadAll_cart[$i]['idcart'];
                             $name = $loadAll_cart[$i]['name'];
@@ -165,18 +149,32 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                             $soluong = $loadAll_cart[$i]['soluong'];
                             $thanhtien = $_POST['thanhtien'];
                             $img = $loadAll_cart[$i]['img'];
-                            insert_chitietdonhang($iddh, $idsp, $name, $gia, $soluong, $thanhtien , $img);
+                            insert_chitietdonhang($iddh, $idsp, $name, $gia, $soluong, $thanhtien, $img);
                             delete_cart($idcart);
-                          }  
+                            $_SESSION['count_cart'] = count(count_cart($_SESSION['iduser']));
                         }
+                        header("Location: view/cart/thanhtoantc.php");
+                    }
                 } else {
                     $error = 'Vui lòng chọn phương thức thanh toán!';
                 }
             }
             $loadAll_cart = loadAll_cart($_SESSION['iduser']);
-            include 'view/cart/thongtin.php';
+            include 'view/cart/thanhtoan.php';
             break;
         case 'mytaikhoan':
+            if (isset($_POST['btn_tt']) && $_POST['btn_tt']) {
+                $user = $_POST['user'];
+                $email = $_POST['email'];
+                $sdt = $_POST['sdt'];
+                $address = $_POST['diachi'];
+                $err = validate_form($user, $email, $sdt, $address);
+                if (empty($err)) {
+                    update_taikhoan($_SESSION['iduser'], $user, $email, $sdt, $address);
+                }
+            }
+            $tk =  selectone_tk($_SESSION['iduser']);
+            $ctdh = load_ctdh($_SESSION['iduser']);
             include 'view/taikhoan/mytaikhoan.php';
             break;
     }
