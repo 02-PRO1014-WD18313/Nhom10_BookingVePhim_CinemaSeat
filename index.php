@@ -176,6 +176,9 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             $loadAll_cart = loadAll_cart($_SESSION['iduser']);
             include 'view/cart/thongtin.php';
             break;
+        case 'mytaikhoan':
+            include 'view/taikhoan/mytaikhoan.php';
+            break;
     }
 } else {
     include 'view/home.php';
