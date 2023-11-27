@@ -58,10 +58,11 @@
                 <div class="col-md-6 mb-3">
                     <label for="validationCustom04" class="form-label font-weight-bold">Xuất xứ</label>
                     <div class="input-group has-validation">
-                        <input name="xuatxu" type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-                        <div class="invalid-feedback">
-                            Không được để trống.
-                        </div>
+                        <select class="custom-select" name="xuatxu">
+                            <?php foreach ($xuatxu as $value) { ?>
+                                <option value="<?= $value ?>"><?= $value ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                     <div class="invalid-feedback">
                         Không được để trống.
@@ -70,10 +71,11 @@
                 <div class="col-md-6 mb-3">
                     <label for="validationCustom04" class="form-label font-weight-bold">Kiểu máy</label>
                     <div class="input-group has-validation">
-                        <input name="kieumay" type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-                        <div class="invalid-feedback">
-                            Không được để trống.
-                        </div>
+                        <select class="custom-select" name="kieumay">
+                            <?php foreach ($kieumay as $value) { ?>
+                                <option value="<?= $value ?>"><?= $value ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                     <div class="invalid-feedback">
                         Không được để trống.
@@ -97,7 +99,7 @@
                 <div class="col-12">
                     <input class="btn btn-success " type="submit" name="submit" value="Thực hiện"></input>
                     <button type="reset" class="btn btn-outline-secondary">Nhập lại</button>
-                    <a class="btn btn-primary" href="?act=list_sp" type="submit">Danh sách danh mục</a>
+                    <a class="btn btn-primary" href="?act=list_sp" type="submit">Danh sách sản phẩm</a>
                 </div>
                 <div class="col-12">
                     <div class="mt-4">

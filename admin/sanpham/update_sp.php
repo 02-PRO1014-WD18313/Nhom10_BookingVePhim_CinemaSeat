@@ -1,7 +1,7 @@
 <?php
 
 if (is_array($loadone_sp)) {
-    $link = "../uploads/img_dm/".$loadone_sp[0]['img'];
+    $link = "../uploads/img_dm/" . $loadone_sp[0]['img'];
 }
 ?>
 <div class="container-fluid">
@@ -63,10 +63,11 @@ if (is_array($loadone_sp)) {
                 <div class="col-md-6 mb-3">
                     <label for="validationCustom04" class="form-label font-weight-bold">Xuất xứ</label>
                     <div class="input-group has-validation">
-                        <input value="<?= $loadone_sp[0]['xuatxu'] ?>" name="xuatxu" type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-                        <div class="invalid-feedback">
-                            Không được để trống.
-                        </div>
+                        <select class="custom-select" name="xuatxu">
+                            <?php foreach ($xuatxu as $value) { ?>
+                                <option <?= $value == $loadone_sp[0]['xuatxu'] ? "selected" : "" ?> value="<?= $value ?>"><?= $value ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                     <div class="invalid-feedback">
                         Không được để trống.
@@ -75,10 +76,11 @@ if (is_array($loadone_sp)) {
                 <div class="col-md-6 mb-3">
                     <label for="validationCustom04" class="form-label font-weight-bold">Kiểu máy</label>
                     <div class="input-group has-validation">
-                        <input value="<?= $loadone_sp[0]['kieumay'] ?>" name="kieumay" type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-                        <div class="invalid-feedback">
-                            Không được để trống.
-                        </div>
+                        <select class="custom-select" name="kieumay">
+                            <?php foreach ($kieumay as $value) { ?>
+                                <option <?= $value == $loadone_sp[0]['kieumay'] ? "selected" : "" ?> value="<?= $value ?>"><?= $value ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                     <div class="invalid-feedback">
                         Không được để trống.
@@ -89,11 +91,11 @@ if (is_array($loadone_sp)) {
                     <div class="col-md-12">
                         <img src="../uploads/img_dm/<?= $loadone_sp[0]['img'] ?>" alt="">
                         <input name="img" type="file" class="custom-file-input" id="validatedCustomFile">
-                        <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>  
+                        <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>
                     </div>
                 </div>
                 <div class="col-md-12 mb-3">
-                    <label  for="validationTextarea" class="form-label font-weight-bold">Mô tả</label>
+                    <label for="validationTextarea" class="form-label font-weight-bold">Mô tả</label>
                     <textarea name="mota" class="form-control" id="validationTextarea" placeholder="Nhập mô tả" rows="3" required><?= $loadone_sp[0]['mota'] ?>"</textarea>
                     <div class="invalid-feedback">
                         Không được để trống.

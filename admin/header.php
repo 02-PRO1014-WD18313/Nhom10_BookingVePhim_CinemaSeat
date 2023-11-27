@@ -13,7 +13,7 @@
     <link rel="icon" href="./img/admin-logo.png">
 
     <!-- Custom fonts for this template-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
@@ -57,7 +57,7 @@
             <div class="sidebar-heading">
                 Danh mục quản lý
             </div>
-            
+
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -86,37 +86,14 @@
                     </div>
                 </div>
             </li>
-            <!-- Nav Item - Utilities Collapse Menu -->
+            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities1" aria-expanded="true" aria-controls="collapseUtilities1">
+                <a class="nav-link" href="?act=list_donhang">
                     <i class="fa-solid fa-truck-arrow-right"></i>
                     <span>Quản lý đơn hàng</span>
                 </a>
-                <div id="collapseUtilities1" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="?act=list_donhang">Danh sách đơn hàng</a>
-                        <a class="collapse-item" href="?act=list_ctdh">Chi tết đơn hàng</a>
-                    </div>
-                </div>
-            </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2" aria-expanded="true" aria-controls="collapseUtilities2">
-                    <i class="fa-solid fa-maximize"></i>
-                    <span>Quản lý thông số</span>
-                </a>
-                <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="?act=list_donhang">Xuất xứ</a>
-                        <a class="collapse-item" href="?act=list_ctdh">Kiểu máy</a>
-                        <a class="collapse-item" href="?act=list_donhang">Chất liệu vỏ</a>
-                        <a class="collapse-item" href="?act=list_ctdh">Chất liệu dây</a>
-                        <a class="collapse-item" href="?act=list_donhang">Chống nước</a>
-                    </div>
-                </div>
             </li>
-
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -330,7 +307,13 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow mr-3">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= strtoupper($_SESSION['user']) ?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php 
+                                if(isset($_SESSION['user']) && $_SESSION['role'] == 1) {
+                                    echo strtoupper($_SESSION['user']);
+                                }else{
+                                    header('location:../index.php');
+                                }
+                                ?></span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
