@@ -24,21 +24,33 @@
                         <?php foreach ($list_donhang as $key => $value) { ?>
                             <tr>
                                 <td><?= $key + 1?></td>
-                                <td><?= $value['ten_nhan']?></td>
+                                <td><?= $value['nguoi_nhan']?></td>
                                 <td><?= $value['tel'] ?></td>
                                 <td><?= $value['address'] ?></td>
-                                <td>Ghi chú</td>
                                 <td>
                                     <?php
-                                        if($value['trangthai'] == 0){
-                                            echo '<span class="badge bg-warning text-dark">Chờ xác nhận</span>';
+                                        if($value['ghi_chu'] != null){
+                                            echo $value['ghi_chu'];
                                         }else{
-                                            echo '<span class="badge bg-success text-white">Đã xác nhận</span>';
+                                            echo '...';
                                         }
                                     ?>
                                 </td>
                                 <td>
-                                    <a type="button" class="btn btn-warning" href="?act=update_donhang&id=<?= $value['id'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <?php
+                                        if($value['trangthai'] == 0){
+                                            echo '<span class="badge bg-danger text-white">Chờ xác nhận</span>';
+                                        }else if($value['trangthai'] == 1){
+                                            echo '<span class="badge bg-primary text-white">Đã xác nhận</span>';
+                                        }else if($value['trangthai'] == 2){
+                                            echo '<span class="badge bg-warning text-white">Đang giao hàng</span>';
+                                        }else{
+                                            echo '<span class="badge bg-success text-white">Giao hàng thành công</span>';
+                                        }
+                                    ?>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn btn-info" href="?act=update_donhang&id=<?= $value['id'] ?>"><i class="fa-solid fa-eye"></i></a>
                                     <a type="button" class="btn btn-danger" href=""><i class="fa-solid fa-trash-can"></i></a>
                                 </td>
                             </tr>
