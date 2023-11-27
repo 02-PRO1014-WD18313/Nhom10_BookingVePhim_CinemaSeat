@@ -106,6 +106,6 @@ LEFT JOIN
 GROUP BY
     sp.id
 ORDER BY
-    sp.id";
+    sp.id limit 0,10";
     return pdo_query($sql);
 }

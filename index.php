@@ -11,7 +11,6 @@ include 'model/binhluan.php';
 include 'model/validate_form.php';
 include 'model/donhang.php';
 
-
 $loadstar = loadstar();
 // $list_sp_home = loadAll_sanpham();
 $list_dm = loadAll_danhmuc();
@@ -38,6 +37,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include_once 'view/ctsp.php';
             break;
         case 'listsp':
+            include 'global.php';
             if (isset($_POST['submit']) && $_POST['submit']) {
                 // từ khóa
                 if (isset($_POST['kyw'])) {
@@ -165,7 +165,6 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                             $soluong = $loadAll_cart[$i]['soluong'];
                             $thanhtien = $_POST['thanhtien'];
                             $img = $loadAll_cart[$i]['img'];
-                            echo $iddh . ' ' . $idcart . ' ' . $name . ' ' . $gia . ' ' . $soluong . ' ' . $thanhtien . ' ' . $img . '<br>';
                             insert_chitietdonhang($iddh, $idsp, $name, $gia, $soluong, $thanhtien , $img);
                             delete_cart($idcart);
                           }  

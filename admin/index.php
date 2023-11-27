@@ -7,6 +7,8 @@ include "../model/danhmuc.php";
 include "../model/sanpham.php";
 include "../model/taikhoan.php";
 include "../model/donhang.php";
+include "../global.php";
+
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
@@ -177,12 +179,19 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         case "update_donhang": {
                 if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                     $loadone_dh = loadall_donhang($_GET['id']);
+                    $loadone_ctdh = loadone_chitietdonhang($_GET['id']);
                     if (isset($_POST['submit']) && ($_POST['submit'])) {
                         $name = $_POST['name'];
                         $tel = $_POST['tel'];
                         $address = $_POST['address'];
                         $trangthai = $_POST['trangthai'];
-                        update_donhang($_GET['id'], $name, $tel, $address, $trangthai);
+                        
+                        if(isset($_POST['ghichu']) && $_POST['ghichu']  != ""){
+                            $ghichu = $_POST['ghichu'];
+                        }else{
+                            $ghichu = "";
+                        }
+                        update_donhang($_GET['id'], $name, $tel, $address, $ghichu, $trangthai);
                         header('location: index.php?act=list_donhang');
                     }
                 }
@@ -192,6 +201,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
             //quan ly ct don hang
         case "list_ctdh": {
+                $loadall_ctdh = loadall_chitietdonhang();
                 include "./donhang/list_ctdh.php";
                 break;
             }
