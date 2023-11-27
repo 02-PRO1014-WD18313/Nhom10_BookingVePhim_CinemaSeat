@@ -45,6 +45,6 @@
         <h2>Thanh Toán Thành Công!</h2>
         <p>Cảm ơn bạn đã mua hàng. Đơn hàng của bạn đã được xác nhận.</p>
         <div class="back-to-home">
-            <a href="index.php">Quay lại trang chủ</a>
+            <a href="../../index.php">Quay lại trang chủ</a>
         </div>
     </div>
