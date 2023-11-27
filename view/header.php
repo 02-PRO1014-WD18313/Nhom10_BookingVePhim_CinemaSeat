@@ -35,7 +35,7 @@
                             <span>Khách hàng</span>
                             <ul class="tt-taikhoan">
                                 <li><i class="fa-solid fa-clock-rotate-left"></i><a href="#">Lịch Sử</a></li>
-                                <li><i class="fa-solid fa-clipboard-user"></i><a href="#">Tài Khoản</a></li>
+                                <li><i class="fa-solid fa-clipboard-user"></i><a href="?act=mytaikhoan">Tài Khoản</a></li>
                                 <li><i class="fa-solid fa-right-from-bracket fa-rotate-180"></i><a href="?act=dangxuat">Đăng Xuất</a></li>
                             </ul>
                         </div>
