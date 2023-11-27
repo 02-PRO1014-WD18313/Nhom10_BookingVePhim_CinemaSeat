@@ -1450,9 +1450,11 @@ footer .box-footer p:hover {
 .fade {
   animation-name: fade;
   animation-duration: 1.5s;
+  width: 100%;
+  height: 360px;
 }
 .fade img{
-  height: 350px;
+  height: 100%;
 }
 @keyframes fade {
   from {opacity: .4} 
