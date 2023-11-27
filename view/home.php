@@ -1,7 +1,15 @@
+<?php include 'global.php'; ?>
 <section class="mb">
-    <div class="banner">
-        <img src="image/bg-04.webp" alt="" />
+    <div class="slideshow-container">
+        <?php foreach ($banner as $value) { ?>
+            <div class="mySlides fade">
+                <img src="uploads/img_banner/<?= $value ?>" style="width:100%">
+            </div>
+        <?php } ?>
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
     </div>
+    <br>
     <h2 class="mt-3">Thương Hiệu Nổi Bật</h2>
     <div class="trademark">
         <?php
