@@ -10,6 +10,11 @@
         <a class="next" onclick="plusSlides(1)">❯</a>
     </div>
     <br>
+    <div style="text-align:center" hidden>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
     <h2 class="mt-3">Thương Hiệu Nổi Bật</h2>
     <div class="trademark">
         <?php
