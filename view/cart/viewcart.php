@@ -82,7 +82,7 @@
                         <p>Tổng cộng</p>
                         <p class="total-amount">₫<?= number_format($tong + 30000) ?></p>
                     </div>
-                    <button><a href="?act=thongtin">Tiến hành thanh toán</a></button>
+                    <button><a href="?act=thanhtoan">Tiến hành thanh toán</a></button>
                 </form>
             </div>
         </div>
