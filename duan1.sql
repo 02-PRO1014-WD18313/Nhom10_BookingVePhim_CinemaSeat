@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 28, 2023 lúc 03:55 PM
+-- Thời gian đã tạo: Th10 28, 2023 lúc 04:48 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
--- Phiên bản PHP: 8.2.4
+-- Phiên bản PHP: 8.1.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -94,16 +94,6 @@ CREATE TABLE `ct_don_hang` (
   `thanhtien` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Đang đổ dữ liệu cho bảng `ct_don_hang`
---
-
-INSERT INTO `ct_don_hang` (`id`, `id_dh`, `id_sp`, `soluong`, `gia_ban`, `img`, `name`, `thanhtien`) VALUES
-(4, 32, 16, 1, 1500000, '1700576415_Longines L2.321.4.87.2.jpeg', 'Longines L2.321.4.87.2', 2420000),
-(5, 32, 13, 1, 890000, '1700576058_Tissot T006.407.16.033.00.jpeg', 'Tissot T006.407.16.033.00', 2420000),
-(6, 33, 13, 1, 890000, '1700576058_Tissot T006.407.16.033.00.jpeg', 'Tissot T006.407.16.033.00', 920000),
-(10, 36, 2, 1, 500000, 'dongho2.jpeg', 'Đồng hồ Orient', 530000);
-
 -- --------------------------------------------------------
 
 --
@@ -144,17 +134,6 @@ CREATE TABLE `donhang` (
   `ghi_chu` varchar(255) DEFAULT NULL,
   `trangthai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
-
---
--- Đang đổ dữ liệu cho bảng `donhang`
---
-
-INSERT INTO `donhang` (`id`, `id_user`, `nguoi_nhan`, `email`, `tel`, `address`, `ghi_chu`, `trangthai`) VALUES
-(32, 4, 'datgin2004', ' dnguyentien145@gmail.com', '0964305701', 'Trịnh Văn Bô', '', 0),
-(33, 4, 'datgin2004', ' dnguyentien145@gmail.com', '0964305701', 'Chương Mỹ', '', 0),
-(34, 4, 'khanhSky', ' dnguyentien145@gmail.com', '0987654211', 'Hà Nội', '', 0),
-(35, 4, 'datgin2k4', ' datntph36687@fpt.edu.vn', '0123456789', 'Hà Tây', '', 0),
-(36, 4, 'datgin2k4', ' dnguyentien145@gmail.com', '0999999999', 'Trịnh Văn Bô', '', 0);
 
 -- --------------------------------------------------------
 
@@ -228,7 +207,7 @@ CREATE TABLE `taikhoan` (
 INSERT INTO `taikhoan` (`id`, `user`, `pass`, `email`, `tel`, `address`, `role`, `checkname`) VALUES
 (1, 'daiadmin', 'Dai123456', 'admin@gmail.com.vn', NULL, NULL, 1, 0),
 (2, 'dai123123', 'Qa123123', 'dai@gmail.com', NULL, NULL, 0, 0),
-(4, 'datgin2k4', '28062004Dat', 'dnguyentien145@gmail.com', '0964305701', 'Chương mỹ', 0, 1);
+(4, 'datgin2k4', '11052004Dat', 'dnguyentien145@gmail.com', '0964305701', 'Chương mỹ', 0, 1);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -310,13 +289,13 @@ ALTER TABLE `binhluan`
 -- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=196;
 
 --
 -- AUTO_INCREMENT cho bảng `ct_don_hang`
 --
 ALTER TABLE `ct_don_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT cho bảng `danhmuc`
@@ -328,13 +307,13 @@ ALTER TABLE `danhmuc`
 -- AUTO_INCREMENT cho bảng `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT cho bảng `taikhoan`
