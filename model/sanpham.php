@@ -60,58 +60,11 @@ function delete_sp($id)
 
 function update_sp($id, $iddm, $name, $img, $img2, $img3, $gia, $gia_new, $mota, $soluong, $xuatxu, $kieumay)
 {
-    if ($img != "") {
-        $sql = "UPDATE `sanpham` SET 
+    $sql = "UPDATE `sanpham` SET 
         `iddm` = '$iddm',
         `name` = '$name',
         `img` = '$img',
-        `gia` = '$gia',
-        `gia_new` = '$gia_new',
-        `mota` = '$mota',
-        `soluong` = '$soluong',
-        `xuatxu` = '$xuatxu',
-        `kieumay` = '$kieumay'
-        WHERE `id` = $id";
-    } else {
-        $sql = "UPDATE `sanpham` SET 
-        `iddm` = '$iddm',
-        `name` = '$name',
-        `gia` = '$gia',
-        `gia_new` = '$gia_new',
-        `mota` = '$mota',
-        `soluong` = '$soluong',
-        `xuatxu` = '$xuatxu',
-        `kieumay` = '$kieumay'
-        WHERE `id` = $id";
-    }
-    if ($img2 != "") {
-        $sql = "UPDATE `sanpham` SET 
-        `iddm` = '$iddm',
-        `name` = '$name',
         `img2` = '$img2',
-        `gia` = '$gia',
-        `gia_new` = '$gia_new',
-        `mota` = '$mota',
-        `soluong` = '$soluong',
-        `xuatxu` = '$xuatxu',
-        `kieumay` = '$kieumay'
-        WHERE `id` = $id";
-    } else {
-        $sql = "UPDATE `sanpham` SET 
-        `iddm` = '$iddm',
-        `name` = '$name',
-        `gia` = '$gia',
-        `gia_new` = '$gia_new',
-        `mota` = '$mota',
-        `soluong` = '$soluong',
-        `xuatxu` = '$xuatxu',
-        `kieumay` = '$kieumay'
-        WHERE `id` = $id";
-    }
-    if ($img3 != "") {
-        $sql = "UPDATE `sanpham` SET 
-        `iddm` = '$iddm',
-        `name` = '$name',
         `img3` = '$img3',
         `gia` = '$gia',
         `gia_new` = '$gia_new',
@@ -120,20 +73,7 @@ function update_sp($id, $iddm, $name, $img, $img2, $img3, $gia, $gia_new, $mota,
         `xuatxu` = '$xuatxu',
         `kieumay` = '$kieumay'
         WHERE `id` = $id";
-    } else {
-        $sql = "UPDATE `sanpham` SET 
-        `iddm` = '$iddm',
-        `name` = '$name',
-        `gia` = '$gia',
-        `gia_new` = '$gia_new',
-        `mota` = '$mota',
-        `soluong` = '$soluong',
-        `xuatxu` = '$xuatxu',
-        `kieumay` = '$kieumay'
-        WHERE `id` = $id";
-    }
     pdo_execute($sql);
-
 }
 function loadstar()
 {
