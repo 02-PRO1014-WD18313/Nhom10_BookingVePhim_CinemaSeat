@@ -44,10 +44,10 @@ function listsp_dm($key = "", $iddm = 0, $gia = "", $kieumay = "", $xuatxu = "")
 
 
 //-------------------ADMIN------------------//
-function insert_sp($iddm, $name, $img, $gia, $gia_new, $mota, $soluong, $xuatxu, $kieumay)
+function insert_sp($iddm, $name, $img, $img2, $img3, $gia, $gia_new, $mota, $soluong, $xuatxu, $kieumay)
 {
-    $sql = "INSERT INTO `sanpham`(`iddm`, `name`, `img`, `gia`, `gia_new`, `mota`, `soluong`, `xuatxu`, `kieumay`) VALUES 
-    ('$iddm','$name','$img','$gia','$gia_new','$mota','$soluong','$xuatxu','$kieumay')";
+    $sql = "INSERT INTO `sanpham`(`iddm`, `name`, `img`,`img2`,`img3`, `gia`, `gia_new`, `mota`, `soluong`, `xuatxu`, `kieumay`) VALUES 
+    ('$iddm','$name','$img', '$img2', '$img3','$gia','$gia_new','$mota','$soluong','$xuatxu','$kieumay')";
     pdo_execute($sql);
 }
 
@@ -58,7 +58,7 @@ function delete_sp($id)
     pdo_execute($sql);
 }
 
-function update_sp($id, $iddm, $name, $img, $gia, $gia_new, $mota, $soluong, $xuatxu, $kieumay)
+function update_sp($id, $iddm, $name, $img, $img2, $img3, $gia, $gia_new, $mota, $soluong, $xuatxu, $kieumay)
 {
     if ($img != "") {
         $sql = "UPDATE `sanpham` SET 
@@ -84,7 +84,56 @@ function update_sp($id, $iddm, $name, $img, $gia, $gia_new, $mota, $soluong, $xu
         `kieumay` = '$kieumay'
         WHERE `id` = $id";
     }
+    if ($img2 != "") {
+        $sql = "UPDATE `sanpham` SET 
+        `iddm` = '$iddm',
+        `name` = '$name',
+        `img2` = '$img2',
+        `gia` = '$gia',
+        `gia_new` = '$gia_new',
+        `mota` = '$mota',
+        `soluong` = '$soluong',
+        `xuatxu` = '$xuatxu',
+        `kieumay` = '$kieumay'
+        WHERE `id` = $id";
+    } else {
+        $sql = "UPDATE `sanpham` SET 
+        `iddm` = '$iddm',
+        `name` = '$name',
+        `gia` = '$gia',
+        `gia_new` = '$gia_new',
+        `mota` = '$mota',
+        `soluong` = '$soluong',
+        `xuatxu` = '$xuatxu',
+        `kieumay` = '$kieumay'
+        WHERE `id` = $id";
+    }
+    if ($img3 != "") {
+        $sql = "UPDATE `sanpham` SET 
+        `iddm` = '$iddm',
+        `name` = '$name',
+        `img3` = '$img3',
+        `gia` = '$gia',
+        `gia_new` = '$gia_new',
+        `mota` = '$mota',
+        `soluong` = '$soluong',
+        `xuatxu` = '$xuatxu',
+        `kieumay` = '$kieumay'
+        WHERE `id` = $id";
+    } else {
+        $sql = "UPDATE `sanpham` SET 
+        `iddm` = '$iddm',
+        `name` = '$name',
+        `gia` = '$gia',
+        `gia_new` = '$gia_new',
+        `mota` = '$mota',
+        `soluong` = '$soluong',
+        `xuatxu` = '$xuatxu',
+        `kieumay` = '$kieumay'
+        WHERE `id` = $id";
+    }
     pdo_execute($sql);
+
 }
 function loadstar()
 {
