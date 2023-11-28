@@ -45,6 +45,8 @@ include "../../model/validate.php";
                     </div>
                     <div class="btn ">
                         <button name="btn" value="dangnhap" type="submit">Đăng nhập</button>
+                        <small style="color: red;"> <?= (isset($err)) ?  $err . '<br>'  : '' ?></small>
+                       
                         <span>Bạn chưa có tài khoản? <a href="dangky.php?act=dangky">Đăng ký</a></span>
                     </div>
                     <div class="with">
