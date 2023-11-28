@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 28, 2023 lúc 08:37 AM
+-- Thời gian đã tạo: Th10 28, 2023 lúc 03:55 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
--- Phiên bản PHP: 8.1.17
+-- Phiên bản PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -167,6 +167,8 @@ CREATE TABLE `sanpham` (
   `iddm` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `img` varchar(255) DEFAULT NULL,
+  `img2` varchar(255) DEFAULT NULL,
+  `img3` varchar(255) DEFAULT NULL,
   `gia` int(11) NOT NULL,
   `gia_new` int(11) NOT NULL,
   `mota` text NOT NULL,
@@ -179,28 +181,28 @@ CREATE TABLE `sanpham` (
 -- Đang đổ dữ liệu cho bảng `sanpham`
 --
 
-INSERT INTO `sanpham` (`id`, `iddm`, `name`, `img`, `gia`, `gia_new`, `mota`, `soluong`, `xuatxu`, `kieumay`) VALUES
-(1, 4, 'Đồng Hồ Casio', 'dongho1.jpeg', 1200000, 890000, 'sản phẩm oke\"', 20, 'Thụy Sỹ', 'Cơ/Automatic'),
-(2, 2, 'Đồng hồ Orient', 'dongho2.jpeg', 2300000, 500000, 'hay', 12, '', ''),
-(3, 3, 'Đồng hồ Citizen', 'dongho3.jpeg', 500, 250, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolore, laborum deleniti veniam in, commodi debitis harum corporis dolor voluptates ipsa dicta totam odio tenetur a odit sint assumenda expedita.\"', 20, 'Thụy Sỹ', 'Cơ/Automatic'),
-(4, 4, 'Đồng Hồ Seiko', 'dongho4.jpeg', 3500000, 3000000, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolore, laborum deleniti veniam in, commodi debitis harum corporis dolor voluptates ipsa dicta totam odio tenetur a odit sint assumenda expedita.', 15, '1323', '123123'),
-(13, 5, 'Tissot T006.407.16.033.00', '1700576058_Tissot T006.407.16.033.00.jpeg', 1200000, 890000, 'đẹp', 10, 'Hàn Quốc', 'Kiểu mạ vàng ấy'),
-(14, 3, 'Citizen NH8363-14H', '1700576274_Citizen NH8363-14H.jpeg', 750000, 500000, 'hay', 5, 'Việt Nam', 'Kiểu mạ vàng ấy'),
-(15, 3, 'Citizen BM7256-50E', '1700576346_Citizen BM7256-50E.jpeg', 950000, 750000, 'đẹp', 12, 'Nhật Bản', 'Mạ Kim Cương'),
-(16, 6, 'Longines L2.321.4.87.2', '1700576415_Longines L2.321.4.87.2.jpeg', 2200000, 1500000, 'Ngon', 8, 'Trung Quốc', 'Mạ Bạc'),
-(17, 6, 'Longines L3.742.4.96.6', '1700576490_Longines L3.742.4.96.6.jpeg', 550000, 490000, 'Cứng', 15, 'Ấn Độ', 'Bọc Thép'),
-(18, 1, 'Orient RA-AR0003L10B', '1700576568_Orient RA-AR0003L10B.jpeg', 650000, 450000, 'Hợp Phết', 20, 'Iran', 'Mạ Non'),
-(19, 2, 'Orient FAG02005W0', '1700576653_Orient FAG02005W0.jpeg', 1500000, 1000000, 'Hơi Mỏng', 10, 'Irac', 'Bọc Giấy'),
-(20, 2, 'Orient FAG02005W1', '1700576720_Orient FAG02005W1.jpeg', 630000, 540000, 'Chất Lượng Kém', 16, 'Hàn Quốc', 'Bọc Ni Lông'),
-(21, 2, 'Orient SK RA-AA0B02R19B', '1700576815_Orient SK RA-AA0B02R19B.jpeg', 3600000, 2500000, 'Trơn Quá', 15, 'Việt Nam', 'Pha Nhớt'),
-(22, 4, 'Seiko 42mm SUR211P1', '1700576974_Seiko 42mm SUR211P1.jpeg', 790000, 520000, 'Dễ Rách', 18, 'Ý', 'Giấy Ăn '),
-(23, 4, 'Seiko 42.5mm SRPD76K1', '1700577362_Seiko 42.5mm SRPD76K1.jpeg', 1200000, 950000, 'Nói ít thôi', 5, 'Nhật Bản', 'Khó Nói'),
-(24, 4, 'Seiko 42mm SNZG13J1', '1700577470_Seiko 42mm SNZG13J1.jpeg', 520000, 350000, 'Trơn', 20, 'Trung Quốc', 'Dầu mỡ'),
-(25, 4, 'Seiko 38mm SNKD99K1-5', '1700577580_Seiko 38mm SNKD99K1-5.jpeg', 1450000, 1200000, 'Cháy năng', 13, 'Ấn Độ', 'Da đen'),
-(26, 1, 'Casio 42mm MTP-1375L', '1700577643_Casio 42mm MTP-1375L.jpeg', 1250000, 950000, 'Ngon', 21, 'Hàn Quốc', 'Trắng '),
-(27, 1, 'Casio G-Shock GA-2100', '1700577701_Casio G-Shock GA-2100.jpeg', 950000, 630000, 'Ngạc Nhiên', 7, 'Nga', 'Ôi Dồi Ôi'),
-(28, 1, 'Casio 43.5mm MTP-1374L', '1700577758_Casio 43.5mm MTP-1374L.jpeg', 850000, 620000, 'Siêu bền', 9, 'Na Uy', 'Cứng Cáp'),
-(29, 1, 'Casio AE-1200WHD', '1700577843_Casio AE-1200WHD.jpeg', 690000, 550000, 'Đẹp Xuất Sắc', 10, 'Thụy Sỹ', 'Very Good');
+INSERT INTO `sanpham` (`id`, `iddm`, `name`, `img`, `img2`, `img3`, `gia`, `gia_new`, `mota`, `soluong`, `xuatxu`, `kieumay`) VALUES
+(1, 4, 'Đồng Hồ Casio', 'dongho1.jpeg', NULL, NULL, 1200000, 890000, 'sản phẩm oke\"', 20, 'Thụy Sỹ', 'Cơ/Automatic'),
+(2, 2, 'Đồng hồ Orient', 'dongho2.jpeg', NULL, NULL, 2300000, 500000, 'hay', 12, '', ''),
+(3, 3, 'Đồng hồ Citizen', 'dongho3.jpeg', NULL, NULL, 500, 250, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolore, laborum deleniti veniam in, commodi debitis harum corporis dolor voluptates ipsa dicta totam odio tenetur a odit sint assumenda expedita.\"', 20, 'Thụy Sỹ', 'Cơ/Automatic'),
+(4, 4, 'Đồng Hồ Seiko', 'dongho4.jpeg', NULL, NULL, 3500000, 3000000, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolore, laborum deleniti veniam in, commodi debitis harum corporis dolor voluptates ipsa dicta totam odio tenetur a odit sint assumenda expedita.', 15, '1323', '123123'),
+(13, 5, 'Tissot T006.407.16.033.00', '1700576058_Tissot T006.407.16.033.00.jpeg', NULL, NULL, 1200000, 890000, 'đẹp', 10, 'Hàn Quốc', 'Kiểu mạ vàng ấy'),
+(14, 3, 'Citizen NH8363-14H', '1700576274_Citizen NH8363-14H.jpeg', NULL, NULL, 750000, 500000, 'hay', 5, 'Việt Nam', 'Kiểu mạ vàng ấy'),
+(15, 3, 'Citizen BM7256-50E', '1700576346_Citizen BM7256-50E.jpeg', NULL, NULL, 950000, 750000, 'đẹp', 12, 'Nhật Bản', 'Mạ Kim Cương'),
+(16, 6, 'Longines L2.321.4.87.2', '1700576415_Longines L2.321.4.87.2.jpeg', NULL, NULL, 2200000, 1500000, 'Ngon', 8, 'Trung Quốc', 'Mạ Bạc'),
+(17, 6, 'Longines L3.742.4.96.6', '1700576490_Longines L3.742.4.96.6.jpeg', NULL, NULL, 550000, 490000, 'Cứng', 15, 'Ấn Độ', 'Bọc Thép'),
+(18, 1, 'Orient RA-AR0003L10B', '1700576568_Orient RA-AR0003L10B.jpeg', NULL, NULL, 650000, 450000, 'Hợp Phết', 20, 'Iran', 'Mạ Non'),
+(19, 2, 'Orient FAG02005W0', '1700576653_Orient FAG02005W0.jpeg', NULL, NULL, 1500000, 1000000, 'Hơi Mỏng', 10, 'Irac', 'Bọc Giấy'),
+(20, 2, 'Orient FAG02005W1', '1700576720_Orient FAG02005W1.jpeg', NULL, NULL, 630000, 540000, 'Chất Lượng Kém', 16, 'Hàn Quốc', 'Bọc Ni Lông'),
+(21, 2, 'Orient SK RA-AA0B02R19B', '1700576815_Orient SK RA-AA0B02R19B.jpeg', NULL, NULL, 3600000, 2500000, 'Trơn Quá', 15, 'Việt Nam', 'Pha Nhớt'),
+(22, 4, 'Seiko 42mm SUR211P1', '1700576974_Seiko 42mm SUR211P1.jpeg', NULL, NULL, 790000, 520000, 'Dễ Rách', 18, 'Ý', 'Giấy Ăn '),
+(23, 4, 'Seiko 42.5mm SRPD76K1', '1700577362_Seiko 42.5mm SRPD76K1.jpeg', NULL, NULL, 1200000, 950000, 'Nói ít thôi', 5, 'Nhật Bản', 'Khó Nói'),
+(24, 4, 'Seiko 42mm SNZG13J1', '1700577470_Seiko 42mm SNZG13J1.jpeg', NULL, NULL, 520000, 350000, 'Trơn', 20, 'Trung Quốc', 'Dầu mỡ'),
+(25, 4, 'Seiko 38mm SNKD99K1-5', '1700577580_Seiko 38mm SNKD99K1-5.jpeg', NULL, NULL, 1450000, 1200000, 'Cháy năng', 13, 'Ấn Độ', 'Da đen'),
+(26, 1, 'Casio 42mm MTP-1375L', '1700577643_Casio 42mm MTP-1375L.jpeg', NULL, NULL, 1250000, 950000, 'Ngon quá ko đến lượt', 12, 'Hàn Quốc', 'Cơ/Automatic'),
+(27, 1, 'Casio G-Shock GA-2100', '1700577701_Casio G-Shock GA-2100.jpeg', NULL, NULL, 950000, 630000, 'Ngạc Nhiên', 7, 'Nga', 'Ôi Dồi Ôi'),
+(28, 1, 'Casio 43.5mm MTP-1374L', '1700577758_Casio 43.5mm MTP-1374L.jpeg', NULL, NULL, 850000, 620000, 'Siêu bền', 9, 'Na Uy', 'Cứng Cáp'),
+(29, 1, 'Casio AE-1200WHD', '1700577843_Casio AE-1200WHD.jpeg', NULL, NULL, 690000, 550000, 'Đẹp Xuất Sắc', 10, 'Thụy Sỹ', 'Very Good');
 
 -- --------------------------------------------------------
 
@@ -332,7 +334,7 @@ ALTER TABLE `donhang`
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT cho bảng `taikhoan`

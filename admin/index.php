@@ -7,8 +7,11 @@ include "../model/danhmuc.php";
 include "../model/sanpham.php";
 include "../model/taikhoan.php";
 include "../model/donhang.php";
+include "../model/thongke.php";
 include "../global.php";
-
+$thong_ke_doanh_thu = thong_ke_doanh_thu();
+$thong_ke = thong_ke();
+$count_sp = count(loadAll_sanpham());    
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
@@ -78,6 +81,8 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     $name = $_POST['name'];
                     $iddm = $_POST['iddm'];
                     $img = null;
+                    $img2 = null;
+                    $img3 = null;
                     $gia = $_POST['gia'];
                     $gia_new = $_POST['gia_new'];
                     $soluong = $_POST['soluong'];
@@ -94,7 +99,15 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                             $img = time() . "_" . $_FILES['img']['name'];
                             move_uploaded_file($_FILES['img']['tmp_name'], "../uploads/img_sp/$img");
                         }
-                        insert_sp($iddm, $name, $img, $gia, $gia_new, $mota, $soluong, $xuatxu, $kieumay);
+                        if ($_FILES['img2']['name'] != "") {
+                            $img2 = time() . "_" . $_FILES['img2']['name'];
+                            move_uploaded_file($_FILES['img2']['tmp_name'], "../uploads/img_sp/$img2");
+                        }
+                        if ($_FILES['img3']['name'] != "") {
+                            $img3 = time() . "_" . $_FILES['img3']['name'];
+                            move_uploaded_file($_FILES['img3']['tmp_name'], "../uploads/img_sp/$img3");
+                        }
+                        insert_sp($iddm, $name, $img, $img2,$img3, $gia, $gia_new, $mota, $soluong, $xuatxu, $kieumay);
                         $thongbao = "Thêm sản phẩm thành công";
                     }
                 }
@@ -127,6 +140,8 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                         $name = $_POST['name'];
                         $iddm = $_POST['iddm'];
                         $img = null;
+                        $img2 = null;
+                        $img3 = null;
                         $gia = $_POST['gia'];
                         $gia_new = $_POST['gia_new'];
                         $soluong = $_POST['soluong'];
@@ -138,7 +153,17 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                             move_uploaded_file($_FILES['img']['tmp_name'], "../uploads/img_sp/$img");
                             unlink("../uploads/img_sp/" . $loadone_sp[0]['img']);
                         }
-                        update_sp($_GET['id'], $iddm, $name, $img, $gia, $gia_new, $mota, $soluong, $xuatxu, $kieumay);
+                        if (($_FILES['img2']['name'] != $loadone_sp[0]['img2']) && ($_FILES['img2']['name'] != "")) {
+                            $img2 = time() . "_" . $_FILES['img2']['name'];
+                            move_uploaded_file($_FILES['img2']['tmp_name'], "../uploads/img_sp/$img2");
+                            unlink("../uploads/img_sp/" . $loadone_sp[0]['img2']);
+                        }
+                        if (($_FILES['img3']['name'] != $loadone_sp[0]['img3']) && ($_FILES['img3']['name'] != "")) {
+                            $img3 = time() . "_" . $_FILES['img3']['name'];
+                            move_uploaded_file($_FILES['img3']['tmp_name'], "../uploads/img_sp/$img3");
+                            unlink("../uploads/img_sp/" . $loadone_sp[0]['img3']);
+                        }
+                        update_sp($_GET['id'], $iddm, $name, $img, $img2, $img3, $gia, $gia_new, $mota, $soluong, $xuatxu, $kieumay);
                         header('location: index.php?act=list_sp');
                     }
                 }

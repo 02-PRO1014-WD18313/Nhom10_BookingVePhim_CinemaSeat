@@ -17,6 +17,11 @@ function insert_taikhoan($user, $email, $pass)
     pdo_execute($sql);
 }
 
+function update_mk($id,$pass)
+{
+    $sql = "UPDATE taikhoan SET pass = '$pass' WHERE id = " . $id;
+    pdo_execute($sql);
+}
 function delete_taikhoan($id)
 {
     $sql = "delete FROM taikhoan WHERE id=" . $id;
