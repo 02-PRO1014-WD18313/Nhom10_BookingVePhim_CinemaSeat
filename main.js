@@ -43,7 +43,7 @@ let slideIndex = 1;
 showSlides(slideIndex);
 let autoSlideInterval = setInterval(function() {
 plusSlides(1);
-}, 2000);
+}, 4000);
 
 
 function plusSlides(n) {
