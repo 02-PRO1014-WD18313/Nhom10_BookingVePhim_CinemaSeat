@@ -47,6 +47,6 @@ function loadall_chitietdonhang() {
 }
 
 function load_ctdh($id){
-    $sql = "SELECT ct_don_hang.*, donhang.id_user FROM ct_don_hang  JOIN donhang ON ct_don_hang.id_dh = donhang.id WHERE donhang.id_user = $id";
+    $sql = "SELECT ct_don_hang.*, donhang.id_user, donhang.trangthai FROM ct_don_hang  JOIN donhang ON ct_don_hang.id_dh = donhang.id WHERE donhang.id_user = $id";
     return pdo_query($sql);
 }

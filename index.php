@@ -9,6 +9,7 @@ include 'model/taikhoan.php';
 include 'model/cart.php';
 include 'model/binhluan.php';
 include 'model/validate_form.php';
+include 'model/validate_pass.php';
 include 'model/donhang.php';
 
 $loadstar = loadstar();
@@ -171,6 +172,18 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $err = validate_form($user, $email, $sdt, $address);
                 if (empty($err)) {
                     update_taikhoan($_SESSION['iduser'], $user, $email, $sdt, $address);
+                }
+            }
+            if (isset($_POST['btn_update_pass']) && $_POST['btn_update_pass']) {
+                $pass = $_POST['pass'];
+                $captcha = $_POST['captcha'];
+                $ma = $_POST['ma'];
+                $confim = $_POST['confim'];
+                $pass2 = $_POST['pass2'];
+                $err  = check_update_pass($pass, $ma, $captcha, $confim, $pass2);
+                if (empty($err)) {
+                    update_mk($_SESSION['iduser'], $pass2);
+                    echo "<script>alert('Đổi mật khẩu thành công!')</script>";
                 }
             }
             $tk =  selectone_tk($_SESSION['iduser']);
