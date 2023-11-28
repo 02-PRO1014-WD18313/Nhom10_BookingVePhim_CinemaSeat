@@ -69,34 +69,52 @@
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="validationCustom04" class="form-label font-weight-bold">Kiểu máy</label>
-                    <div class="input-group has-validation">
-                        <select class="custom-select" name="kieumay">
-                            <?php foreach ($kieumay as $value) { ?>
-                                <option value="<?= $value ?>"><?= $value ?></option>
-                            <?php } ?>
-                        </select>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="validationCustom04" class="form-label font-weight-bold">Kiểu máy</label>
+                            <div class="input-group has-validation">
+                                <select class="custom-select" name="kieumay">
+                                    <?php foreach ($kieumay as $value) { ?>
+                                        <option value="<?= $value ?>"><?= $value ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="invalid-feedback">
+                                Không được để trống.
+                            </div>
+                        </div>
                     </div>
-                    <div class="invalid-feedback">
-                        Không được để trống.
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="validationTextarea" class="form-label font-weight-bold">Mô tả</label>
+                            <textarea name="mota" class="form-control" id="validationTextarea" placeholder="Nhập mô tả" rows="3" required></textarea>
+                            <div class="invalid-feedback">
+                                Không được để trống.
+                            </div>
+                        </div>
                     </div>
+
                 </div>
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6">
                     <label for="validationCustom03" class="form-label font-weight-bold">Hình ảnh</label>
                     <div class="col-md-12">
                         <input name="img" type="file" class="custom-file-input" id="validatedCustomFile" required>
                         <label class="custom-file-label" for="validatedCustomFile">Chọn tệp...</label>
                         <div class="invalid-feedback">Không được để trống.</div>
                     </div>
-                </div>
-                <div class="col-md-12 mb-3">
-                    <label for="validationTextarea" class="form-label font-weight-bold">Mô tả</label>
-                    <textarea name="mota" class="form-control" id="validationTextarea" placeholder="Nhập mô tả" rows="3" required></textarea>
-                    <div class="invalid-feedback">
-                        Không được để trống.
+                    <div class="col-md-12 my-1">
+                        <input name="img2" type="file" class="custom-file-input" id="validatedCustomFile2" required>
+                        <label class="custom-file-label" for="validatedCustomFile2">Chọn tệp...</label>
+                        <div class="invalid-feedback">Không được để trống.</div>
+                    </div>
+                    <div class="col-md-12">
+                        <input name="img3" type="file" class="custom-file-input" id="validatedCustomFile3" required>
+                        <label class="custom-file-label" for="validatedCustomFile3">Chọn tệp...</label>
+                        <div class="invalid-feedback">Không được để trống.</div>
                     </div>
                 </div>
-                <div class="col-12">
+
+                <div class="col-md-12">
                     <input class="btn btn-success " type="submit" name="submit" value="Thực hiện"></input>
                     <button type="reset" class="btn btn-outline-secondary">Nhập lại</button>
                     <a class="btn btn-primary" href="?act=list_sp" type="submit">Danh sách sản phẩm</a>
