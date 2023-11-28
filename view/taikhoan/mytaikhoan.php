@@ -88,7 +88,7 @@ $randomString = substr(str_shuffle($characters), 0, $length);
                     </div>
                     <div class="mb">
                         <label for="email">Mã captcha <span style="color: red;">*</span></label>
-                        <input style="width: 25%; cursor: not-allowed; text-align: center" disabled type="text" name="email" id="email" value="" placeholder="<?= $randomString; ?>">
+                        <input di style="width: 25%; cursor: not-allowed; text-align: center" disabled type="text" name="email" id="email" value="" placeholder="<?= $randomString; ?>">
                         <input style="width: 70%" type="text" name="email" id="email" value="" placeholder="Nhập mã captcha">
                     </div>
                 </div>

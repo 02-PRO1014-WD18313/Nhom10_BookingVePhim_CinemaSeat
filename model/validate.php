@@ -62,7 +62,7 @@ if (isset($_POST['btn']) && $_POST['btn']) {
         if ($_GET['act'] == 'dangnhap') {
             $dangnhap = checkuser($user, $pass);
             if (!is_array($dangnhap)) {
-                echo 'Tài khoản hoặc mật khẩu không đúng';
+                $err =  'Tài khoản hoặc mật khẩu không đúng';
             } else {
                 $_SESSION['count_cart'] = count(count_cart($dangnhap['id']));
                 $_SESSION['role'] = $dangnhap['role'];

@@ -40,7 +40,7 @@ foreach ($loadbl_sp as $value) {
                 <span>4.5k <small>đã bán</small></span>
             </div>
             <div class="price mb">
-                <p><span>₫<?= $loadone_sp[0]['gia'] ?></span><span>₫<?= $loadone_sp[0]['gia_new'] ?></span></p>
+                <p><span>₫<?= number_format($loadone_sp[0]['gia'], 0 ,"," , ".") ?></span><span>₫<?= number_format($loadone_sp[0]['gia_new'],0,",",".") ?></span></p>
                 <p><?= number_format(floor($sale)) ?>% GIẢM</p>
             </div>
             <div class="des-sort mb">
