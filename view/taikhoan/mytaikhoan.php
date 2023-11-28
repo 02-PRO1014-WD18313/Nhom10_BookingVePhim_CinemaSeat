@@ -69,13 +69,13 @@ $randomString = substr(str_shuffle($characters), 0, $length);
                     foreach ($ctdh as $ctdh) {
                         extract($ctdh);
                         if ($trangthai === 0) {
-                            $trangthai = '<span style="color: red;">Chưa xác nhận</span>';
+                            $trangthai = '<span style="background-color: #e74a3b;color: white; border-radius: 8px;padding: 0 5px">Chưa xác nhận</span>';
                         } else if ($trangthai === 1) {
-                            $trangthai = '<span style="color: blue;">Đã xác nhận</span>';
+                            $trangthai = '<span style="background-color: #4e73df; color: white; border-radius: 8px;padding: 0 5px">Đã xác nhận</span>';
                         } else if ($trangthai === 2) {
-                            $trangthai = '<span style="color: rgb(150, 150, 22);">Đang giao hàng</span>';
+                            $trangthai = '<span style="background-color: #f6c23e;color: white; border-radius: 8px;padding: 0 5px">Đang giao hàng</span>';
                         } else {
-                            $trangthai = '<span style="color: green;">Giao hàng thành công</span>';
+                            $trangthai = '<span style="background-color: #1cc88a;color: white; border-radius: 8px;padding: 0 5px">Giao hàng thành công</span>';
                         }
                     ?>
                         <tr>
