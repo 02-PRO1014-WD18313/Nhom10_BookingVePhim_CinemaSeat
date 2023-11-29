@@ -33,15 +33,16 @@
 					<h5 class=""><span class="">THANH TOÁN</span></h5>
 					<div class="box-thanhtoan-online">
 						<div class="bta">
-							<input type="radio" name="thanhtoan" id="thanhtoanon" value="Thanh toán online">
+							<input type="radio" name="thanhtoan" id="thanhtoanon" value="vnpay">
 							<label for="thanhoanon">Thanh toán qua ví momo</label>
 						</div>
 						<div class="bta">
 							<input type="radio" name="thanhtoan" id="thanhtoanoff" value="Thanh toán khi nhận hàng">
 							<label for="thanhtoanoff">Thanh toán khi nhận hàng</label>
+							<input type="hidden" name="thanhtien" value="<?php echo!empty($tong)? $tong:false?>">
 						</div>
 						<?= (isset($error)) ? "<p class='err' style='color:red; margin-left: 10px'>$error</p>" : '' ?>
-						<button class="bta" name="btn_thanhtoan" value="btn_thanhtoan">ĐẶT HÀNG</button>
+						<button class="bta" name="redirect" value="redirect">ĐẶT HÀNG</button>
 					</div>
 				</div>
 			</div>
