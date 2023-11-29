@@ -51,17 +51,36 @@
 					<h6 class="text-pro">Sản phẩm</h6>
 					<?php
 					$tong = 0;
-					foreach ($loadAll_cart as $value) {
-						$money = $value['gia_new'] * $value['soluong'];
+					if (isset($_GET['idsp']) && $_GET['idsp'] > 0) {
+						foreach ($loadone_sp as $value) {
+							$money = $value['gia_new'];
 					?>
-						<div class="tien">
-							<p class="tien-left"><?= $value['name'] ?> <small style="color: gray;">x<?= $value['soluong'] ?></small></p>
-							<p>₫<?= number_format($money) ?></p>
-						</div>
-					<?php
-						$tong += $money;
-					}
-					?>
+
+							<div class="tien">
+								<p class="tien-left"><?= $value['name'] ?> <small style="color: gray;">x1</small></p>
+								<p>₫<?= number_format($money) ?></p>
+							</div>
+
+						<?php
+							$tong += $money;
+						}
+						?>
+					<?php } else { ?>
+						<?php foreach ($loadAll_cart as $value) {
+							$money = $value['gia_new'] * $value['soluong'];
+						?>
+							<div class="tien">
+								<p class="tien-left"><?= $value['name'] ?> <small style="color: gray;">x<?= $value['soluong'] ?></small></p>
+								<p>₫<?= number_format($money) ?></p>
+							</div>
+						<?php
+							$tong += $money;
+						}
+						?>
+					<?php	} ?>
+
+
+
 
 					<div class="vocher">
 						<div class="voch">
