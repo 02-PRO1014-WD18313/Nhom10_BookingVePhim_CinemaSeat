@@ -85,7 +85,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 if (isset($_POST['btn']) && $_POST['btn']) {
                     $idsp = $_GET['idsp'];
                     $iduser = $_SESSION['iduser'];
-                    foreach ($loadAll_cart as &$value) {
+                    foreach ($loadAll_cart as $value) {
                         if ($value['idsp'] == $idsp) {
                             $found = true;
                             update_sl($_SESSION['iduser'], $idsp);
@@ -132,6 +132,10 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $idcart = 0;
             }
             $loadAll_cart = loadAll_cart($_SESSION['iduser']);
+            if (isset($_GET['idsp'])) {
+                $loadone_sp = loadAll_sanpham("",  $_GET['idsp']);
+            }
+
             if (isset($_POST['btn_thanhtoan']) && $_POST['btn_thanhtoan']) {
                 if (isset($_POST['thanhtoan']) && $_POST['thanhtoan'] == "Thanh toán khi nhận hàng") {
                     $thanhtoan = $_POST['thanhtoan'];
@@ -142,18 +146,29 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     $err = validate_form($user, $email, $sdt, $address);
                     if (empty($err)) {
                         $iddh =  insert_donhang($_SESSION['iduser'], $user, $sdt, $email, $address);
-                        for ($i = 0; $i < count($loadAll_cart); $i++) {
-                            $idsp = $loadAll_cart[$i]['idsp'];
-                            $idcart = $loadAll_cart[$i]['idcart'];
-                            $name = $loadAll_cart[$i]['name'];
-                            $gia = $loadAll_cart[$i]['gia_new'];
-                            $soluong = $loadAll_cart[$i]['soluong'];
+                        if (!isset($_GET['idsp'])) {
+                            for ($i = 0; $i < count($loadAll_cart); $i++) {
+                                $idsp = $loadAll_cart[$i]['idsp'];
+                                $idcart = $loadAll_cart[$i]['idcart'];
+                                $name = $loadAll_cart[$i]['name'];
+                                $gia = $loadAll_cart[$i]['gia_new'];
+                                $soluong = $loadAll_cart[$i]['soluong'];
+                                $thanhtien = $_POST['thanhtien'];
+                                $img = $loadAll_cart[$i]['img'];
+                                delete_cart($idcart);
+                            }
+                        } else {
+                            $idsp = $_GET['idsp'];
+                            $name = $loadone_sp[0]['name'];
+                            $gia = $loadone_sp[0]['gia_new'];
+                            $soluong = 1;
                             $thanhtien = $_POST['thanhtien'];
-                            $img = $loadAll_cart[$i]['img'];
-                            insert_chitietdonhang($iddh, $idsp, $name, $gia, $soluong, $thanhtien, $img);
-                            delete_cart($idcart);
-                            $_SESSION['count_cart'] = count(count_cart($_SESSION['iduser']));
+                            $img = $loadone_sp[0]['img'];
                         }
+
+                        echo $idsp . '<br>' . $name . '<br>' . $gia . '<br>' . $soluong . '<br>' . $thanhtien . '<br>' . $img;
+                        insert_chitietdonhang($iddh, $idsp, $name, $gia, $soluong, $thanhtien, $img);
+                        $_SESSION['count_cart'] = count(count_cart($_SESSION['iduser']));
                         header("Location: view/cart/thanhtoantc.php");
                     }
                 } else {
@@ -163,6 +178,10 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             $loadAll_cart = loadAll_cart($_SESSION['iduser']);
             include 'view/cart/thanhtoan.php';
             break;
+            // case 'muangay':
+            //     $loadone_sp = loadAll_sanpham("", $_GET['idsp']);
+            //     include 'view/cart/thanhtoan.php';
+            //     break;
         case 'mytaikhoan':
             if (isset($_POST['btn_tt']) && $_POST['btn_tt']) {
                 $user = $_POST['user'];
