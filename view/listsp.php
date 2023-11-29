@@ -103,7 +103,7 @@ include "global.php";
                             <i class="fa-solid fa-star"></i> <span>(4.5)</span> <br />
                             <span>Đã mua 4.5k</span>
                         </p>
-                        <p><a style="color: red;" href=""><button>Mua Ngay</button></a></p>
+                        <p><a href="?act=thanhtoan&idsp=<?= $id ?>"><button>Mua Ngay</button></a></p>
                     </div>
                 </div>
 
