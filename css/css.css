@@ -462,6 +462,12 @@ main .block .item .Evaluate .fa-star {
 main .block .item .Evaluate p i {
   font-size: 1.5vw;
 }
+main .block .item .Evaluate p button{
+  height: 35px;
+  width: 70px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
 aside {
   display: flex;
   justify-content: space-between;

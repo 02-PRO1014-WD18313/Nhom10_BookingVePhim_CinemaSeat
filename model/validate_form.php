@@ -5,8 +5,10 @@ function validate_form($user, $email, $sdt, $address)
     $err = [];
     if ($user == '') {
         $err['user'] = 'Tên người dùng không được để trống';
-    } elseif ($checkname) {
-        $err['user'] = 'Tên người dùng đã tồn tại';
+    } elseif ($_GET['act'] == "mytaikhoan") {
+        if ($checkname) {
+            $err['user'] = 'Tên người dùng đã tồn tại';
+        }
     }
     if ($email == '') {
         $err['email'] = 'Email không được để trống';
