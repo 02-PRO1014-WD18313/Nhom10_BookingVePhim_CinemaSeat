@@ -1,5 +1,6 @@
 <?php
-include "global.php";
+$xuatxu = array("Thụy Sỹ", "Hàn Quốc", "Mỹ", "Nhật Bản", "Đức", "Việt Nam");
+$kieumay = array("Cơ/Automatic", "Pin/Quazt", "Năng lượng mặt trời", "Điện tử");
 ?>
 <p class="result">
     <?php
@@ -17,16 +18,14 @@ include "global.php";
     <div class="filter">
         <p class="tieude">Sản Phẩm Được Đánh Giá Cao</p>
         <?php
-        foreach ($load_sp_star as $star) {
-            extract($star); ?>
-            <a href="?act=ctsp&idsp=<?= $id ?> &iddm=<?= $iddm ?>">
+        foreach ($load_sp_star as $star) { ?>
+            <a href="?act=ctsp&idsp=<?= $star['id'] ?> &iddm=<?= $star['iddm'] ?>">
                 <div class="pro_top">
-
-                    <div class="img_top"><img width="70" height="70" src="uploads/img_sp/<?= $img ?>" alt=""></div>
+                    <div class="img_top"><img width="70" height="70" src="uploads/img_sp/<?= $star['img'] ?>" alt=""></div>
                     <div class="titlee">
-                        <p><i class="fa-solid fa-star"></i><small>(<?= number_format($avg_star, 1) ?>)</small></p>
-                        <p><?= $name ?></p>
-                        <p><?= number_format($gia_new, 0, ",", ".") ?> ₫</p>
+                        <p><i class="fa-solid fa-star"></i><small>(<?= number_format($star['avg_star'], 1) ?>)</small></p>
+                        <p><?= $star['name'] ?></p>
+                        <p><?= number_format($star['gia_new'], 0, ",", ".") ?> ₫</p>
                     </div>
 
                 </div>
