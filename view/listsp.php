@@ -1,5 +1,6 @@
 <?php
 include "global.php";
+var_dump($kieumay);
 ?>
 <p class="result">
     <?php
