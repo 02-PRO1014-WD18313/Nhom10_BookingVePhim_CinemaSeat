@@ -21,10 +21,10 @@ foreach ($loadbl_sp as $value) {
                     <img class="selected" src="uploads/img_sp/<?= $loadone_sp[0]['img'] ?>" alt="" onclick="showImage(this)" />
                 </p>
                 <p>
-                    <img src="uploads/img_sp/1700576274_Citizen NH8363-14H.jpeg" alt="" onclick="showImage(this)" />
+                    <img src="uploads/img_sp/<?= $loadone_sp[0]['img2'] ?>" alt="" onclick="showImage(this)" />
                 </p>
                 <p>
-                    <img src="uploads/img_sp/1700576346_Citizen BM7256-50E.jpeg" alt="" onclick="showImage(this)" />
+                    <img src="uploads/img_sp/<?= $loadone_sp[0]['img3']?>" alt="" onclick="showImage(this)" />
                 </p>
             </div>
             <div class="img-big">

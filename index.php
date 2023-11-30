@@ -42,7 +42,6 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include_once 'view/ctsp.php';
             break;
         case 'listsp':
-            include 'global.php';
             if (isset($_POST['submit']) && $_POST['submit']) {
                 // từ khóa
                 if (isset($_POST['kyw'])) {
