@@ -17,18 +17,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($loadone_ctdh as $key => $value){?>
+                    <?php foreach ($loadone_ctdh as $key => $value) { ?>
+                        <tr>
+                            <td><?= $key + 1 ?></td>
+                            <td><?= $value['name'] ?></td>
+                            <td><img width="50" src="../uploads/img_sp/<?= $value['img'] ?>" alt=""></td>
+                            <td><?= $value['soluong'] ?></td>
+                            <td><?= number_format($value['gia_ban']) ?></td>
+                        </tr>
+                    <?php } ?>
                     <tr>
-                        <td><?= $key + 1?></td>
-                        <td><?= $value['name']?></td>
-                        <td><img width="50" src="../uploads/img_sp/<?= $value['img'] ?>" alt=""></td>
-                        <td><?= $value['soluong']?></td>
-                        <td><?= number_format($value['gia_ban'])?></td>
-                    </tr>
-                    <?php }?>
-                    <tr>     
                         <td class="text-right font-weight-bold h5 text-danger" colspan="4">Thành tiền:</td>
-                        <td class=" font-weight-bold h5 text-danger" >₫<?= number_format($value['thanhtien'])?></td>
+                        <td class=" font-weight-bold h5 text-danger">₫<?= number_format($value['thanhtien']) ?></td>
                     </tr>
                 </tbody>
             </table>
@@ -78,12 +78,20 @@
                 </div>
                 <div class="col-md-6 mb-4">
                     <label for="validationCustom04" class="form-label font-weight-bold">Trạng thái</label>
-                    <select class="custom-select" name="trangthai">
-                        <option <?= $loadone_dh[0]['trangthai'] === 0 ? "selected" : "" ?> value="0">Chờ xác nhận</option>
-                        <option <?= $loadone_dh[0]['trangthai'] === 1 ? "selected" : "" ?> value="1">Đã xác nhận</option>
-                        <option <?= $loadone_dh[0]['trangthai'] === 2 ? "selected" : "" ?> value="2">Đang giao hàng</option>
-                        <option <?= $loadone_dh[0]['trangthai'] === 3 ? "selected" : "" ?> value="3">Giao hàng thành công</option>
-                    </select>
+                    <?php
+                    if ($loadone_dh[0]['trangthai'] == 4) { ?>
+                        <select class="custom-select" name="trangthai" disabled>
+                            <option value="">Đã hủy</option>
+                        </select>
+                    <?php } else { ?>
+                        <select class="custom-select" name="trangthai">
+                            <option <?= $loadone_dh[0]['trangthai'] === 0 ? "selected" : "" ?> value="0">Chờ xác nhận</option>
+                            <option <?= $loadone_dh[0]['trangthai'] === 1 ? "selected" : "" ?> value="1">Đã xác nhận</option>
+                            <option <?= $loadone_dh[0]['trangthai'] === 2 ? "selected" : "" ?> value="2">Đang giao hàng</option>
+                            <option <?= $loadone_dh[0]['trangthai'] === 3 ? "selected" : "" ?> value="3">Giao hàng thành công</option>
+                        </select>
+                    <?php }
+                    ?>
                     <div class="invalid-feedback">
                         Không được để trống.
                     </div>
