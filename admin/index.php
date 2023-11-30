@@ -8,10 +8,11 @@ include "../model/sanpham.php";
 include "../model/taikhoan.php";
 include "../model/donhang.php";
 include "../model/thongke.php";
+include "../model/binhluan.php";
 include "../global.php";
 $thong_ke_doanh_thu = thong_ke_doanh_thu();
 $thong_ke = thong_ke();
-$count_sp = count(loadAll_sanpham());    
+$count_sp = count(loadAll_sanpham());
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
@@ -106,7 +107,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                             $img3 = time() . "_" . $_FILES['img3']['name'];
                             move_uploaded_file($_FILES['img3']['tmp_name'], "../uploads/img_sp/$img3");
                         }
-                        insert_sp($iddm, $name, $img, $img2,$img3, $gia, $gia_new, $mota, $soluong, $xuatxu, $kieumay);
+                        insert_sp($iddm, $name, $img, $img2, $img3, $gia, $gia_new, $mota, $soluong, $xuatxu, $kieumay);
                         $thongbao = "Thêm sản phẩm thành công";
                     }
                 }
@@ -156,26 +157,26 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                             $img = time() . "_" . $_FILES['img']['name'];
                             move_uploaded_file($_FILES['img']['tmp_name'], "../uploads/img_sp/$img");
                             unlink("../uploads/img_sp/" . $loadone_sp[0]['img']);
-                        }else{
+                        } else {
                             $img = $loadone_sp[0]['img'];
                         }
                         if (($_FILES['img2']['name'] != "")) {
                             $img2 = time() . "_" . $_FILES['img2']['name'];
                             move_uploaded_file($_FILES['img2']['tmp_name'], "../uploads/img_sp/$img2");
                             unlink("../uploads/img_sp/" . $loadone_sp[0]['img2']);
-                        }else{
+                        } else {
                             $img2 = $loadone_sp[0]['img2'];
                         }
                         if (($_FILES['img3']['name'] != "")) {
                             $img3 = time() . "_" . $_FILES['img3']['name'];
                             move_uploaded_file($_FILES['img3']['tmp_name'], "../uploads/img_sp/$img3");
                             unlink("../uploads/img_sp/" . $loadone_sp[0]['img3']);
-                        }else{
+                        } else {
                             $img3 = $loadone_sp[0]['img3'];
                         }
                         // echo $img . " " . $img2 . " " . $img3;
-                         update_sp($_GET['id'], $iddm, $name, $img, $img2, $img3, $gia, $gia_new, $mota, $soluong, $xuatxu, $kieumay);
-                          header('location: index.php?act=list_sp');
+                        update_sp($_GET['id'], $iddm, $name, $img, $img2, $img3, $gia, $gia_new, $mota, $soluong, $xuatxu, $kieumay);
+                        header('location: index.php?act=list_sp');
                     }
                 }
                 $list_dm = loadAll_danhmuc();
@@ -203,6 +204,15 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
             //quan ly binh luan
         case "list_binhluan": {
+                $load_bl_sp_admin = load_bl_sp_admin();
+                include "./binhluan/list_binhluan.php";
+                break;
+            }
+        case "delete_bl": {
+                if (isset($_GET['idbl']) && ($_GET['idbl'] > 0)) {
+                    delete_binhluan($_GET['idbl']);
+                }
+                $load_bl_sp_admin = load_bl_sp_admin();
                 include "./binhluan/list_binhluan.php";
                 break;
             }
@@ -221,10 +231,10 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                         $tel = $_POST['tel'];
                         $address = $_POST['address'];
                         $trangthai = $_POST['trangthai'];
-                        
-                        if(isset($_POST['ghichu']) && $_POST['ghichu']  != ""){
+
+                        if (isset($_POST['ghichu']) && $_POST['ghichu']  != "") {
                             $ghichu = $_POST['ghichu'];
-                        }else{
+                        } else {
                             $ghichu = "";
                         }
                         update_donhang($_GET['id'], $name, $tel, $address, $ghichu, $trangthai);
