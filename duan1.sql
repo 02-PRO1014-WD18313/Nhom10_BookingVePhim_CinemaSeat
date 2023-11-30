@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 28, 2023 lúc 04:48 PM
+-- Thời gian đã tạo: Th10 30, 2023 lúc 04:51 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.1.17
 
@@ -94,6 +94,19 @@ CREATE TABLE `ct_don_hang` (
   `thanhtien` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `ct_don_hang`
+--
+
+INSERT INTO `ct_don_hang` (`id`, `id_dh`, `id_sp`, `soluong`, `gia_ban`, `img`, `name`, `thanhtien`) VALUES
+(32, 57, 2, 1, 500000, 'dongho2.jpeg', 'Đồng hồ Orient', 530000),
+(33, 58, 15, 1, 750000, '1700576346_Citizen BM7256-50E.jpeg', 'Citizen BM7256-50E', 780000),
+(34, 59, 4, 1, 3000000, 'dongho4.jpeg', 'Đồng Hồ Seiko', 3030000),
+(35, 60, 14, 1, 500000, '1700576274_Citizen NH8363-14H.jpeg', 'Citizen NH8363-14H', 530000),
+(36, 61, 4, 1, 3000000, 'dongho4.jpeg', 'Đồng Hồ Seiko', 3030000),
+(37, 62, 2, 1, 500000, 'dongho2.jpeg', 'Đồng hồ Orient', 530000),
+(38, 63, 4, 2, 3000000, 'dongho4.jpeg', 'Đồng Hồ Seiko', 6030000);
+
 -- --------------------------------------------------------
 
 --
@@ -135,6 +148,19 @@ CREATE TABLE `donhang` (
   `trangthai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `donhang`
+--
+
+INSERT INTO `donhang` (`id`, `id_user`, `nguoi_nhan`, `email`, `tel`, `address`, `ghi_chu`, `trangthai`) VALUES
+(57, 4, 'datgin2k4', ' dnguyentien145@gmail.com', '0964305701', 'Hà Tĩnh', NULL, 0),
+(58, 4, 'datgin2k4', ' dnguyentien145@gmail.com', '0987654321', 'Hà Nội', NULL, 0),
+(59, 4, 'datgin2k4', ' dnguyentien145@gmail.com', '0964305701', 'Trịnh Văn Bô', NULL, 0),
+(60, 4, 'datgin2k4', ' dnguyentien145@gmail.com', '0964305701', 'Trịnh Văn Bô', NULL, 0),
+(61, 4, 'datgin2k4', ' dnguyentien145@gmail.com', '0964305701', 'Trịnh Văn Bô', NULL, 0),
+(62, 4, 'datgin2k4', ' dnguyentien145@gmail.com', '0964305701', 'Trịnh Văn Bô', NULL, 0),
+(63, 4, 'datgin2k4', ' dnguyentien145@gmail.com', '0964305701', 'Trịnh Văn Bô', NULL, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -161,7 +187,7 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`id`, `iddm`, `name`, `img`, `img2`, `img3`, `gia`, `gia_new`, `mota`, `soluong`, `xuatxu`, `kieumay`) VALUES
-(1, 4, 'Đồng Hồ Casio', 'dongho1.jpeg', NULL, NULL, 1200000, 890000, 'sản phẩm oke\"', 20, 'Thụy Sỹ', 'Cơ/Automatic'),
+(1, 1, 'Đồng Hồ Casio', 'dongho1.jpeg', NULL, NULL, 1200000, 890000, 'sản phẩm oke\"', 20, 'Thụy Sỹ', 'Cơ/Automatic'),
 (2, 2, 'Đồng hồ Orient', 'dongho2.jpeg', NULL, NULL, 2300000, 500000, 'hay', 12, '', ''),
 (3, 3, 'Đồng hồ Citizen', 'dongho3.jpeg', NULL, NULL, 500, 250, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolore, laborum deleniti veniam in, commodi debitis harum corporis dolor voluptates ipsa dicta totam odio tenetur a odit sint assumenda expedita.\"', 20, 'Thụy Sỹ', 'Cơ/Automatic'),
 (4, 4, 'Đồng Hồ Seiko', 'dongho4.jpeg', NULL, NULL, 3500000, 3000000, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolore, laborum deleniti veniam in, commodi debitis harum corporis dolor voluptates ipsa dicta totam odio tenetur a odit sint assumenda expedita.', 15, '1323', '123123'),
@@ -289,13 +315,13 @@ ALTER TABLE `binhluan`
 -- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=196;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
 
 --
 -- AUTO_INCREMENT cho bảng `ct_don_hang`
 --
 ALTER TABLE `ct_don_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT cho bảng `danhmuc`
@@ -307,7 +333,7 @@ ALTER TABLE `danhmuc`
 -- AUTO_INCREMENT cho bảng `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT cho bảng `sanpham`
@@ -336,8 +362,7 @@ ALTER TABLE `cart`
 -- Các ràng buộc cho bảng `ct_don_hang`
 --
 ALTER TABLE `ct_don_hang`
-  ADD CONSTRAINT `fk_ctdh_dh` FOREIGN KEY (`id_dh`) REFERENCES `donhang` (`id`),
-  ADD CONSTRAINT `fk_ctdh_sp` FOREIGN KEY (`id_sp`) REFERENCES `sanpham` (`id`);
+  ADD CONSTRAINT `fk_ctdh_dh` FOREIGN KEY (`id_dh`) REFERENCES `donhang` (`id`);
 
 --
 -- Các ràng buộc cho bảng `donhang`

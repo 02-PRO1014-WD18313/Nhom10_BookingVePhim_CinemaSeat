@@ -1,4 +1,4 @@
-<button id="scrollDownBtn" onclick="scrollToTop()">Scroll to Top</button>
+<button id="scrollDownBtn" onclick="scrollToTop()"><i class="fa-solid fa-arrow-up"></i></button>
 <footer>
   <div class="footer">
     <div class="box-footer">

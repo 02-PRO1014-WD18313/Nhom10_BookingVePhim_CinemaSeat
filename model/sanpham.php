@@ -12,7 +12,14 @@ function loadAll_sanpham($key = "", $idsp = 0)
 }
 function listsp_dm($key = "", $iddm = 0, $gia = "", $kieumay = "", $xuatxu = "")
 {
-    $sql = "SELECT * FROM sanpham WHERE 1";
+    $sql = "SELECT
+    sp.*,
+    IFNULL(AVG(bl.star), 0) AS avg_star
+FROM
+    sanpham sp
+LEFT JOIN
+    binhluan bl ON sp.id = bl.id_pro WHERE 1";
+
     if ($gia != "" && $kieumay != "" && $xuatxu != "") {
         $sql .= " AND gia_new BETWEEN $gia AND kieumay = '$kieumay' AND xuatxu = '$xuatxu'";
     }
@@ -38,6 +45,10 @@ function listsp_dm($key = "", $iddm = 0, $gia = "", $kieumay = "", $xuatxu = "")
         $sql = "AND name LIKE '%$key%' AND  gia_new BETWEEN $gia AND kieumay = '$kieumay' AND xuatxu = '$xuatxu'";
     }
 
+    $sql .= " GROUP BY
+sp.id
+ORDER BY
+sp.id";
     return pdo_query($sql);
 }
 
@@ -87,6 +98,7 @@ function loadstar()
     sp.soluong,
     sp.xuatxu,
     sp.kieumay,
+    sp.iddm,
     IFNULL(AVG(bl.star), 0) AS avg_star
 FROM
     sanpham sp
@@ -96,5 +108,32 @@ GROUP BY
     sp.id
 ORDER BY
     sp.id limit 0,10";
+    return pdo_query($sql);
+}
+function load_sp_star()
+{
+    $sql = "
+    SELECT
+    sp.id,
+    sp.name,
+    sp.img,
+    sp.gia,
+    sp.gia_new,
+    sp.mota,
+    sp.soluong,
+    sp.xuatxu,
+    sp.kieumay,
+    sp.iddm,
+    IFNULL(AVG(bl.star), 0) AS avg_star
+FROM
+    sanpham sp
+LEFT JOIN
+    binhluan bl ON sp.id = bl.id_pro
+GROUP BY
+    sp.id
+ORDER BY
+    avg_star DESC
+LIMIT 0,5
+    ";
     return pdo_query($sql);
 }
