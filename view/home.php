@@ -48,7 +48,7 @@
                 extract($value); ?>
 
                 <div class="item">
-                    <a href="?act=ctsp&idsp=<?= $id ?>">
+                    <a href="?act=ctsp&idsp=<?= $id ?>&iddm=<?=$iddm?>">
                         <div class="img">
                             <img src="uploads/img_sp/<?= $img ?>" alt="" />
                         </div>
