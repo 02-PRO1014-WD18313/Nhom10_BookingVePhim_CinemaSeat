@@ -200,22 +200,33 @@ foreach ($loadbl_sp as $value) {
     <div class="box-splq">
         <h3>Sản phẩm liên quan</h3>
         <div class="block">
-            <div class="item">
-                <div class="name">Galaxy tab S6</div>
-                <div class="img">
-                    <p>
-                        <img src="image/dong-ho-citizen-em1074-82d_1680330969 1.png" alt="" />
-                    </p>
+        <?php
+            foreach ($load_sp_cl as $value) {
+                extract($value); ?>
+                <div class="item">
+                    <a href="?act=ctsp&idsp=<?= $id ?>&iddm=<?= $iddm ?>">
+                        <div class="img">
+                            <p>
+                                <img src="uploads/img_sp/<?= $img ?>" alt="" />
+                            </p>
+                        </div>
+                        <div class="name"><?= $name ?></div>
+                    </a>
+                    <div class="price mb">
+                        <p><?= number_format($gia) ?> ₫</p>
+                        <p><?= number_format($gia_new) ?> ₫</p>
+                    </div>
+                    <div class="Evaluate mb">
+                        <p>
+                        <i class="fa-solid fa-star"></i> <span>(<?= number_format($avg_star, 1) ?>)</span> <br />
+                            <span>Đã mua 4.5k</span>
+                        </p>
+                        <p><a href="?act=thanhtoan&idsp=<?= $id ?>"><button>Mua Ngay</button></a></p>
+                    </div>
                 </div>
-                <div class="price"><span>1.000.000 ₫</span><span>500.000 ₫</span></div>
-                <div class="Evaluate">
-                    <p>
-                        <i class="fa-solid fa-star"></i> <span>(4.5)</span> <br />
-                        <span>Đã mua 4.5k</span>
-                    </p>
-                    <p><i class="fa-solid fa-cart-plus"></i></p>
-                </div>
-            </div>
+
+            <?php }
+            ?>
         </div>
     </div>
 </div>

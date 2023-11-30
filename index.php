@@ -12,9 +12,11 @@ include 'model/validate_form.php';
 include 'model/validate_pass.php';
 include 'model/donhang.php';
 
+
 $loadstar = loadstar();
 // $list_sp_home = loadAll_sanpham();
 $list_dm = loadAll_danhmuc();
+$load_sp_star= load_sp_star();
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
@@ -34,6 +36,8 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 }
                 $loadbl_sp = load_bl_sp($_GET['idsp']);
                 $loadone_sp = loadAll_sanpham("", $_GET['idsp']);
+                $load_sp_cl = load_sp_cung_loai($_GET['idsp'], $_GET['iddm']);
+                
             }
             include_once 'view/ctsp.php';
             break;
@@ -156,7 +160,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                         }
                         header("Location: view/cart/thanhtoantc.php");
                     }
-                }elseif(isset($_POST['thanhtoan']) && $_POST['thanhtoan'] == 'vnpay'){
+                } elseif (isset($_POST['thanhtoan']) && $_POST['thanhtoan'] == 'vnpay') {
                     echo 'thanh toan thanh cong';
                     $thanhtien = $_POST['thanhtien'];
                     echo $thanhtien;
@@ -166,13 +170,13 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
 
                     $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
                     $vnp_Returnurl = "http://localhost/Nhom10_BookingVePhim_CinemaSeat/index.php?act=thanhtoantc";
-                    $vnp_TmnCode = "WG6RCT6R";//Mã website tại VNPAY 
+                    $vnp_TmnCode = "WG6RCT6R"; //Mã website tại VNPAY 
                     $vnp_HashSecret = "EMNBSNLHGWLGFOQXDXZZQGNONOSETZZF"; //Chuỗi bí mật
                     $startTime = date("YmdHis");
                     $expire = date('YmdHis', strtotime('+15 minutes', strtotime($startTime)));
                     $vnp_TxnRef = time() . ''; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
                     $vnp_OrderInfo = 'hahah';
-                    $vnp_OrderType ='noi dung thanh toan';
+                    $vnp_OrderType = 'noi dung thanh toan';
                     $vnp_Amount = $thanhtien * 100;
                     $vnp_Locale = 'vn';
                     $vnp_BankCode = 'NCB';
@@ -192,15 +196,15 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                         "vnp_OrderType" => $vnp_OrderType,
                         "vnp_ReturnUrl" => $vnp_Returnurl,
                         "vnp_TxnRef" => $vnp_TxnRef,
-                        "vnp_ExpireDate"=>$vnp_ExpireDate,
+                        "vnp_ExpireDate" => $vnp_ExpireDate,
                     );
 
                     if (isset($vnp_BankCode) && $vnp_BankCode != "") {
                         $inputData['vnp_BankCode'] = $vnp_BankCode;
                     }
-                //     // if (isset($vnp_Bill_State) && $vnp_Bill_State != "") {
-                //     //     $inputData['vnp_Bill_State'] = $vnp_Bill_State;
-                //     // }
+                    //     // if (isset($vnp_Bill_State) && $vnp_Bill_State != "") {
+                    //     //     $inputData['vnp_Bill_State'] = $vnp_Bill_State;
+                    //     // }
 
                     //var_dump($inputData);
                     ksort($inputData);
@@ -219,19 +223,19 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
 
                     $vnp_Url = $vnp_Url . "?" . $query;
                     if (isset($vnp_HashSecret)) {
-                        $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret);//  
+                        $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret); //  
                         $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
                     }
                     $returnData = array(
-                        'code' => '00', 'message' => 'success', 'data' => $vnp_Url);
-                        if (isset($_POST['redirect'])) {
-                            header('Location: ' . $vnp_Url);
-                            die();
-                        } else {
-                            echo json_encode($returnData);
-                        }
-                }
-                else {
+                        'code' => '00', 'message' => 'success', 'data' => $vnp_Url
+                    );
+                    if (isset($_POST['redirect'])) {
+                        header('Location: ' . $vnp_Url);
+                        die();
+                    } else {
+                        echo json_encode($returnData);
+                    }
+                } else {
                     $error = 'Vui lòng chọn phương thức thanh toán!';
                 }
             }

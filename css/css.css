@@ -462,7 +462,7 @@ main .block .item .Evaluate .fa-star {
 main .block .item .Evaluate p i {
   font-size: 1.5vw;
 }
-main .block .item .Evaluate p button{
+.block .item .Evaluate p button{
   height: 35px;
   width: 70px;
   border-radius: 5px;
@@ -781,25 +781,20 @@ main .box-product .more:hover {
   width: 100%;
   max-width: 100%;
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: repeat(5, 1fr);
 }
 .box-ctsp .box-splq .block .item {
-  padding: 0 30px;
+  padding: 20px 30px;
   background: rgb(255, 255, 255);
-  width: 300px;
+  width: 250px;
   margin-left: 50%;
   transform: translateX(-50%);
   margin-bottom: 40px;
   border-radius: 10px;
 }
-.box-ctsp .box-splq .block .item p {
-  border-radius: 4px;
-  background: rgb(236, 236, 236);
-  margin: 20px 0;
-}
 .box-ctsp .box-splq .block .item .img img {
   width: 100%;
-  height: 250px;
+  height: 200px;
   transition: 0.5s;
 }
 .box-ctsp .block .item .Evaluate {
@@ -811,12 +806,6 @@ main .box-product .more:hover {
 }
 .box-ctsp .block .item .Evaluate p i {
   font-size: 1.5vw;
-}
-.box-ctsp .block .item .Evaluate p:nth-child(2) {
-  color: white;
-  padding: 10px 11px 0 9px;
-  background: rgb(145, 7, 7);
-  border-radius: 5px;
 }
 .box-ctsp .block .item .Evaluate p:nth-child(1) {
   background: white;
@@ -848,15 +837,16 @@ main .box-product .more:hover {
   font-size: 0.9vw;
 }
 .box-ctsp .block .item .price {
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
-  font-size: 1.3vw;
+  font-size: 1.1vw;
   color: rgb(210, 1, 1);
 }
 .box-ctsp .box-splq .block .item .img img:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   transition: 0.5s;
 }
 
@@ -866,13 +856,16 @@ main .box-product .more:hover {
 }
 .box-ctsp .box-splq .block .item .name {
   padding-top: 20px;
-  font-size: 1.3vw;
+  font-size: 1.2vw;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
-.box-ctsp .box-splq .block .item .gia span {
+.box-ctsp .box-splq .block .item .price p {
   font-weight: bold;
-  color: #393939;
+  color: #c31c1c;
 }
-.box-ctsp .box-splq .block .item .gia span:nth-child(1) {
+.box-ctsp .box-splq .block .item .price p:nth-child(1) {
   font-size: 0.8rem;
   text-decoration: line-through;
   color: #919191;
