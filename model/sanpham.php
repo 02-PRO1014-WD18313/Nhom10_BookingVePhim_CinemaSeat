@@ -113,17 +113,7 @@ ORDER BY
 function load_sp_star()
 {
     $sql = "
-    SELECT
-    sp.id,
-    sp.name,
-    sp.img,
-    sp.gia,
-    sp.gia_new,
-    sp.mota,
-    sp.soluong,
-    sp.xuatxu,
-    sp.kieumay,
-    sp.iddm,
+    SELECT sp.*,
     IFNULL(AVG(bl.star), 0) AS avg_star
 FROM
     sanpham sp
