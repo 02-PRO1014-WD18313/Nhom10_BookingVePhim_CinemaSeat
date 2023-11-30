@@ -41,7 +41,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     insert_bl($iduser, $idpro, $noidung, $stars);
                 }
             }
-            include_once 'view/binhluan.php';
+            include_once 'view/danhgia.php';
             break;
         case 'listsp':
             if (isset($_POST['submit']) && $_POST['submit']) {
@@ -137,26 +137,61 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include 'view/taikhoan/mytaikhoan.php';
             break;
         case 'thanhtoan':
-            if (isset($_GET['idcart']) && $_GET['idcart'] > 0) {
-                $idcart = $_GET['idcart'];
-            } else {
-                $idcart = 0;
-            }
-            $loadAll_cart = loadAll_cart($_SESSION['iduser']);
-            if (isset($_GET['idsp'])) {
-                $loadone_sp = loadAll_sanpham("",  $_GET['idsp']);
-            }
-            if (isset($_POST['redirect']) && $_POST['redirect']) {
-                if (isset($_POST['thanhtoan']) && $_POST['thanhtoan'] == "Thanh toán khi nhận hàng") {
-                    $thanhtoan = $_POST['thanhtoan'];
-                    $user = $_POST['user'];
-                    $email = $_POST['email'];
-                    $sdt = $_POST['sdt'];
-                    $address = $_POST['address'];
-                    $err = validate_form($user, $email, $sdt, $address);
-                    if (empty($err)) {
-                        $iddh =  insert_donhang($_SESSION['iduser'], $user, $sdt, $email, $address);
-                        if (!isset($_GET['idsp'])) {
+            if (isset($_SESSION['iduser'])) {
+                if (isset($_GET['idcart']) && $_GET['idcart'] > 0) {
+                    $idcart = $_GET['idcart'];
+                } else {
+                    $idcart = 0;
+                }
+                $loadAll_cart = loadAll_cart($_SESSION['iduser']);
+                if (isset($_GET['idsp'])) {
+                    $loadone_sp = loadAll_sanpham("",  $_GET['idsp']);
+                }
+
+
+                if (isset($_POST['redirect']) && $_POST['redirect']) {
+                    if (isset($_POST['thanhtoan']) && $_POST['thanhtoan'] == "Thanh toán khi nhận hàng") {
+                        $thanhtoan = $_POST['thanhtoan'];
+                        $user = $_POST['user'];
+                        $email = $_POST['email'];
+                        $sdt = $_POST['sdt'];
+                        $address = $_POST['address'];
+                        $err = validate_form($user, $email, $sdt, $address);
+                        if (empty($err)) {
+                            $iddh =  insert_donhang($_SESSION['iduser'], $user, $sdt, $email, $address);
+                            if (!isset($_GET['idsp'])) {
+                                for ($i = 0; $i < count($loadAll_cart); $i++) {
+                                    $idsp = $loadAll_cart[$i]['idsp'];
+                                    $idcart = $loadAll_cart[$i]['idcart'];
+                                    $name = $loadAll_cart[$i]['name'];
+                                    $gia = $loadAll_cart[$i]['gia_new'];
+                                    $soluong = $loadAll_cart[$i]['soluong'];
+                                    $thanhtien = $_POST['thanhtien'];
+                                    $img = $loadAll_cart[$i]['img'];
+                                    insert_chitietdonhang($iddh, $idsp, $name, $gia, $soluong, $thanhtien, $img);
+                                    delete_cart($idcart);
+                                }
+                            } else {
+                                $idsp = $_GET['idsp'];
+                                $name = $loadone_sp[0]['name'];
+                                $gia = $loadone_sp[0]['gia_new'];
+                                $soluong = 1;
+                                $thanhtien = $_POST['thanhtien'];
+                                $img = $loadone_sp[0]['img'];
+                                insert_chitietdonhang($iddh, $idsp, $name, $gia, $soluong, $thanhtien, $img);
+                            }
+                            $_SESSION['count_cart'] = count(count_cart($_SESSION['iduser']));
+                            header("Location: view/cart/thanhtoantc.php");
+                        }
+                    } elseif (isset($_POST['thanhtoan']) && $_POST['thanhtoan'] == 'vnpay') {
+                        $thanhtoan = $_POST['thanhtoan'];
+                        $user = $_POST['user'];
+                        $email = $_POST['email'];
+                        $sdt = $_POST['sdt'];
+                        $address = $_POST['address'];
+                        $err = validate_form($user, $email, $sdt, $address);
+                        if (empty($err)) {
+                            $iddh =  insert_donhang($_SESSION['iduser'], $user, $sdt, $email, $address);
                             for ($i = 0; $i < count($loadAll_cart); $i++) {
                                 $idsp = $loadAll_cart[$i]['idsp'];
                                 $idcart = $loadAll_cart[$i]['idcart'];
@@ -167,116 +202,88 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                                 $img = $loadAll_cart[$i]['img'];
                                 insert_chitietdonhang($iddh, $idsp, $name, $gia, $soluong, $thanhtien, $img);
                                 delete_cart($idcart);
+                                $_SESSION['count_cart'] = count(count_cart($_SESSION['iduser']));
+                                header("Location: view/cart/thanhtoantc.php");
                             }
-                        } else {
-                            $idsp = $_GET['idsp'];
-                            $name = $loadone_sp[0]['name'];
-                            $gia = $loadone_sp[0]['gia_new'];
-                            $soluong = 1;
+                            echo 'thanh toan thanh cong';
                             $thanhtien = $_POST['thanhtien'];
-                            $img = $loadone_sp[0]['img'];
-                            insert_chitietdonhang($iddh, $idsp, $name, $gia, $soluong, $thanhtien, $img);
-                        }
-                        $_SESSION['count_cart'] = count(count_cart($_SESSION['iduser']));
-                        header("Location: view/cart/thanhtoantc.php");
-                    }
-                } elseif (isset($_POST['thanhtoan']) && $_POST['thanhtoan'] == 'vnpay') {
-                    $thanhtoan = $_POST['thanhtoan'];
-                    $user = $_POST['user'];
-                    $email = $_POST['email'];
-                    $sdt = $_POST['sdt'];
-                    $address = $_POST['address'];
-                    $err = validate_form($user, $email, $sdt, $address);
-                    if (empty($err)) {
-                        $iddh =  insert_donhang($_SESSION['iduser'], $user, $sdt, $email, $address);
-                        for ($i = 0; $i < count($loadAll_cart); $i++) {
-                            $idsp = $loadAll_cart[$i]['idsp'];
-                            $idcart = $loadAll_cart[$i]['idcart'];
-                            $name = $loadAll_cart[$i]['name'];
-                            $gia = $loadAll_cart[$i]['gia_new'];
-                            $soluong = $loadAll_cart[$i]['soluong'];
-                            $thanhtien = $_POST['thanhtien'];
-                            $img = $loadAll_cart[$i]['img'];
-                            insert_chitietdonhang($iddh, $idsp, $name, $gia, $soluong, $thanhtien, $img);
-                            delete_cart($idcart);
-                            $_SESSION['count_cart'] = count(count_cart($_SESSION['iduser']));
-                            header("Location: view/cart/thanhtoantc.php");
-                        }
-                        echo 'thanh toan thanh cong';
-                        $thanhtien = $_POST['thanhtien'];
-                        echo $thanhtien;
+                            echo $thanhtien;
 
-                        error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
-                        date_default_timezone_set('Asia/Ho_Chi_Minh');
+                            error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
+                            date_default_timezone_set('Asia/Ho_Chi_Minh');
 
-                        $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-                        $vnp_Returnurl = "http://localhost/Nhom10_BookingVePhim_CinemaSeat/?act=thanhtoantc";
-                        $vnp_TmnCode = "WG6RCT6R"; //Mã website tại VNPAY 
-                        $vnp_HashSecret = "EMNBSNLHGWLGFOQXDXZZQGNONOSETZZF"; //Chuỗi bí mật
-                        $startTime = date("YmdHis");
-                        $expire = date('YmdHis', strtotime('+5 minutes', strtotime($startTime)));
-                        $vnp_TxnRef = time() . ''; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
-                        $vnp_OrderInfo = 'hahah';
-                        $vnp_OrderType = 'noi dung thanh toan';
-                        $vnp_Amount = $thanhtien * 100;
-                        $vnp_Locale = 'vn';
-                        $vnp_BankCode = 'NCB';
-                        $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
-                        $vnp_ExpireDate = $expire;
+                            $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+                            $vnp_Returnurl = "http://localhost/Nhom10_BookingVePhim_CinemaSeat/?act=thanhtoantc";
+                            $vnp_TmnCode = "WG6RCT6R"; //Mã website tại VNPAY 
+                            $vnp_HashSecret = "EMNBSNLHGWLGFOQXDXZZQGNONOSETZZF"; //Chuỗi bí mật
+                            $startTime = date("YmdHis");
+                            $expire = date('YmdHis', strtotime('+5 minutes', strtotime($startTime)));
+                            $vnp_TxnRef = time() . ''; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+                            $vnp_OrderInfo = 'hahah';
+                            $vnp_OrderType = 'noi dung thanh toan';
+                            $vnp_Amount = $thanhtien * 100;
+                            $vnp_Locale = 'vn';
+                            $vnp_BankCode = 'NCB';
+                            $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
+                            $vnp_ExpireDate = $expire;
 
-                        $inputData = array(
-                            "vnp_Version" => "2.1.0",
-                            "vnp_TmnCode" => $vnp_TmnCode,
-                            "vnp_Amount" => $vnp_Amount,
-                            "vnp_Command" => "pay",
-                            "vnp_CreateDate" => date('YmdHis'),
-                            "vnp_CurrCode" => "VND",
-                            "vnp_IpAddr" => $vnp_IpAddr,
-                            "vnp_Locale" => $vnp_Locale,
-                            "vnp_OrderInfo" => $vnp_OrderInfo,
-                            "vnp_OrderType" => $vnp_OrderType,
-                            "vnp_ReturnUrl" => $vnp_Returnurl,
-                            "vnp_TxnRef" => $vnp_TxnRef,
-                            "vnp_ExpireDate" => $vnp_ExpireDate,
-                        );
+                            $inputData = array(
+                                "vnp_Version" => "2.1.0",
+                                "vnp_TmnCode" => $vnp_TmnCode,
+                                "vnp_Amount" => $vnp_Amount,
+                                "vnp_Command" => "pay",
+                                "vnp_CreateDate" => date('YmdHis'),
+                                "vnp_CurrCode" => "VND",
+                                "vnp_IpAddr" => $vnp_IpAddr,
+                                "vnp_Locale" => $vnp_Locale,
+                                "vnp_OrderInfo" => $vnp_OrderInfo,
+                                "vnp_OrderType" => $vnp_OrderType,
+                                "vnp_ReturnUrl" => $vnp_Returnurl,
+                                "vnp_TxnRef" => $vnp_TxnRef,
+                                "vnp_ExpireDate" => $vnp_ExpireDate,
+                            );
 
-                        if (isset($vnp_BankCode) && $vnp_BankCode != "") {
-                            $inputData['vnp_BankCode'] = $vnp_BankCode;
-                        }
-                        ksort($inputData);
-                        $query = "";
-                        $i = 0;
-                        $hashdata = "";
-                        foreach ($inputData as $key => $value) {
-                            if ($i == 1) {
-                                $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
+                            if (isset($vnp_BankCode) && $vnp_BankCode != "") {
+                                $inputData['vnp_BankCode'] = $vnp_BankCode;
+                            }
+                            ksort($inputData);
+                            $query = "";
+                            $i = 0;
+                            $hashdata = "";
+                            foreach ($inputData as $key => $value) {
+                                if ($i == 1) {
+                                    $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
+                                } else {
+                                    $hashdata .= urlencode($key) . "=" . urlencode($value);
+                                    $i = 1;
+                                }
+                                $query .= urlencode($key) . "=" . urlencode($value) . '&';
+                            }
+
+                            $vnp_Url = $vnp_Url . "?" . $query;
+                            if (isset($vnp_HashSecret)) {
+                                $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret); //  
+                                $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
+                            }
+                            $returnData = array(
+                                'code' => '00', 'message' => 'success', 'data' => $vnp_Url
+                            );
+                            if (isset($_POST['redirect'])) {
+                                header('Location: ' . $vnp_Url);
+                                die();
                             } else {
-                                $hashdata .= urlencode($key) . "=" . urlencode($value);
-                                $i = 1;
+                                echo json_encode($returnData);
                             }
-                            $query .= urlencode($key) . "=" . urlencode($value) . '&';
                         }
-
-                        $vnp_Url = $vnp_Url . "?" . $query;
-                        if (isset($vnp_HashSecret)) {
-                            $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret); //  
-                            $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
-                        }
-                        $returnData = array(
-                            'code' => '00', 'message' => 'success', 'data' => $vnp_Url
-                        );
-                        if (isset($_POST['redirect'])) {
-                            header('Location: ' . $vnp_Url);
-                            die();
-                        } else {
-                            echo json_encode($returnData);
-                        }
+                    } else {
+                        $error = 'Vui lòng chọn phương thức thanh toán!';
                     }
-                } else {
-                    $error = 'Vui lòng chọn phương thức thanh toán!';
                 }
+                $loadAll_cart = loadAll_cart($_SESSION['iduser']);
+            } else {
+                header("Location: view/taikhoan/dangnhap.php?act=dangnhap");
             }
-            $loadAll_cart = loadAll_cart($_SESSION['iduser']);
+
             include 'view/cart/thanhtoan.php';
             break;
         case 'mytaikhoan':
