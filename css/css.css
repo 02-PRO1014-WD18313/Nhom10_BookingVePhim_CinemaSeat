@@ -462,7 +462,7 @@ main .block .item .Evaluate .fa-star {
 main .block .item .Evaluate p i {
   font-size: 1.5vw;
 }
-.block .item .Evaluate p button{
+.block .item .Evaluate p button {
   height: 35px;
   width: 70px;
   border-radius: 5px;
@@ -682,37 +682,41 @@ main .box-product .more:hover {
 .box-ctsp .bottom {
   background: #ffffff;
   display: flex;
-  justify-content: space-evenly;
-  padding: 10px 0;
-  height: 760px;
+  justify-content: space-between;
+  padding: 10px ;
 }
 .box-ctsp .bottom .box-Evaluate {
   border: 1px solid #ccc;
-  height: 310px;
-  width: 482px;
+  width: 45%;
 }
-.box-ctsp .bottom .box-Evaluate .box-comment {
+.box-ctsp .bottom .box-comment {
+  width: 45%;
+  border: 1px solid #ccc;
+}
+.box-ctsp .bottom .box-comment .cmt{
   overflow: auto;
   height: 425px;
 }
-.box-ctsp .bottom .box-Evaluate .box-comment #bl {
+.box-ctsp .bottom .box-comment .cmt::-webkit-scrollbar {
+  display: none;
+}
+.box-ctsp .bottom .box-comment #bl {
   font-size: 1.8rem;
-  margin: 20px 0 10px 0;
-  font-weight: 500;
+  padding: 10px;
+  font-weight: 600;
 }
-.box-ctsp .bottom .box-Evaluate .box-comment .comment {
+.box-ctsp .bottom  .box-comment .comment {
   display: flex;
-  padding: 10px 0;
+  padding: 10px 20px;
 }
-.box-ctsp .bottom .box-Evaluate .box-comment .comment .content p {
+.box-ctsp .bottom  .box-comment .comment .content p {
   font-size: 0.8rem;
 }
-.box-ctsp .bottom .box-Evaluate .box-comment .comment .content p i {
+.box-ctsp .bottom  .box-comment .comment .content p i {
   color: orange;
 }
 .box-ctsp
   .bottom
-  .box-Evaluate
   .box-comment
   .comment
   .content
@@ -735,10 +739,10 @@ main .box-product .more:hover {
 .box-ctsp .bottom .Evaluate p:nth-child(2) small i {
   color: rgb(255, 132, 0);
 }
-.box-ctsp .bottom .form-Evaluate {
+.form-Evaluate {
   padding: 20px 0 0 0;
 }
-.box-ctsp .bottom .form-Evaluate button {
+.form-Evaluate button {
   padding: 8px 30px;
   font-size: 1.2rem;
   background: #993333;
@@ -746,10 +750,10 @@ main .box-product .more:hover {
   color: white;
   border-radius: 5px;
 }
-.box-ctsp .bottom .form-Evaluate button:hover {
+.form-Evaluate button:hover {
   cursor: pointer;
 }
-.box-ctsp .bottom .form-Evaluate p:nth-child(1) {
+.form-Evaluate p:nth-child(1) {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 10px;
@@ -760,13 +764,13 @@ main .box-product .more:hover {
 .stars i.active {
   color: orange;
 }
-.box-ctsp .bottom .form-Evaluate textarea {
+.form-Evaluate textarea {
   margin-top: 25px;
   height: 200px;
   border: 1px solid #ccc;
   padding: 10px;
 }
-.box-ctsp .bottom .form-Evaluate textarea::placeholder {
+.form-Evaluate textarea::placeholder {
   color: #ccc;
 }
 /* .box-ctsp .box-splq{
@@ -1311,8 +1315,7 @@ footer .box-footer p:hover {
 .nav-tk ul {
   list-style: none;
 }
-
-.ip-tk label {
+.box-tk-left .ip-tk label {
   display: block;
 }
 .nav-tk ul li {
@@ -1352,6 +1355,15 @@ footer .box-footer p:hover {
   padding-left: 5px;
 }
 
+#tt2 {
+  height: 480px;
+  background: white;
+  overflow: scroll;
+}
+
+#tt2::-webkit-scrollbar {
+  display: none;
+}
 .btn-capnhat {
   padding: 5px 20px;
   border-radius: 5px;
@@ -1376,7 +1388,7 @@ footer .box-footer p:hover {
   background: white;
   border-bottom: 1px solid gray;
 }
-.box-tk .hitory  h3{
+.box-tk .hitory h3 {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -1387,7 +1399,8 @@ footer .box-footer p:hover {
   position: relative;
   margin: auto;
 }
-.prev, .next {
+.prev,
+.next {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -1407,8 +1420,9 @@ footer .box-footer p:hover {
   border-radius: 3px 0 0 3px;
 }
 
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .text {
@@ -1441,7 +1455,8 @@ footer .box-footer p:hover {
   transition: background-color 0.6s ease;
 }
 
-.active, .dot:hover {
+.active,
+.dot:hover {
   background-color: #717171;
 }
 
@@ -1452,15 +1467,23 @@ footer .box-footer p:hover {
   width: 100%;
   height: 360px;
 }
-.fade img{
+.fade img {
   height: 100%;
 }
 @keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
+  .prev,
+  .next,
+  .text {
+    font-size: 11px;
+  }
 }
