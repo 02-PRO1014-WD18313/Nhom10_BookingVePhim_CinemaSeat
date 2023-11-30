@@ -1,6 +1,5 @@
 <?php
 include "global.php";
-var_dump($kieumay);
 ?>
 <p class="result">
     <?php
@@ -19,15 +18,14 @@ var_dump($kieumay);
         <p class="tieude">Sản Phẩm Được Đánh Giá Cao</p>
         <?php
         foreach ($load_sp_star as $star) {
-            extract($star); ?>
-            <a href="?act=ctsp&idsp=<?= $id ?> &iddm=<?= $iddm ?>">
+             ?>
+            <a href="?act=ctsp&idsp=<?= $star['id'] ?> &iddm=<?= $star['iddm'] ?>">
                 <div class="pro_top">
-
-                    <div class="img_top"><img width="70" height="70" src="uploads/img_sp/<?= $img ?>" alt=""></div>
+                    <div class="img_top"><img width="70" height="70" src="uploads/img_sp/<?= $star['img'] ?>" alt=""></div>
                     <div class="titlee">
-                        <p><i class="fa-solid fa-star"></i><small>(<?= number_format($avg_star, 1) ?>)</small></p>
-                        <p><?= $name ?></p>
-                        <p><?= number_format($gia_new, 0, ",", ".") ?> ₫</p>
+                        <p><i class="fa-solid fa-star"></i><small>(<?= number_format($star['avg_star'], 1) ?>)</small></p>
+                        <p><?= $star['name'] ?></p>
+                        <p><?= number_format($star['gia_new'], 0, ",", ".") ?> ₫</p>
                     </div>
 
                 </div>
@@ -53,9 +51,10 @@ var_dump($kieumay);
             <div class="div">
                 <select name="gia" id="">
                     <option hidden value="">Giá</option>
-                    <option value="500000 AND 1000000">5 trăm - 1 triệu</option>
-                    <option value="1000000 AND 2000000">1 - 2 triệu</option>
-                    <option value="2000000 AND 3000000">2 - 3 triệu</option>
+                    <option value="500000 AND 2000000">5 trăm - 2 triệu</option>
+                    <option value="2000000 AND 5000000">2 - 5 triệu</option>
+                    <option value="5000000 AND 10000000">5 - 10 triệu</option>
+                    <option value="10000000 AND 20000000">Trên 10 triệu</option>
                 </select>
             </div>
             <div class="div">
@@ -79,26 +78,26 @@ var_dump($kieumay);
         <div class="block mt listsp">
             <?php
             foreach ($listsp_dm as $value) {
-                extract($value); ?>
+                 ?>
                 <div class="item">
-                    <a href="?act=ctsp&idsp=<?= $id ?>&iddm=<?= $iddm ?>">
+                    <a href="?act=ctsp&idsp=<?= $value['id'] ?>&iddm=<?= $value['iddm'] ?>">
                         <div class="img">
                             <p>
-                                <img src="uploads/img_sp/<?= $img ?>" alt="" />
+                                <img src="uploads/img_sp/<?= $value['img'] ?>" alt="" />
                             </p>
                         </div>
-                        <div class="name"><?= $name ?></div>
+                        <div class="name"><?= $value['name'] ?></div>
                     </a>
                     <div class="price">
-                        <p><?= number_format($gia) ?> ₫</p>
-                        <p><?= number_format($gia_new) ?> ₫</p>
+                        <p><?= number_format($value['gia'], 0, ",", ".") ?> ₫</p>
+                        <p><?= number_format($value['gia_new'], 0, ",", ".") ?> ₫</p>
                     </div>
                     <div class="Evaluate">
                         <p>
-                            <i class="fa-solid fa-star"></i> <span>(<?= number_format($avg_star, 1) ?>)</span> <br />
+                            <i class="fa-solid fa-star"></i> <span>(<?= number_format($value['avg_star'], 1) ?>)</span> <br />
                             <span>Đã mua 4.5k</span>
                         </p>
-                        <p><a href="?act=thanhtoan&idsp=<?= $id ?>"><button>Mua Ngay</button></a></p>
+                        <p><a href="?act=thanhtoan&idsp=<?= $value['id'] ?>"><button>Mua Ngay</button></a></p>
                     </div>
                 </div>
 
