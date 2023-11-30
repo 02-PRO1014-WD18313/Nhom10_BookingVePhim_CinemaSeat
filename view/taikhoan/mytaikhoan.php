@@ -74,27 +74,38 @@ $randomString = substr(str_shuffle($characters), 0, $length);
                             $trangthai = '<span style="background-color: #4e73df; color: white; border-radius: 8px;padding: 0 5px">Đã xác nhận</span>';
                         } else if ($trangthai === 2) {
                             $trangthai = '<span style="background-color: #f6c23e;color: white; border-radius: 8px;padding: 0 5px">Đang giao hàng</span>';
-                        } else {
+                        } elseif ($trangthai === 3) {
                             $trangthai = '<span style="background-color: #1cc88a;color: white; border-radius: 8px;padding: 0 5px">Giao hàng thành công</span>';
+                        } else {
+                            $trangthai = '<span style="background-color: #858796;color: white; border-radius: 8px;padding: 0 5px">Đã hủy</span>';
                         }
                     ?>
                         <tr>
-                            <td><img width="70" src="uploads/img_sp/<?= $img ?>" alt="">
-                            </td>
-                            <td> <?= $name ?>
-                            </td>
-                            <td> ₫<?= number_format($gia_ban, 0, ',', '.') ?>
-                            </td>
-                            <td> x<?= $soluong ?>
-                            </td>
-                            <td> <?= $trangthai ?>
-                            </td>
-                            <td> ₫<?= number_format($soluong * $gia_ban, 0, ',', '.') ?>
-                            </td>
+                            <td><img width="70" src="uploads/img_sp/<?= $img ?>" alt=""></td>
+                            <td><?= $name ?></td>
+                            <td>₫<?= number_format($gia_ban, 0, ',', '.') ?></td>
+                            <td>x<?= $soluong ?></td>
+                            <td><?= $trangthai ?></td>
+                            <td>₫<?= number_format($soluong * $gia_ban, 0, ',', '.') ?></td>
                         </tr>
+
+                        <?php
+                        // Only display the "Hủy đơn hàng" button if trangthai is not equal to 4
+                        if ($trangthai !== '<span style="background-color: #858796;color: white; border-radius: 8px;padding: 0 5px">Đã hủy</span>') {
+                        ?>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><?= $trangthai === '<span style="background-color: #1cc88a;color: white; border-radius: 8px;padding: 0 5px">Giao hàng thành công</span>' ? '<a href="?act=binhluan&id_dh=' . $id_dh . '"><button>Đánh giá</button></a>' : '' ?></td>
+                                <td><a onclick="return confirm('Bán có muốn hủy đơn hàng')" href="?act=update_trangthai&id_dh=<?= $id_dh ?>"><button>Hủy đơn hàng</button></a></td>
+                            </tr>
+                        <?php } ?>
                     <?php } ?>
                 </tbody>
             </table>
+
         </div>
         <div class="box-tk tt" id="tt3">
             <h3 class="title-tk">Đổi mật khẩu</h3>

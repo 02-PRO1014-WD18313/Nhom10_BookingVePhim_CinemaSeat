@@ -45,7 +45,8 @@
                                     } else if ($value['trangthai'] == 2) {
                                         echo '<span class="badge bg-warning text-white">Đang giao hàng</span>';
                                     } elseif ($value['trangthai'] == 3) {
-                                        echo '<span class="badge bg-success text-white">Giao hàng thành công</span>';
+                                        echo '<span class="badge bg-success text-white">Giao hàng thành công</span>';}else{
+                                            echo '<span class="badge text-secondary text-white">Đã hủy</span>';
                                     } else {
                                         echo '<span class="badge text-secondary text-white">Đã hủy</span>';
                                     } ?>
