@@ -40,7 +40,7 @@ foreach ($loadbl_sp as $value) {
                 <span>4.5k <small>đã bán</small></span>
             </div>
             <div class="price mb">
-                <p><span>₫<?= number_format($loadone_sp[0]['gia'], 0 ,"," , ".") ?></span><span>₫<?= number_format($loadone_sp[0]['gia_new'],0,",",".") ?></span></p>
+                <p><span>₫<?= number_format($loadone_sp[0]['gia'], 0, ",", ".") ?></span><span>₫<?= number_format($loadone_sp[0]['gia_new'], 0, ",", ".") ?></span></p>
                 <p><?= number_format(floor($sale)) ?>% GIẢM</p>
             </div>
             <div class="des-sort mb">
@@ -115,8 +115,8 @@ foreach ($loadbl_sp as $value) {
 
                         var options = {
                             title: "",
-                            width: 480,
-                            height: 200,
+                            width: 570,
+                            height: 290,
                             bar: {
                                 groupWidth: "95%"
                             },
@@ -132,11 +132,15 @@ foreach ($loadbl_sp as $value) {
                 </script>
                 <div id="columnchart_values" style="width: 450px; height: 200px"></div>
             </div>
-            <div class="box-comment">
-                <p id="bl">Bình luận</p>
+
+        </div>
+        <div class="box-comment">
+            <p id="bl">Bình luận</p>
+            <div class="cmt">
                 <?php
                 foreach ($loadbl_sp as $value) {
                     extract($value) ?>
+
                     <div class="comment">
                         <div class="img"><img src="image/avata_04.webp" alt=""></div>
                         <div class="content">
@@ -158,49 +162,13 @@ foreach ($loadbl_sp as $value) {
                     </div>
                 <?php }
                 ?>
-
             </div>
-        </div>
-        <div class="form-Evaluate">
-            <form action="" method="post">
-                <p>Đánh giá sản phẩm</p>
-                <p>
-
-                <div class="stars">
-                    Đánh giá của bạn: &nbsp;
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                <!-- <h1 id="demo"></h1> -->
-                <input type="text" id="demo" name="stars">
-                </p>
-                <script>
-                    const stars = document.querySelectorAll(".stars i");
-                    stars.forEach((star, index1) => {
-                        star.addEventListener("click", () => {
-                            document.getElementById("demo").value = index1 + 1;
-                            stars.forEach((star, index2) => {
-                                index1 >= index2 ?
-                                    star.classList.add("active") :
-                                    star.classList.remove("active");
-                            });
-                        });
-                    });
-                </script>
-                <p>
-                    <textarea name="noidung" id="" cols="70" rows="10" placeholder="Nhập nội dung đánh giá"></textarea>
-                </p>
-                <button name="submit" value="submit" type="submit">Gửi</button>
-            </form>
         </div>
     </div>
     <div class="box-splq">
         <h3>Sản phẩm liên quan</h3>
         <div class="block">
-        <?php
+            <?php
             foreach ($load_sp_cl as $value) {
                 extract($value); ?>
                 <div class="item">
@@ -218,7 +186,7 @@ foreach ($loadbl_sp as $value) {
                     </div>
                     <div class="Evaluate mb">
                         <p>
-                        <i class="fa-solid fa-star"></i> <span>(<?= number_format($avg_star, 1) ?>)</span> <br />
+                            <i class="fa-solid fa-star"></i> <span>(<?= number_format($avg_star, 1) ?>)</span> <br />
                             <span>Đã mua 4.5k</span>
                         </p>
                         <p><a href="?act=thanhtoan&idsp=<?= $id ?>"><button>Mua Ngay</button></a></p>
