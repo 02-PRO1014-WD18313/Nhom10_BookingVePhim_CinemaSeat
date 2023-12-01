@@ -51,6 +51,11 @@ $randomString = substr(str_shuffle($characters), 0, $length);
                 <button name="btn_tt" value="btn_tt" class="btn-capnhat">Lưu</button>
             </form>
         </div>
+
+
+
+
+
         <div class="box-tk tt" id="tt2">
             <h3 class="title-tk">Lịch sử đơn hàng</h3>
             <table width="100%" style="text-align: center;">
@@ -89,24 +94,27 @@ $randomString = substr(str_shuffle($characters), 0, $length);
                             <td>₫<?= number_format($soluong * $gia_ban, 0, ',', '.') ?></td>
                         </tr>
 
-                        <?php
-                        // Only display the "Hủy đơn hàng" button if trangthai is not equal to 4
-                        if ($trangthai !== '<span style="background-color: #858796;color: white; border-radius: 8px;padding: 0 5px">Đã hủy</span>') {
-                        ?>
+                      
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td><?= $trangthai === '<span style="background-color: #1cc88a;color: white; border-radius: 8px;padding: 0 5px">Giao hàng thành công</span>' ? '<a href="?act=binhluan&id_dh=' . $id_dh . '"><button>Đánh giá</button></a>' : '' ?></td>
-                                <td><a onclick="return confirm('Bán có muốn hủy đơn hàng')" href="?act=update_trangthai&id_dh=<?= $id_dh ?>"><button>Hủy đơn hàng</button></a></td>
+                                <td><?= $trangthai === '<span style="background-color: #1cc88a;color: white; border-radius: 8px;padding: 0 5px">Giao hàng thành công</span>' ? '<a href="?act=binhluan&idsp='.$id_sp.'"><button style="background-color: #007bff;color: white; border-radius: 5px;padding: 5px 10px">Đánh giá</button></a>' : '' ?></td>
+                                <td><?= ($trangthai === '<span style="background-color: #e74a3b;color: white; border-radius: 8px;padding: 0 5px">Chưa xác nhận</span>') ? '  <a onclick="return confirm("Bán có muốn hủy đơn hàng")" href="?act=update_trangthai&id_dh=<?= $id_dh ?>"><button>Hủy đơn hàng</button></a>' : ''?></td>
                             </tr>
-                        <?php } ?>
+                      
                     <?php } ?>
                 </tbody>
             </table>
-
         </div>
+
+
+
+
+
+
+
         <div class="box-tk tt" id="tt3">
             <h3 class="title-tk">Đổi mật khẩu</h3>
             <form action="" method="post">
