@@ -2,7 +2,6 @@
     <form action="" method="post">
         <p>Đánh giá sản phẩm</p>
         <p>
-
         <div class="stars">
             Đánh giá của bạn: &nbsp;
             <i class="fa-solid fa-star"></i>
@@ -11,8 +10,7 @@
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
         </div>
-        <!-- <h1 id="demo"></h1> -->
-        <input type="text" id="demo" name="stars">
+        <input type="text" id="demo" name="stars" hidden>
         </p>
         <script>
             const stars = document.querySelectorAll(".stars i");
