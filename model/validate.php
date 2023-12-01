@@ -11,8 +11,8 @@ function validate($user, $pass, $email, $confirmPass)
         $error['user'] = "Tên không được để trống!";
     } elseif (strlen($user) < 6) {
         $error["user"] = "Tên phải lớn hơn 6 ký tự!";
-    } elseif (strlen($user) > 10) {
-        $error["user"] = "Tên phải nhỏ hơn 10 ký tự!";
+    } elseif (strlen($user) > 15) {
+        $error["user"] = "Tên phải nhỏ hơn 15 ký tự!";
     } elseif ($_GET['act'] == 'dangky' && $checkuser == true) {
         $error["user"] = "Tên đã tồn tại!";
     }
