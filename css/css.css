@@ -740,6 +740,9 @@ main .box-product .more:hover {
   color: rgb(255, 132, 0);
 }
 .form-Evaluate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 20px 0 0 0;
 }
 .form-Evaluate button {
@@ -1353,6 +1356,7 @@ footer .box-footer p:hover {
   border-radius: 5px;
   border: 1px solid gray;
   padding-left: 5px;
+  background: #007bff;
 }
 
 #tt2 {
