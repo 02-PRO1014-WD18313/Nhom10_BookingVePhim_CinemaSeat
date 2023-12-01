@@ -90,15 +90,23 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 if (isset($_POST['btn']) && $_POST['btn']) {
                     $idsp = $_GET['idsp'];
                     $iduser = $_SESSION['iduser'];
+                    $them = 0;
                     foreach ($loadAll_cart as &$value) {
                         if ($value['idsp'] == $idsp) {
                             $found = true;
-                            update_sl($_SESSION['iduser'], $idsp);
+                            if(isset($_POST['soluong']) && $_POST['soluong'] > 0){
+                                $them = $value['soluong'] + $_POST['soluong'];                              
+                            }
+                            update_sl($_SESSION['iduser'], $idsp, $them);
                             break; // Exit the loop after updating the quantity
                         }
                     }
                     if (!$found) {
-                        $soluong = 1;
+                        if (isset($_POST['soluong'])) {
+                            $soluong = $_POST['soluong'];
+                        } else {
+                            $soluong = 1;
+                        }
                         insert_cart($iduser, $idsp, $soluong);
                     }
                     $_SESSION['count_cart'] = count(count_cart($_SESSION['iduser']));
