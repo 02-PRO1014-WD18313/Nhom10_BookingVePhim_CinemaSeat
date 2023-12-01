@@ -21,10 +21,10 @@ foreach ($loadbl_sp as $value) {
                     <img class="selected" src="uploads/img_sp/<?= $loadone_sp[0]['img'] ?>" alt="" onclick="showImage(this)" />
                 </p>
                 <p>
-                    <img src="uploads/img_sp/<?= $loadone_sp[0]['img2']?>" alt="" onclick="showImage(this)" />
+                    <img src="uploads/img_sp/<?= $loadone_sp[0]['img2'] ?>" alt="" onclick="showImage(this)" />
                 </p>
                 <p>
-                    <img src="uploads/img_sp/<?= $loadone_sp[0]['img3']?>" alt="" onclick="showImage(this)" />
+                    <img src="uploads/img_sp/<?= $loadone_sp[0]['img3'] ?>" alt="" onclick="showImage(this)" />
                 </p>
             </div>
             <div class="img-big">
@@ -61,13 +61,19 @@ foreach ($loadbl_sp as $value) {
                     <?= $loadone_sp[0]['kieumay'] ?>
                 </p>
             </div>
-            <div class="box-input mb">
-                Số lượng:
-                <input class="qtt" type="number" min="1" max="2" value="1" />
-                <span>&nbsp; &nbsp; <?= $loadone_sp[0]['soluong'] ?> sản phẩm có sẵn</span>
-            </div>
+            <form action="?act=addtocart&idsp=<?= $loadone_sp[0]['id'] ?>" method="post">
+                <div class="box-input mb">
+                    Số lượng:
+                    <input class="qtt" type="number" min="1" max="10" value="1" name="soluong" />
+                    <span>&nbsp; &nbsp; <?= $loadone_sp[0]['soluong'] ?> sản phẩm có sẵn</span>
+                </div>
+                <div class="box-submit">
+                    <button name="btn" value="btn" type="submit">THÊM VÀO GIỎ HÀNG</button>
+                </div>
+            </form>
+            
             <div class="box-submit">
-                <button>THÊM VÀO GIỎ HÀNG</button><button>MUA NGAY</button>
+            <button><a href="?act=thanhtoan&idsp=<?= $loadone_sp[0]['id'] ?>">MUA NGAY</a></button>
             </div>
         </div>
     </div>
