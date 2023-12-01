@@ -101,7 +101,7 @@ $randomString = substr(str_shuffle($characters), 0, $length);
                                 <td></td>
                                 <td></td>
                                 <td><?= $trangthai === '<span style="background-color: #1cc88a;color: white; border-radius: 8px;padding: 0 5px">Giao hàng thành công</span>' ? '<a href="?act=binhluan&idsp='.$id_sp.'"><button style="background-color: #007bff;color: white; border-radius: 5px;padding: 5px 10px">Đánh giá</button></a>' : '' ?></td>
-                                <td><?= ($trangthai === '<span style="background-color: #e74a3b;color: white; border-radius: 8px;padding: 0 5px">Chưa xác nhận</span>') ? '  <a onclick="return confirm("Bán có muốn hủy đơn hàng")" href="?act=update_trangthai&id_dh=<?= $id_dh ?>"><button>Hủy đơn hàng</button></a>' : ''?></td>
+                                <td><?= ($trangthai === '<span style="background-color: #e74a3b;color: white; border-radius: 8px;padding: 0 5px">Chưa xác nhận</span>') ? '  <a onclick="return confirm("Bán có muốn hủy đơn hàng")" href="?act=update_trangthai&id_dh='.$id_dh.'"><button>Hủy đơn hàng</button></a>' : ''?></td>
                             </tr>
                       
                     <?php } ?>
