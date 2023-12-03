@@ -5,6 +5,7 @@ $length = 8;
 
 $randomString = substr(str_shuffle($characters), 0, $length);
 ?>
+    <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
 <div class="container-tk">
     <div class="nav-tk">
         <ul>
@@ -54,25 +55,23 @@ $randomString = substr(str_shuffle($characters), 0, $length);
 
 
 
-
-
         <div class="box-tk tt" id="tt2">
             <h3 class="title-tk">Lịch sử đơn hàng</h3>
             <table width="100%" style="text-align: center;">
                 <thead>
                     <tr>
-                        <th>Ảnh</th>
-                        <th>Tên</th>
-                        <th>Giá</th>
-                        <th>Số lượng</th>
-                        <th>Trạng thái</th>
+                        <th>Người nhận</th>
+                        <th>Số điện thoại</th>
+                        <th>Địa chỉ</th>
                         <th>Tổng</th>
+                        <th>Trạng thái</th>                      
+                        <th>Xem</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    foreach ($ctdh as $ctdh) {
-                        extract($ctdh);
+                    foreach ($dh as $value) { 
+                        extract($value);
                         if ($trangthai === 0) {
                             $trangthai = '<span style="background-color: #e74a3b;color: white; border-radius: 8px;padding: 0 5px">Chưa xác nhận</span>';
                         } else if ($trangthai === 1) {
@@ -84,27 +83,17 @@ $randomString = substr(str_shuffle($characters), 0, $length);
                         } else {
                             $trangthai = '<span style="background-color: #858796;color: white; border-radius: 8px;padding: 0 5px">Đã hủy</span>';
                         }
+                        ?>
+                    <tr>
+                        <td><?=$nguoi_nhan?></td>
+                        <td><?=$tel?></td>
+                        <td><?=$address?></td>
+                        <td><?=number_format($thanhtien, 0 , "," , ".")?> ₫</td>
+                        <td><?=$trangthai?></td>
+                        <td><a href="index.php?act=ctdh&id_dh=<?=$id?>">Xem chi tiết</a></td>
+                    </tr>
+                  <?php  }
                     ?>
-                        <tr>
-                            <td><img width="70" src="uploads/img_sp/<?= $img ?>" alt=""></td>
-                            <td><?= $name ?></td>
-                            <td>₫<?= number_format($gia_ban, 0, ',', '.') ?></td>
-                            <td>x<?= $soluong ?></td>
-                            <td><?= $trangthai ?></td>
-                            <td>₫<?= number_format($soluong * $gia_ban, 0, ',', '.') ?></td>
-                        </tr>
-
-                      
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><?= $trangthai === '<span style="background-color: #1cc88a;color: white; border-radius: 8px;padding: 0 5px">Giao hàng thành công</span>' ? '<a href="?act=binhluan&idsp='.$id_sp.'"><button style="background-color: #007bff;color: white; border-radius: 5px;padding: 5px 10px">Đánh giá</button></a>' : '' ?></td>
-                                <td><?= ($trangthai === '<span style="background-color: #e74a3b;color: white; border-radius: 8px;padding: 0 5px">Chưa xác nhận</span>') ? '  <a onclick="return confirm("Bán có muốn hủy đơn hàng")" href="?act=update_trangthai&id_dh='.$id_dh.'"><button>Hủy đơn hàng</button></a>' : ''?></td>
-                            </tr>
-                      
-                    <?php } ?>
                 </tbody>
             </table>
         </div>
@@ -126,12 +115,12 @@ $randomString = substr(str_shuffle($characters), 0, $length);
                     </div>
                     <div class="mb">
                         <label for="sdt">Mật khẩu mới <span style="color: red;">*</span></label>
-                        <input type="text" name="pass2" value="" placeholder="Nhập mật khẩu mới"><br>
+                        <input type="password" name="pass2" value="" placeholder="Nhập mật khẩu mới"><br>
                         <small><?= (isset($err['pass2'])) ? $err['pass2'] : '' ?></small>
                     </div>
                     <div class="mb">
                         <label for="email">Nhập lại mật khẩu <span style="color: red;">*</span></label>
-                        <input type="text" name="confim" id="email" value="" placeholder="Nhập lại mật khẩu"><br>
+                        <input type="password" name="confim" id="email" value="" placeholder="Nhập lại mật khẩu"><br>
                         <small><?= (isset($err['confim'])) ? $err['confim'] : '' ?></small>
                     </div>
                     <div class="mb">

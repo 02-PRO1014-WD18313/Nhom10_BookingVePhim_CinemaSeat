@@ -67,11 +67,11 @@ if (isset($_POST['btn']) && $_POST['btn']) {
                 $_SESSION['count_cart'] = count(count_cart($dangnhap['id']));
                 $_SESSION['role'] = $dangnhap['role'];
                 $_SESSION['user'] = $user;
+                $_SESSION['iduser'] = $dangnhap['id'];
                 if (isset($_SESSION['role'])) {
                     if ($_SESSION['role'] == 1) {
                         header('location: ../../admin/index.php');
                     } else {
-                        $_SESSION['iduser'] = $dangnhap['id'];
                         $_SESSION['email'] = $dangnhap['email'];
                         $_SESSION['pass'] = $dangnhap['pass'];
                         header('location: ../../index.php');

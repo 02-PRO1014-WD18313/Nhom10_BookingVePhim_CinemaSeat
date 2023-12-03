@@ -34,7 +34,7 @@
 					<div class="box-thanhtoan-online">
 						<div class="bta">
 							<input type="radio" name="thanhtoan" id="thanhtoanon" value="vnpay">
-							<label for="thanhoanon">Thanh toán qua ví momo</label>
+							<label for="thanhoanon">Thanh toán qua ví VnPay</label>
 						</div>
 						<div class="bta">
 							<input type="radio" name="thanhtoan" id="thanhtoanoff" value="Thanh toán khi nhận hàng">
