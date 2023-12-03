@@ -230,7 +230,12 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                         $name = $_POST['name'];
                         $tel = $_POST['tel'];
                         $address = $_POST['address'];
-                        $trangthai = $_POST['trangthai'];
+                        if (isset($_POST['trangthai'])) {
+                            $trangthai = $_POST['trangthai'];
+                        } else {
+                            $trangthai = 4;
+                        }
+
 
                         if (isset($_POST['ghichu']) && $_POST['ghichu']  != "") {
                             $ghichu = $_POST['ghichu'];

@@ -107,7 +107,25 @@ LEFT JOIN
 GROUP BY
     sp.id
 ORDER BY
-    sp.id limit 0,10";
+    sp.id DESC limit 0,10";
+    return pdo_query($sql);
+}
+function load_sp_luotxem()
+{
+    $sql = "SELECT
+    sp.id,
+    sp.name,
+    sp.luotxem,
+    sp.img,
+    SUM(bl.star) AS tong_sao
+  FROM
+    sanpham sp
+  LEFT JOIN
+    binhluan bl ON sp.id = bl.id_pro
+  GROUP BY
+    sp.id, sp.name, sp.luotxem
+  ORDER BY
+    sp.luotxem DESC limit 0,10";
     return pdo_query($sql);
 }
 function load_sp_star()
