@@ -15,7 +15,8 @@ function thong_ke_doanh_thu()
     $sql = "SELECT SUM(thanhtien) AS tong_thanhtien
     FROM (
         SELECT MAX(thanhtien) AS thanhtien
-        FROM ct_don_hang
+        FROM ct_don_hang JOIN donhang ON ct_don_hang.id_dh = donhang.id
+        WHERE donhang.trangthai = '3'
         GROUP BY id_dh
     ) AS max_thanhtien;";
     return pdo_query_one($sql);

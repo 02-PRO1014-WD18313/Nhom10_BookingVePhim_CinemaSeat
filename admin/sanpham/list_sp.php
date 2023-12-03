@@ -3,7 +3,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 h5 text-dark font-weight-bold">Danh sách danh mục</h6>
+            <h6 class="m-0 h5 text-dark font-weight-bold">Danh sách sản phẩm</h6>
         </div>
         <div class="card-body">
             <a class="btn btn-success mb-3" href="?act=add_sp">Thêm mới</a>

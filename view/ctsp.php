@@ -148,7 +148,7 @@ foreach ($loadbl_sp as $value) {
                     extract($value) ?>
 
                     <div class="comment">
-                        <div class="img"><img src="image/avata_04.webp" alt=""></div>
+                        <div class="img"><img src="image/User-avatar.svg.png" alt=""></div>
                         <div class="content">
                             <p>
                                 <?php

@@ -4,8 +4,11 @@ session_start();
 include 'model/pdo.php';
 include 'model/sanpham.php';
 include 'model/danhmuc.php';
-include 'view/header.php';
 include 'model/taikhoan.php';
+if (isset($_SESSION['iduser'])) {
+    $tk =  selectone_tk($_SESSION['iduser']);
+}
+include 'view/header.php';
 include 'model/cart.php';
 include 'model/binhluan.php';
 include 'model/validate_form.php';
@@ -14,6 +17,7 @@ include 'model/donhang.php';
 
 
 $loadstar = loadstar();
+$load_sp_luot_xem = load_sp_luotxem();
 // $list_sp_home = loadAll_sanpham();
 $list_dm = loadAll_danhmuc();
 $load_sp_star = load_sp_star();
@@ -31,17 +35,34 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             $load_sp_cl = load_sp_cung_loai($_GET['idsp'], $_GET['iddm']);
             include_once 'view/ctsp.php';
             break;
-        case 'binhluan':
-            if (isset($_GET['idsp']) && $_GET['idsp'] > 0) {
-                if (isset($_POST['submit']) && $_POST['submit']) {
-                    $idpro = $_GET['idsp'];
-                    $iduser = $_SESSION['iduser'];
-                    $stars = $_POST['stars'];
-                    $noidung = $_POST['noidung'];
-                    insert_bl($iduser, $idpro, $noidung, $stars);
+        case 'ctdh':
+            $load_not_vote = load_sp_chua_danh_gia($_SESSION['iduser']);
+            $_SESSION['mang'] = [];
+            if (isset($_POST['submit']) && $_POST['submit']) {
+                $mang = $_SESSION['mang'];
+
+                // Loop through posted data and store in session array
+                for ($i = 1; $i <= count($load_not_vote); $i++) {
+                    $id = isset($_POST['id_sp' . $i]) ? $_POST['id_sp' . $i] : null;
+                    $binhluan = $_POST['binhluan' . $i];
+                    $rating = isset($_POST['star-rating' . $i]) ? $_POST['star-rating' . $i] : 5;
+
+                    // Check if the comment is not empty before adding to the array
+                    if (!empty($binhluan)) {
+                        $mang[] = ['id' => $id, 'binhluan' => $binhluan, 'rating' => $rating];
+                    }
                 }
+
+                $_SESSION['mang'] = $mang;
+                for ($j = 0; $j < count($mang); $j++) {
+                    insert_bl($_SESSION['iduser'], $mang[$j]['id'], $mang[$j]['binhluan'], $mang[$j]['rating']);
+                    unset($_SESSION['mang']);         
+                }
+                header('location: ' . $_SERVER['PHP_SELF'] . '?act=ctdh&id_dh=' . $_GET['id_dh']);
             }
-            include_once 'view/danhgia.php';
+
+            $ctdh =  loadone_chitietdonhang($_GET['id_dh']);
+            include_once 'view/ctdh.php';
             break;
         case 'listsp':
             if (isset($_POST['submit']) && $_POST['submit']) {
@@ -94,8 +115,8 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     foreach ($loadAll_cart as &$value) {
                         if ($value['idsp'] == $idsp) {
                             $found = true;
-                            if(isset($_POST['soluong']) && $_POST['soluong'] > 0){
-                                $them = $value['soluong'] + $_POST['soluong'];                              
+                            if (isset($_POST['soluong']) && $_POST['soluong'] > 0) {
+                                $them = $value['soluong'] + $_POST['soluong'];
                             }
                             update_sl($_SESSION['iduser'], $idsp, $them);
                             break; // Exit the loop after updating the quantity
@@ -164,9 +185,10 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                         $email = $_POST['email'];
                         $sdt = $_POST['sdt'];
                         $address = $_POST['address'];
+                        $thanhtien = $_POST['thanhtien'];
                         $err = validate_form($user, $email, $sdt, $address);
                         if (empty($err)) {
-                            $iddh =  insert_donhang($_SESSION['iduser'], $user, $sdt, $email, $address);
+                            $iddh =  insert_donhang($_SESSION['iduser'], $user, $sdt, $email, $address, $thanhtien);
                             if (!isset($_GET['idsp'])) {
                                 for ($i = 0; $i < count($loadAll_cart); $i++) {
                                     $idsp = $loadAll_cart[$i]['idsp'];
@@ -174,9 +196,8 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                                     $name = $loadAll_cart[$i]['name'];
                                     $gia = $loadAll_cart[$i]['gia_new'];
                                     $soluong = $loadAll_cart[$i]['soluong'];
-                                    $thanhtien = $_POST['thanhtien'];
                                     $img = $loadAll_cart[$i]['img'];
-                                    insert_chitietdonhang($iddh, $idsp, $name, $gia, $soluong, $thanhtien, $img);
+                                    insert_chitietdonhang($iddh, $idsp, $name, $gia, $soluong, $img);
                                     delete_cart($idcart);
                                 }
                             } else {
@@ -184,9 +205,8 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                                 $name = $loadone_sp[0]['name'];
                                 $gia = $loadone_sp[0]['gia_new'];
                                 $soluong = 1;
-                                $thanhtien = $_POST['thanhtien'];
                                 $img = $loadone_sp[0]['img'];
-                                insert_chitietdonhang($iddh, $idsp, $name, $gia, $soluong, $thanhtien, $img);
+                                insert_chitietdonhang($iddh, $idsp, $name, $gia, $soluong, $img);
                             }
                             $_SESSION['count_cart'] = count(count_cart($_SESSION['iduser']));
                             header("Location: view/cart/thanhtoantc.php");
@@ -197,9 +217,10 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                         $email = $_POST['email'];
                         $sdt = $_POST['sdt'];
                         $address = $_POST['address'];
+                        $thanhtien = $_POST['thanhtien'];
                         $err = validate_form($user, $email, $sdt, $address);
                         if (empty($err)) {
-                            $iddh =  insert_donhang($_SESSION['iduser'], $user, $sdt, $email, $address);
+                            $iddh =  insert_donhang($_SESSION['iduser'], $user, $sdt, $email, $address, $thanhtien);
                             for ($i = 0; $i < count($loadAll_cart); $i++) {
                                 $idsp = $loadAll_cart[$i]['idsp'];
                                 $idcart = $loadAll_cart[$i]['idcart'];
@@ -303,6 +324,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $err = validate_form($user, $email, $sdt, $address);
                 if (empty($err)) {
                     update_taikhoan($_SESSION['iduser'], $user, $email, $sdt, $address);
+                    header("Location: index.php?act=mytaikhoan");
                 }
             }
             if (isset($_POST['btn_update_pass']) && $_POST['btn_update_pass']) {
@@ -317,8 +339,8 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     echo "<script>alert('Đổi mật khẩu thành công!')</script>";
                 }
             }
-            $tk =  selectone_tk($_SESSION['iduser']);
-            $ctdh = load_ctdh($_SESSION['iduser']);
+
+            $dh = load_donhang_user($_SESSION['iduser']);
             include 'view/taikhoan/mytaikhoan.php';
             break;
     }

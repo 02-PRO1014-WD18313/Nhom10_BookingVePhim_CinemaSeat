@@ -61,7 +61,7 @@
                     <div class="Evaluate">
                         <p>
                             <i class="fa-solid fa-star"></i> <span>(<?= number_format($avg_star, 1) ?>)</span> <br />
-                            <span>Đã mua 4.5k</span>
+                            <!-- <span>Đã mua 4.5k</span> -->
                         </p>
 
                         <form action="?act=addtocart&idsp=<?= $id ?>" method="post">
@@ -81,11 +81,11 @@
     </div>
     <div class="box-product">
         <div class="title">
-            <h5>Hàng bán chạy</h5>
+            <h5>Top sản phẩm lượt xem</h5>
         </div>
         <div class="block mt">
             <?php
-            foreach ($loadstar as $value) {
+            foreach ($load_sp_luot_xem as $value) {
                 extract($value); ?>
 
                 <div class="item">
@@ -101,8 +101,8 @@
                     </div>
                     <div class="Evaluate">
                         <p>
-                            <i class="fa-solid fa-star"></i> <span>(<?= number_format($avg_star, 1) ?>)</span> <br />
-                            <span>Đã mua 4.5k</span>
+                        <i class="fa-solid fa-star"></i> <span>(<?= number_format($avg_star, 1) ?>)</span> <br />
+                            <!-- <span>Đã mua 4.5k</span> -->
                         </p>
 
                         <form action="?act=addtocart&idsp=<?= $id ?>" method="post">

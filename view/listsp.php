@@ -95,7 +95,7 @@ include "global.php";
                     <div class="Evaluate">
                         <p>
                             <i class="fa-solid fa-star"></i> <span>(<?= number_format($value['avg_star'], 1) ?>)</span> <br />
-                            <span>Đã mua 4.5k</span>
+                            <!-- <span>Đã mua 4.5k</span> -->
                         </p>
                         <p><a href="?act=thanhtoan&idsp=<?= $value['id'] ?>"><button>Mua Ngay</button></a></p>
                     </div>

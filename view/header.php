@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link rel="stylesheet" href="css/css.css" />
+    <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
 </head>
 
 <body>
@@ -28,11 +29,11 @@
                 </div>
                 <div class="user">
                     <?php
-                    if (isset($_SESSION['user'])) { ?>
+                    if (isset($_SESSION['user'])){ ?>
                         <div class="taikhoan">
-                            <img src="image/avata_04.webp" alt="loi" />
-                            <span class="span">Xin chào, <?= $_SESSION['user'] ?></span> <br />
-                            <span>Khách hàng</span>
+                            <img src="image/User-avatar.svg.png" alt="loi" />
+                            <span class="span">Xin chào, <?= $tk['user']?></span> <br />
+                            <span><?=(isset($_SESSION['role']) && $_SESSION['role'] === 1) ? 'Admin' : 'Khách hàng' ?></span>
                             <ul class="tt-taikhoan">
                                 <?php
                                 if ($_SESSION['role'] === 1) { ?>
