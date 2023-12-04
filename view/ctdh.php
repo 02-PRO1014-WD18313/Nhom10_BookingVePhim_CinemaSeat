@@ -30,7 +30,7 @@
                     <td></td>
                     <td></td>
                     <td>
-                        <a href="">
+                        <a href="?act=update_trangthai&id_dh=<?= $id ?>">
                             <button>Hủy đơn hàng</button>
                         </a>
                     </td>
@@ -40,7 +40,7 @@
         </tbody>
     </table>
     <?php
-    if ($trangthai === 3) { ?>
+    if ($trangthai === 3 && count($load_not_vote) > 0) { ?>
         <div class="form-Evaluate mt">
             <form action="?act=ctdh&id_dh=<?= $id ?>" method="post">
                 <table>
@@ -54,11 +54,11 @@
                     </thead>
                     <tbody>
                         <?php
-                        foreach ($load_not_vote as $key => $value) {
-                            extract($value); ?>
+                        foreach ($load_not_vote as $key => $item) {
+                        ?>
                             <tr>
-                                <td><?= $id ?> <input type="text" name="id_sp<?= $key + 1 ?>" value="<?= $id ?>" hidden></td>
-                                <td><img width="50" src="uploads/img_sp/<?= $img ?>" alt=""></td>
+                                <td><?= $id ?> <input type="text" name="id_sp<?= $key + 1 ?>" value="<?= $item['id'] ?>" hidden></td>
+                                <td><img width="50" src="uploads/img_sp/<?= $item['img'] ?>" alt=""></td>
                                 <td>
                                     <div class="rating">
                                         <input class="star star-5" id="star-5-<?= $key + 1 ?>" value="5" type="radio" name="star-rating<?= $key + 1 ?>" />
