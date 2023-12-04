@@ -105,7 +105,32 @@
                         <!-- Card Body -->
                         <div class="card-body">
                             <div class="chart-area">
-                                <canvas id="myAreaChart"></canvas>
+                                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                                <script type="text/javascript">
+                                    google.charts.load("current", {
+                                        packages: ["corechart"]
+                                    });
+                                    google.charts.setOnLoadCallback(drawChart);
+
+                                    function drawChart() {
+                                        var data = google.visualization.arrayToDataTable([
+                                            ['Doanh thu', 'Tháng'],
+                                            <?php foreach ($thong_ke_doanh_thu_thang as $value) {
+                                                extract($value);
+                                                echo "['$thang', $doanhthu],";
+                                            } ?>
+                                        ]);
+
+                                        var options = {
+                                            title: 'Biểu đồ thống kê doanh thu theo tháng',
+                                            is3D: true,
+                                        };
+
+                                        var chart = new google.visualization.ColumnChart(document.getElementById('piechart_4d'));
+                                        chart.draw(data, options);
+                                    }
+                                </script>
+                                <div id="piechart_4d" style="width: 100%; height: 350px;"></div>
                             </div>
                         </div>
                     </div>

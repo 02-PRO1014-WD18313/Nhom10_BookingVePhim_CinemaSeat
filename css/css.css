@@ -78,6 +78,9 @@ header .top .input .icon-search {
   background: #ccc;
   text-align: center;
 }
+header .top .input .icon-search::before{
+  content: "";
+}
 header .top .input .icon-search button {
   margin-top: 10px;
   border: none;
