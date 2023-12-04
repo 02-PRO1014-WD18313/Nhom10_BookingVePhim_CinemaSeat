@@ -13,6 +13,8 @@ include "../global.php";
 $thong_ke_doanh_thu = thong_ke_doanh_thu();
 $thong_ke = thong_ke();
 $count_sp = count(loadAll_sanpham());
+$thong_ke_doanh_thu_thang = thong_ke_doanh_thu_thanh();
+$loadAll_sanpham_trang_thai_1 = loadAll_sanpham_trang_thai_1();
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
@@ -117,19 +119,20 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         case "delete_sp": {
                 if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                     $loadone_sp = loadAll_sanpham("", $_GET['id']);
-                    if (isset($loadone_sp[0]['img']) && ($loadone_sp[0]['img'] != "")) {
-                        $link = "../uploads/img_sp/" . $loadone_sp[0]['img'];
-                        unlink("$link");
-                    }
-                    if (isset($loadone_sp[0]['img2']) && ($loadone_sp[0]['img2'] != "")) {
-                        $link = "../uploads/img_sp/" . $loadone_sp[0]['img2'];
-                        unlink("$link");
-                    }
-                    if (isset($loadone_sp[0]['img3']) && ($loadone_sp[0]['img3'] != "")) {
-                        $link = "../uploads/img_sp/" . $loadone_sp[0]['img3'];
-                        unlink("$link");
-                    }
+                    // if (isset($loadone_sp[0]['img']) && ($loadone_sp[0]['img'] != "")) {
+                    //     $link = "../uploads/img_sp/" . $loadone_sp[0]['img'];
+                    //     unlink("$link");
+                    // }
+                    // if (isset($loadone_sp[0]['img2']) && ($loadone_sp[0]['img2'] != "")) {
+                    //     $link = "../uploads/img_sp/" . $loadone_sp[0]['img2'];
+                    //     unlink("$link");
+                    // }
+                    // if (isset($loadone_sp[0]['img3']) && ($loadone_sp[0]['img3'] != "")) {
+                    //     $link = "../uploads/img_sp/" . $loadone_sp[0]['img3'];
+                    //     unlink("$link");
+                    // }
                     delete_sp($_GET['id']);
+                    header('location: index.php?act=list_sp');
                 }
                 $list_sp = loadAll_sanpham();
                 include "./sanpham/list_sp.php";
@@ -140,6 +143,13 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 include "./sanpham/list_sp.php";
                 break;
             }
+            case "trash" :
+                if(isset($_GET['id']) && $_GET['id'] > 0){
+                    khoiphuc_sp($_GET['id']);
+                    header('location: index.php?act=trash');
+                }
+                include "./sanpham/trash.php";
+                break;
         case "update_sp": {
                 if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                     $list_dm = loadAll_danhmuc();

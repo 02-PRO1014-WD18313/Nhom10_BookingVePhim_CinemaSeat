@@ -1,13 +1,19 @@
 <?php
 function loadAll_sanpham($key = "", $idsp = 0)
 {
-    $sql = "SELECT * FROM sanpham";
+    $sql = "SELECT * FROM sanpham WHERE trangthai = 0";
     if ($key != "") {
-        $sql .= " WHERE name = '$key'";
+        $sql .= " AND name = '$key'";
     }
     if ($idsp > 0) {
-        $sql .= " WHERE id = $idsp";
+        $sql .= " AND id = $idsp";
     }
+    $sql.= " ORDER BY id DESC";
+    return pdo_query($sql);
+}
+function loadAll_sanpham_trang_thai_1()
+{
+    $sql = "SELECT * FROM sanpham WHERE trangthai = 1";
     return pdo_query($sql);
 }
 function listsp_dm($key = "", $iddm = 0, $gia = "", $kieumay = "", $xuatxu = "")
@@ -65,7 +71,12 @@ function insert_sp($iddm, $name, $img, $img2, $img3, $gia, $gia_new, $mota, $sol
 
 function delete_sp($id)
 {
-    $sql = "DELETE FROM `sanpham` WHERE id = $id";
+    $sql = "UPDATE `sanpham` SET `trangthai` = 1 WHERE id = $id";
+    pdo_execute($sql);
+}
+function khoiphuc_sp($id)
+{
+    $sql = "UPDATE `sanpham` SET `trangthai` = 0 WHERE id = $id";
     pdo_execute($sql);
 }
 

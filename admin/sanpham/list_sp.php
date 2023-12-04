@@ -1,5 +1,4 @@
 <div class="container-fluid">
-
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -7,6 +6,7 @@
         </div>
         <div class="card-body">
             <a class="btn btn-success mb-3" href="?act=add_sp">Thêm mới</a>
+            <a class="btn btn-Secondary mb-3" href="?act=trash"><i class="fa-solid fa-trash"></i>(<?=count($loadAll_sanpham_trang_thai_1)?>)</a>
             <div class="table-responsive">
                 <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                     <thead>
