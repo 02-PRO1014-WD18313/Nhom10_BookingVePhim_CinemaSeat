@@ -14,6 +14,8 @@ include 'model/binhluan.php';
 include 'model/validate_form.php';
 include 'model/validate_pass.php';
 include 'model/donhang.php';
+include 'model/thongke.php';
+
 
 
 $loadstar = loadstar();
@@ -33,10 +35,12 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             $loadbl_sp = load_bl_sp($_GET['idsp']);
             $loadone_sp = loadAll_sanpham("", $_GET['idsp']);
             $load_sp_cl = load_sp_cung_loai($_GET['idsp'], $_GET['iddm']);
+            // $starss =  thong_ke_star($_GET['idsp']);
+            // var_dump($starss);
             include_once 'view/ctsp.php';
             break;
         case 'ctdh':
-            $load_not_vote = load_sp_chua_danh_gia($_SESSION['iduser']);
+            $load_not_vote = load_sp_chua_danh_gia($_SESSION['iduser'],$_GET['id_dh']);
             $_SESSION['mang'] = [];
             if (isset($_POST['submit']) && $_POST['submit']) {
                 $mang = $_SESSION['mang'];
@@ -56,7 +60,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $_SESSION['mang'] = $mang;
                 for ($j = 0; $j < count($mang); $j++) {
                     insert_bl($_SESSION['iduser'], $mang[$j]['id'], $mang[$j]['binhluan'], $mang[$j]['rating']);
-                    unset($_SESSION['mang']);         
+                    unset($_SESSION['mang']);
                 }
                 header('location: ' . $_SERVER['PHP_SELF'] . '?act=ctdh&id_dh=' . $_GET['id_dh']);
             }
@@ -161,9 +165,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
         case 'update_trangthai':
             update_trangthai($_GET['id_dh']);
-            $tk =  selectone_tk($_SESSION['iduser']);
-            $ctdh = load_ctdh($_SESSION['iduser']);
-            include 'view/taikhoan/mytaikhoan.php';
+            header('Location: ?act=mytaikhoan');
             break;
         case 'thanhtoan':
             if (isset($_SESSION['iduser'])) {

@@ -83,6 +83,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="?act=add_sp">Thêm sản phẩm</a>
                         <a class="collapse-item" href="?act=list_sp">Danh sách sản phẩm</a>
+                        <a class="collapse-item" href="?act=trash">Thùng rác</a>
                     </div>
                 </div>
             </li>
