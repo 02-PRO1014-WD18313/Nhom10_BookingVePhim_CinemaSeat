@@ -24,7 +24,7 @@ function listsp_dm($key = "", $iddm = 0, $gia = "", $kieumay = "", $xuatxu = "")
 FROM
     sanpham sp
 LEFT JOIN
-    binhluan bl ON sp.id = bl.id_pro WHERE 1";
+    binhluan bl ON sp.id = bl.id_pro WHERE 1 and sp.trangthai = 0";
 
     if ($gia != "" && $kieumay != "" && $xuatxu != "") {
         $sql .= " AND gia_new BETWEEN $gia AND kieumay = '$kieumay' AND xuatxu = '$xuatxu'";
@@ -115,6 +115,7 @@ FROM
     sanpham sp
 LEFT JOIN
     binhluan bl ON sp.id = bl.id_pro
+where sp.trangthai = '0'
 GROUP BY
     sp.id
 ORDER BY

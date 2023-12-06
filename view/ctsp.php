@@ -81,7 +81,7 @@ foreach ($loadbl_sp as $value) {
     <div class="bottom mt">
         <div class="box-Evaluate">
             <div class="Evaluate">
-                <p>Phản hồi khách hàng</p>
+                <p id="bl">Phản hồi khách hàng</p>
                 <p>
                     <span><?= number_format($stars, 1) ?></span>
                     <small><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></small>
