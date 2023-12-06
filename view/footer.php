@@ -10,15 +10,16 @@
     </div>
     <div class="box-footer">
       <h6>GIỚI THIỆU</h6>
-      <p>Thể Loại Phim</p>
-      <p>Bình Luận Phim</p>
-      <p>Phim Hay Tháng</p>
+      <p>Casio</p>
+      <p>Orient</p>
+      <p>Citizen</p>
+      <p>Seiko</p>
     </div>
     <div class="box-footer">
       <h6>GIỚI THIỆU</h6>
       <p>Góp Ý</p>
       <p>Sale & Services</p>
-      <p>Rạp / Giá Vé</p>
+      <p></p>
       <p>Tuyển Dụng</p>
       <p>FAQ</p>
     </div>
