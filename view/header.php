@@ -40,7 +40,6 @@
                                     <li><i class="fa-solid fa-clock-rotate-left"></i><a href="admin/">Quản trị viên</a></li>
                                     <li><i class="fa-solid fa-right-from-bracket fa-rotate-180"></i><a href="?act=dangxuat">Đăng Xuất</a></li>
                                 <?php } else { ?>
-                                    <li><i class="fa-solid fa-clock-rotate-left"></i><a href="#">Lịch Sử</a></li>
                                     <li><i class="fa-solid fa-clipboard-user"></i><a href="?act=mytaikhoan">Tài Khoản</a></li>
                                     <li><i class="fa-solid fa-right-from-bracket fa-rotate-180"></i><a href="?act=dangxuat">Đăng Xuất</a></li>
                                 <?php  }

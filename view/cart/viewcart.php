@@ -64,23 +64,21 @@
     <?php } else { ?>
         <div class="table-right">
             <div class="discount">
-                <input type="text" placeholder="Nhập mã giảm giá"><button>Áp dụng</button>
+            <h3>TỔNG ĐƠN HÀNG</h3>
             </div>
             <div class="form-sum">
-                <h3>TỔNG ĐƠN HÀNG</h3>
                 <form action="" method="post">
                     <div class="total mt">
                         <p>Tổng phụ</p>
                         <p>₫<?= number_format($tong) ?></p>
                     </div>
                     <div class="total mt">
-                        <p>Phí vận chuyển</p>
-                        <p>₫30.000</p>
+
                     </div>
                     <hr>
                     <div class="total mt">
                         <p>Tổng cộng</p>
-                        <p class="total-amount">₫<?= number_format($tong + 30000) ?></p>
+                        <p class="total-amount">₫<?= number_format($tong) ?></p>
                     </div>
                     <button><a href="?act=thanhtoan">Tiến hành thanh toán</a></button>
                 </form>

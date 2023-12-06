@@ -84,19 +84,12 @@
 
 
 					<div class="vocher">
-						<div class="voch">
-							<h6>Voucher</h6>
-							<h6>₫500.000</h6>
-						</div>
-						<div class="voch">
-							<h6 class="">Phí vận chuyển</h6>
-							<h6 class="">₫30.000</h6>
-						</div>
+
 					</div>
 					<div class="tienn">
 						<h3>Tổng tiền: </h3>
-						<h3>₫<?= number_format($tong + 30000) ?></h3>
-						<input hidden name="thanhtien" type="text" value="<?= ($tong + 30000) ?>">
+						<h3>₫<?= number_format($tong) ?></h3>
+						<input hidden name="thanhtien" type="text" value="<?= ($tong) ?>">
 					</div>
 				</div>
 			</div>
