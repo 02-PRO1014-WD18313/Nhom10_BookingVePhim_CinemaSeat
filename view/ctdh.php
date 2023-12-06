@@ -46,7 +46,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>ID sản phẩm</th>
+                            <th>Tên sản phẩm</th>
                             <th>Ảnh</th>
                             <th>Đánh giá</th>
                             <th>Bình luận</th>
@@ -57,7 +57,7 @@
                         foreach ($load_not_vote as $key => $item) {
                         ?>
                             <tr>
-                                <td><?= $id ?> <input type="text" name="id_sp<?= $key + 1 ?>" value="<?= $item['id'] ?>" hidden></td>
+                                <td><?= $name ?> <input type="text" name="id_sp<?= $key + 1 ?>" value="<?= $item['id'] ?>" hidden></td>
                                 <td><img width="50" src="uploads/img_sp/<?= $item['img'] ?>" alt=""></td>
                                 <td>
                                     <div class="rating">
