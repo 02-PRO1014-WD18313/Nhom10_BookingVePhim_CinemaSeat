@@ -16,10 +16,11 @@ include "../../model/validate.php";
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 </head>
 <style>
-    body{
+    body {
         padding-top: 0;
     }
 </style>
+
 <body>
 
 
@@ -46,8 +47,9 @@ include "../../model/validate.php";
                     <div class="btn ">
                         <button name="btn" value="dangnhap" type="submit">Đăng nhập</button>
                         <small style="color: red;"> <?= (isset($err)) ?  $err . '<br>'  : '' ?></small>
-                       
-                        <span>Bạn chưa có tài khoản? <a href="dangky.php?act=dangky">Đăng ký</a></span>
+
+                        <span>Bạn chưa có tài khoản? <a style="color: blue" href="dangky.php?act=dangky">Đăng ký</a></span>
+                        <span style="margin-left: 90px;"><a href="../../index.php?act=quenmk">Quên mật khẩu</a></span>
                     </div>
                     <div class="with">
                         <div class="gg mt">
