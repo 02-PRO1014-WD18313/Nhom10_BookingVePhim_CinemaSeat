@@ -63,3 +63,48 @@ function selectone_tk($id)
     $sql = "SELECT * FROM taikhoan WHERE id=" . $id;
     return pdo_query_one($sql);
 }
+function sendMail($email)
+{
+    $sql = "SELECT * FROM taikhoan WHERE email='$email'";
+    $taikhoan = pdo_query_one($sql);
+    if ($taikhoan != false) {
+        sendMailPass($email, $taikhoan['user'], $taikhoan['pass']);
+
+        return "Gửi email thành công";
+    } else {
+        return "Email bạn nhập ko có trong hệ thống";
+    }
+}
+function sendMailPass($email, $username, $pass)
+{
+    require 'PHPMailer/src/Exception.php';
+    require 'PHPMailer/src/PHPMailer.php';
+    require 'PHPMailer/src/SMTP.php';
+
+    $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+
+    try {
+        //Server settings
+        $mail->SMTPDebug = PHPMailer\PHPMailer\SMTP::DEBUG_OFF;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'sandbox.smtp.mailtrap.io';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = '9f617564ac09c3';                     //SMTP username
+        $mail->Password   = '0b66c12f5edf43';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
+        $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+        //Recipients
+        $mail->setFrom('duanmau2023@example.com', 'DuAnMau');
+        $mail->addAddress($email, $username);     //Add a recipient
+
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = 'Lay lai mat khau';
+        $mail->Body    = 'Mat khau cua ban la: ' . $pass;
+
+        $mail->send();
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+}
