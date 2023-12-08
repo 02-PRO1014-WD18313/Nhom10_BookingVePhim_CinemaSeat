@@ -31,6 +31,13 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             session_unset();
             header('location:index.php');
             break;
+        case 'quenmk':
+            if (isset($_POST['guiemail'])) {
+                $email = $_POST['email'];
+                $sendMailMess = sendMail($email);
+            }
+            include_once 'view/taikhoan/quenmk.php';
+            break;
         case 'ctsp':
             $loadbl_sp = load_bl_sp($_GET['idsp']);
             $loadone_sp = loadAll_sanpham("", $_GET['idsp']);
@@ -40,7 +47,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include_once 'view/ctsp.php';
             break;
         case 'ctdh':
-            $load_not_vote = load_sp_chua_danh_gia($_SESSION['iduser'],$_GET['id_dh']);
+            $load_not_vote = load_sp_chua_danh_gia($_SESSION['iduser'], $_GET['id_dh']);
             $_SESSION['mang'] = [];
             if (isset($_POST['submit']) && $_POST['submit']) {
                 $mang = $_SESSION['mang'];
