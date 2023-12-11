@@ -71,7 +71,7 @@ function insert_sp($iddm, $name, $img, $img2, $img3, $gia, $gia_new, $mota, $sol
 
 function delete_sp($id)
 {
-    $sql = "UPDATE `sanpham` SET `trangthai` = 1 WHERE id = $id";
+    $sql = "DELETE FROM `sanpham` WHERE id = $id";
     pdo_execute($sql);
 }
 function khoiphuc_sp($id)

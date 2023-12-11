@@ -119,23 +119,23 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         case "delete_sp": {
                 if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                     $loadone_sp = loadAll_sanpham("", $_GET['id']);
-                    // if (isset($loadone_sp[0]['img']) && ($loadone_sp[0]['img'] != "")) {
-                    //     $link = "../uploads/img_sp/" . $loadone_sp[0]['img'];
-                    //     unlink("$link");
-                    // }
-                    // if (isset($loadone_sp[0]['img2']) && ($loadone_sp[0]['img2'] != "")) {
-                    //     $link = "../uploads/img_sp/" . $loadone_sp[0]['img2'];
-                    //     unlink("$link");
-                    // }
-                    // if (isset($loadone_sp[0]['img3']) && ($loadone_sp[0]['img3'] != "")) {
-                    //     $link = "../uploads/img_sp/" . $loadone_sp[0]['img3'];
-                    //     unlink("$link");
-                    // }
+                    if (isset($loadone_sp[0]['img']) && ($loadone_sp[0]['img'] != "")) {
+                        $link = "../uploads/img_sp/" . $loadone_sp[0]['img'];
+                        unlink("$link");
+                    }
+                    if (isset($loadone_sp[0]['img2']) && ($loadone_sp[0]['img2'] != "")) {
+                        $link = "../uploads/img_sp/" . $loadone_sp[0]['img2'];
+                        unlink("$link");
+                    }
+                    if (isset($loadone_sp[0]['img3']) && ($loadone_sp[0]['img3'] != "")) {
+                        $link = "../uploads/img_sp/" . $loadone_sp[0]['img3'];
+                        unlink("$link");
+                    }
                     delete_sp($_GET['id']);
-                    header('location: index.php?act=list_sp');
+                    // header('location: index.php?act=list_sp');
                 }
                 $list_sp = loadAll_sanpham();
-                include "./sanpham/list_sp.php";
+                include "./sanpham/trash.php";
                 break;
             }
         case "list_sp": {
@@ -150,6 +150,11 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 }
                 include "./sanpham/trash.php";
                 break;
+                case 'delete_tk':
+                if(isset($_GET['id']) && $_GET['id'] > 0){
+                    delete_tk($_GET['id']);
+                    header('location: index.php?act=list_tk');                 
+                }
         case "update_sp": {
                 if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                     $list_dm = loadAll_danhmuc();

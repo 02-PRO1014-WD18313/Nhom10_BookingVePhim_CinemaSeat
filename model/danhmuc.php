@@ -8,6 +8,7 @@ function loadAll_danhmuc($key = "", $iddm = 0)
     if ($iddm > 0) {
         $sql .= " WHERE id = $iddm";
     }
+    $sql .= " ORDER BY id desc";
     return pdo_query($sql);
 }
 

@@ -9,7 +9,7 @@ function loadall_donhang($iddh = 0)
 }
 function load_donhang_user($iduser)
 {
-    $sql = "select * from donhang where id_user = $iduser";
+    $sql = "select * from donhang where id_user = $iduser order by id desc";
     return pdo_query($sql);
 }
 

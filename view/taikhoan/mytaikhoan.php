@@ -79,7 +79,7 @@ $randomString = substr(str_shuffle($characters), 0, $length);
                         } else if ($trangthai === 2) {
                             $trangthai = '<span style="background-color: #f6c23e;color: white; border-radius: 8px;padding: 0 5px">Đang giao hàng</span>';
                         } elseif ($trangthai === 3) {
-                            $trangthai = '<span style="background-color: #1cc88a;color: white; border-radius: 8px;padding: 0 5px">Giao hàng thành công</span>';
+                            $trangthai = '<span style="background-color: #1cc88a;color: white; border-radius: 8px;padding: 0 5px">Thành công</span>';
                         } else {
                             $trangthai = '<span style="background-color: #858796;color: white; border-radius: 8px;padding: 0 5px">Đã hủy</span>';
                         }

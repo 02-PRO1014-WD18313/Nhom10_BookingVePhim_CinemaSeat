@@ -185,7 +185,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 if (isset($_GET['idsp'])) {
                     $loadone_sp = loadAll_sanpham("",  $_GET['idsp']);
                 }
-
+                // var_dump($loadAll_cart);
 
                 if (isset($_POST['redirect']) && $_POST['redirect']) {
                     if (isset($_POST['thanhtoan']) && $_POST['thanhtoan'] == "Thanh toán khi nhận hàng") {
@@ -230,19 +230,26 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                         $err = validate_form($user, $email, $sdt, $address);
                         if (empty($err)) {
                             $iddh =  insert_donhang($_SESSION['iduser'], $user, $sdt, $email, $address, $thanhtien);
-                            for ($i = 0; $i < count($loadAll_cart); $i++) {
-                                $idsp = $loadAll_cart[$i]['idsp'];
-                                $idcart = $loadAll_cart[$i]['idcart'];
-                                $name = $loadAll_cart[$i]['name'];
-                                $gia = $loadAll_cart[$i]['gia_new'];
-                                $soluong = $loadAll_cart[$i]['soluong'];
-                                $thanhtien = $_POST['thanhtien'];
-                                $img = $loadAll_cart[$i]['img'];
-                                insert_chitietdonhang($iddh, $idsp, $name, $gia, $soluong, $thanhtien, $img);
-                                delete_cart($idcart);
-                                $_SESSION['count_cart'] = count(count_cart($_SESSION['iduser']));
-                                header("Location: view/cart/thanhtoantc.php");
+                            if (!isset($_GET['idsp'])) {
+                                for ($i = 0; $i < count($loadAll_cart); $i++) {
+                                    $idsp = $loadAll_cart[$i]['idsp'];
+                                    $idcart = $loadAll_cart[$i]['idcart'];
+                                    $name = $loadAll_cart[$i]['name'];
+                                    $gia = $loadAll_cart[$i]['gia_new'];
+                                    $soluong = $loadAll_cart[$i]['soluong'];
+                                    $img = $loadAll_cart[$i]['img'];
+                                    insert_chitietdonhang($iddh, $idsp, $name, $gia, $soluong, $img);
+                                    delete_cart($idcart);
+                                }
+                            } else {
+                                $idsp = $_GET['idsp'];
+                                $name = $loadone_sp[0]['name'];
+                                $gia = $loadone_sp[0]['gia_new'];
+                                $soluong = 1;
+                                $img = $loadone_sp[0]['img'];
+                                insert_chitietdonhang($iddh, $idsp, $name, $gia, $soluong, $img);
                             }
+
                             echo 'thanh toan thanh cong';
                             $thanhtien = $_POST['thanhtien'];
                             echo $thanhtien;
@@ -251,7 +258,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                             date_default_timezone_set('Asia/Ho_Chi_Minh');
 
                             $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-                            $vnp_Returnurl = "http://localhost/Nhom10_BookingVePhim_CinemaSeat/?act=thanhtoantc";
+                            $vnp_Returnurl = "http://localhost/datgin/?act=thanhtoantc";
                             $vnp_TmnCode = "WG6RCT6R"; //Mã website tại VNPAY 
                             $vnp_HashSecret = "EMNBSNLHGWLGFOQXDXZZQGNONOSETZZF"; //Chuỗi bí mật
                             $startTime = date("YmdHis");

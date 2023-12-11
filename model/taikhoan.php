@@ -108,3 +108,7 @@ function sendMailPass($email, $username, $pass)
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
+function delete_tk($id){
+    $sql = "DELETE FROM `taikhoan` WHERE id=" . $id;
+    pdo_execute($sql);
+}
