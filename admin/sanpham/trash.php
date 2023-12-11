@@ -33,6 +33,7 @@
                                 <td width="300"><?= $value['mota'] ?></td>
                                 <td>
                                     <a type="submit" class="btn btn-primary" href="?act=trash&id=<?= $value['id'] ?>">Khôi phục</a>
+                                    <a type="button" class="btn btn-danger" href="?act=delete_sp&id=<?= $value['id'] ?>" onclick="return confirm('Bạn có muốn xóa <?= $value['name'] ?>')"><i class="fa-solid fa-trash-can"></i></a>
                                 </td>
                             </tr>
                         <?php } ?>

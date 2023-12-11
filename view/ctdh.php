@@ -57,7 +57,7 @@
                         foreach ($load_not_vote as $key => $item) {
                         ?>
                             <tr>
-                                <td><?= $name ?> <input type="text" name="id_sp<?= $key + 1 ?>" value="<?= $item['id'] ?>" hidden></td>
+                                <td><?= $item['name'] ?> <input type="text" name="id_sp<?= $key + 1 ?>" value="<?= $item['id'] ?>" hidden></td>
                                 <td><img width="50" src="uploads/img_sp/<?= $item['img'] ?>" alt=""></td>
                                 <td>
                                     <div class="rating">

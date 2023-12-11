@@ -18,7 +18,7 @@ include "global.php";
         <p class="tieude">Sản Phẩm Được Đánh Giá Cao</p>
         <?php
         foreach ($load_sp_star as $star) {
-             ?>
+        ?>
             <a href="?act=ctsp&idsp=<?= $star['id'] ?> &iddm=<?= $star['iddm'] ?>">
                 <div class="pro_top">
                     <div class="img_top"><img width="70" height="70" src="uploads/img_sp/<?= $star['img'] ?>" alt=""></div>
@@ -35,12 +35,13 @@ include "global.php";
 
         <p style="margin-top: 40px;" class="tieude">Thương Hiệu Nổi Tiếng</p>
         <div class="trademark_top">
-            <img width="110" src="uploads/img_dm/1700298355_casio.jpeg" alt="">
-            <img width="110" src="uploads/img_dm/1700298369_Orient.jpeg" alt="">
-            <img width="110" src="uploads/img_dm/1700298381_Citizen.jpeg" alt="">
-            <img width="110" src="uploads/img_dm/1700298391_Seiko.jpeg" alt="">
-            <img width="110" src="uploads/img_dm/1700299147_Tissot.jpeg" alt="">
-            <img width="110" src="uploads/img_dm/1700299572_Longines.jpeg" alt="">
+            <?php
+            foreach ($list_dm as $dm) { ?>
+                <a href="?act=listsp&iddm=<?= $dm['id'] ?>"><img width="110" src="uploads/img_dm/<?= $dm['img'] ?>" alt=""></a>
+            <?php }
+            ?>
+
+
         </div>
     </div>
     <div class="box-sp">
@@ -78,7 +79,7 @@ include "global.php";
         <div class="block mt listsp">
             <?php
             foreach ($listsp_dm as $value) {
-                 ?>
+            ?>
                 <div class="item">
                     <a href="?act=ctsp&idsp=<?= $value['id'] ?>&iddm=<?= $value['iddm'] ?>">
                         <div class="img">
