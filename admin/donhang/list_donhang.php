@@ -15,6 +15,7 @@
                             <th class="fw-bold text-secondary">Tên người nhận</th>
                             <th class="fw-bold text-secondary">Số điện thoại</th>
                             <th class="fw-bold text-secondary">Địa chỉ</th>
+                            <th class="fw-bold text-secondary">Ngày đặt hàng</th>
                             <th class="fw-bold text-secondary">Ghi chú</th>
                             <th class="fw-bold text-secondary">Trạng thái</th>
                             <th class="fw-bold text-secondary">Quản lý</th>
@@ -27,6 +28,7 @@
                                 <td><?= $value['nguoi_nhan'] ?></td>
                                 <td><?= $value['tel'] ?></td>
                                 <td><?= $value['address'] ?></td>
+                                <td><?= date("d-m-Y", strtotime($value['date'])) ?></td>
                                 <td>
                                     <?php
                                     if ($value['ghi_chu'] != null) {
@@ -45,14 +47,14 @@
                                     } else if ($value['trangthai'] == 2) {
                                         echo '<span class="badge bg-warning text-white">Đang giao hàng</span>';
                                     } elseif ($value['trangthai'] == 3) {
-                                        echo '<span class="badge bg-success text-white">Giao hàng thành công</span>';
+                                        echo '<span class="badge bg-success text-white">Thành công</span>';
                                     } else {
                                         echo '<span class="badge text-secondary text-white">Đã hủy</span>';
                                     } ?>
                                 </td>
                                 <td>
                                     <a type="button" class="btn btn-info" href="?act=update_donhang&id=<?= $value['id'] ?>"><i class="fa-solid fa-eye"></i></a>
-                                    <a type="button" class="btn btn-danger" href=""><i class="fa-solid fa-trash-can"></i></a>
+                                    <!-- <a type="button" class="btn btn-danger" href=""><i class="fa-solid fa-trash-can"></i></a> -->
                                 </td>
                             </tr>
                         <?php } ?>
